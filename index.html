@@ -24,22 +24,30 @@
         <button id="show-world-view">🗺️ World View</button>
         <label class="toggle"><input type="checkbox" id="toggle-edit"/> Edit layout</label>
         <label class="toggle"><input type="checkbox" id="toggle-lines" checked/> Show connections</label>
+        <label class="toggle"><input type="checkbox" id="toggle-labels" checked/> Show labels</label>
         <button id="save-layout" title="Download updated world layout JSON">💾 Save layout</button>
       </div>
 
       <h3>Interior Maps</h3>
       <input type="text" id="interior-search" placeholder="Search interiors..." />
+      <label class="toggle small"><input type="checkbox" id="search-all-images"/> Include world maps</label>
       <div class="scrollable-list">
         <ul id="interiors-list"></ul>
       </div>
+      <label class="toggle"><input type="checkbox" id="toggle-include-interiors"/> Include interiors in world view</label>
 
-      <h3>How to Use</h3>
-      <ul class="instructions">
-        <li>🗺️ <strong>World View:</strong> Shows all outdoor maps in a grid</li>
-        <li>🏠 <strong>Click a location:</strong> View its map with entrance markers</li>
-        <li>🚪 <strong>Click markers:</strong> Enter buildings, caves, and interiors</li>
-        <li>⬆️⬇️ <strong>Multi-floor:</strong> Navigate between floors within buildings</li>
-      </ul>
+      <section id="howto" class="howto">
+        <h3>
+          How to Use
+          <button id="toggle-howto" class="howto-toggle" title="Collapse/Expand">▾</button>
+        </h3>
+        <ul class="instructions">
+          <li>🗺️ <strong>World View:</strong> Shows all outdoor maps in a grid</li>
+          <li>🏠 <strong>Click a location:</strong> View its map with entrance markers</li>
+          <li>🚪 <strong>Click markers:</strong> Enter buildings, caves, and interiors</li>
+          <li>⬆️⬇️ <strong>Multi-floor:</strong> Navigate between floors within buildings</li>
+        </ul>
+      </section>
     </aside>
   </main>
 

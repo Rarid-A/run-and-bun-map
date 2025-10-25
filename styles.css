@@ -83,6 +83,15 @@ input[type="text"]{
   margin:6px 0;
 }
 
+/* Collapsible How-To block */
+.howto h3{
+  display:flex;align-items:center;justify-content:space-between;margin:12px 0 6px
+}
+.howto-toggle{
+  background:#f2f2f2;color:#013;border:1px solid #ddd;border-radius:4px;padding:2px 8px;font-size:0.9rem;cursor:pointer
+}
+.howto.collapsed .instructions{display:none}
+
 /* Custom marker styles */
 .map-label{
   background:rgba(255,255,255,0.9);
