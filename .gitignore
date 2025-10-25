@@ -1,26 +1,29 @@
-# Repository-level ignore tuned for GitHub Pages site in /map-site
-# By default, ignore everything to avoid committing tools/ROMs/exports outside the site
-/*
+# Keep this web folder clean: ignore non-site files so only assets needed for GitHub Pages are tracked
 
-# Keep this file
-!.gitignore
+# Docs and dev scripts in this folder (not needed on the website)
+*.md
+run_*.ps1
 
-# Allow the website folder and everything inside it
-!/map-site/
-!/map-site/**
+# Local tooling and Python artifacts (site is plain HTML/JS/CSS)
+tools/
+__pycache__/
+*.py
+*.pyc
+.venv/
 
-# Inside map-site, re-ignore development-only files so only the site is published
-map-site/tools/
-map-site/tools/**
-map-site/__pycache__/
-map-site/*.py
-map-site/*.pyc
-map-site/.venv/
-map-site/*.md
-map-site/run_*.ps1
-map-site/data/atlas-overrides.json
-map-site/data/sample-map.json
+# Generated/optional data not needed at runtime
+data/atlas-overrides.json
+data/sample-map.json
 
-# OS junk (anywhere)
+# OS junk
 .DS_Store
 Thumbs.db
+
+# Safety: never commit ROMs or patch files (in case copies end up here)
+*.gba
+*.gb
+*.gbc
+*.nds
+*.bps
+*.ips
+*.ups
