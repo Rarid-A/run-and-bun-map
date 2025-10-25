@@ -4,7 +4,7 @@ A static website to browse the Pokemon world map and jump into interiors. No ser
 
 Use it in two ways:
 
-- I only want to use the website: open `[ https://rarid-a.github.io/run-and-bun-map/)` and explore.
+- I only want to use the website: open https://rarid-a.github.io/run-and-bun-map/ and explore.
 - I want to tweak things: download from GitHub, edit images/layout, and host your own copy (GitHub Pages or any static host).
 
 
