@@ -1,0 +1,26 @@
+# Repository-level ignore tuned for GitHub Pages site in /map-site
+# By default, ignore everything to avoid committing tools/ROMs/exports outside the site
+/*
+
+# Keep this file
+!.gitignore
+
+# Allow the website folder and everything inside it
+!/map-site/
+!/map-site/**
+
+# Inside map-site, re-ignore development-only files so only the site is published
+map-site/tools/
+map-site/tools/**
+map-site/__pycache__/
+map-site/*.py
+map-site/*.pyc
+map-site/.venv/
+map-site/*.md
+map-site/run_*.ps1
+map-site/data/atlas-overrides.json
+map-site/data/sample-map.json
+
+# OS junk (anywhere)
+.DS_Store
+Thumbs.db

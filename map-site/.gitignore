@@ -1,0 +1,29 @@
+# Keep this web folder clean: ignore non-site files so only assets needed for GitHub Pages are tracked
+
+# Docs and dev scripts in this folder (not needed on the website)
+*.md
+run_*.ps1
+
+# Local tooling and Python artifacts (site is plain HTML/JS/CSS)
+tools/
+__pycache__/
+*.py
+*.pyc
+.venv/
+
+# Generated/optional data not needed at runtime
+data/atlas-overrides.json
+data/sample-map.json
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Safety: never commit ROMs or patch files (in case copies end up here)
+*.gba
+*.gb
+*.gbc
+*.nds
+*.bps
+*.ips
+*.ups
