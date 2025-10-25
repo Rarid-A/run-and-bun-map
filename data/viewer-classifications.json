@@ -1,0 +1,21 @@
+{
+  "overrides": {
+    "Sootopolis City": "interior",
+    "Mt Chimney": "interior",
+    "Mt Pyre 3F": "interior",
+    "Mt Pyre 4F": "interior",
+    "Mt Pyre 5F": "interior",
+    "Mt Pyre 6F": "interior",
+    "Rustboro City Devon Corp 3F": "interior",
+    "Rustboro City Pokemon School": "interior",
+    "Rustboro City Flat 11 F": "interior",
+    "Rustboro City Flat 12 F": "interior",
+    "Rustboro City Flat 21 F": "interior",
+    "Rustboro City Flat 22 F": "interior",
+    "Rustboro City Flat 23 F": "interior",
+    "Route 111 Old Ladys Rest Stop": "interior",
+    "Route 112 Cable Car Station": "interior",
+    "Mt Chimney Cable Car Station": "interior",
+    "Route 117 Pokemon Day Care": "interior"
+  }
+}
