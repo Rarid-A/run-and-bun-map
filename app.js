@@ -65,64 +65,33 @@ async function init() {
     worldAtlasSource = 'embedded';
   }
 
-  // Categorize maps into world maps and interior maps
-  const worldMaps = [];
-  const interiorMaps = [];
+
+  // New classification: exterior if in worldAtlas, otherwise interior. If atlas is empty, all are exterior.
   const mapsByName = {};
-  const initialTypeByName = {}; // 'world' | 'interior'
-  
   manifest.maps.forEach((m, idx) => {
     m.index = idx;
     mapsByName[m.name] = m;
-    
-    // Classify as world or interior based on name patterns
-    const name = m.name.toLowerCase();
-    const isInterior = 
-      name.includes('house') || name.includes('gym') || name.includes('center') ||
-      name.includes('mart') || name.includes('cave') || name.includes('room') ||
-      name.includes('tower') || name.includes('hideout') || name.includes('museum') ||
-      name.includes('shop') || name.includes('lab') || name.includes('dept') ||
-      name.includes('1f') || name.includes('2f') || name.includes('b1f') ||
-      name.includes('interior') || name.includes('inside') || name.includes('lobby') ||
-      name.includes('corridor') || name.includes('deck') || name.includes('entrance');
-    
-    if (isInterior) {
-      interiorMaps.push(m);
-      initialTypeByName[m.name] = 'interior';
-    } else {
-      worldMaps.push(m);
-      initialTypeByName[m.name] = 'world';
-    }
   });
 
-  // Allow user to override classification during session
-  const typeOverrides = {}; // name -> 'world' | 'interior'
-  function currentType(name) {
-    return typeOverrides[name] || initialTypeByName[name] || 'world';
-  }
-  function markMapType(map, toType) {
-    if (!map || (toType !== 'world' && toType !== 'interior')) return;
-    const fromType = currentType(map.name);
-    if (fromType === toType) return;
-    // Update lists
-    if (toType === 'world') {
-      // remove from interiorMaps
-      const idx = interiorMaps.indexOf(map);
-      if (idx >= 0) interiorMaps.splice(idx, 1);
-      if (!worldMaps.includes(map)) worldMaps.push(map);
-    } else {
-      const idx = worldMaps.indexOf(map);
-      if (idx >= 0) worldMaps.splice(idx, 1);
-      if (!interiorMaps.includes(map)) interiorMaps.push(map);
-    }
-    typeOverrides[map.name] = toType;
-    // Refresh views
-    stashCurrentLayout();
-    renderInteriorList(interiorSearch ? interiorSearch.value : '');
-    showWorldView();
+  // Build set of exterior map names from worldAtlas
+  let exteriorNames = new Set();
+  if (worldAtlas && Array.isArray(worldAtlas.maps) && worldAtlas.maps.length) {
+    worldAtlas.maps.forEach(e => exteriorNames.add(e.name));
   }
 
-  console.log(`Found ${worldMaps.length} world maps and ${interiorMaps.length} interior maps`);
+  // If atlas is empty, treat all as exterior
+  const allExterior = !exteriorNames.size;
+
+  function isExterior(map) {
+    if (allExterior) return true;
+    return exteriorNames.has(map.name);
+  }
+
+  // For convenience
+  const worldMaps = manifest.maps.filter(m => isExterior(m));
+  const interiorMaps = manifest.maps.filter(m => !isExterior(m));
+
+  console.log(`Found ${worldMaps.length} exterior maps and ${interiorMaps.length} interior maps (by atlas)`);
 
   // Create Leaflet map
   const map = L.map(mapContainer, {
@@ -143,23 +112,18 @@ async function init() {
   const overlayIndex = new Map(); // name -> {entry, overlay}
   const overlayToName = new Map(); // overlay -> name
 
-  // Manual placement state: select an image to place as an interior on a world map
-  let placeSelection = null; // { map: manifestMap }
-  const manualInteriors = {}; // worldName -> [ { interiorName, x, y } ]
+
 
   // UI elements
   const breadcrumb = document.getElementById('breadcrumb');
   const mapInfo = document.getElementById('current-map-info');
   const backBtn = document.getElementById('back-to-world');
   const worldBtn = document.getElementById('show-world-view');
-  const interiorsList = document.getElementById('interiors-list');
   const toggleEdit = document.getElementById('toggle-edit');
   const toggleLines = document.getElementById('toggle-lines');
   const toggleLabels = document.getElementById('toggle-labels');
   const toggleIncludeInteriors = document.getElementById('toggle-include-interiors');
   const saveLayoutBtn = document.getElementById('save-layout');
-  const interiorSearch = document.getElementById('interior-search');
-  const searchAllImages = document.getElementById('search-all-images');
   const howtoSection = document.getElementById('howto');
   const howtoToggle = document.getElementById('toggle-howto');
 
@@ -170,7 +134,7 @@ async function init() {
     if (res.ok) connectionsData = await res.json();
   } catch (_) {}
 
-  // Show world view with stitched maps
+  // Show world view with stitched maps (exteriors only)
   function showWorldView() {
     currentView = 'world';
     currentMapData = null;
@@ -197,26 +161,20 @@ async function init() {
       atlasToUse.maps.forEach(entry => {
         const w = entry.width, h = entry.height;
         const bounds = [[entry.y, entry.x], [entry.y + h, entry.x + w]];
-  const overlay = L.imageOverlay(safeImageUrl(entry.image), bounds, { opacity: 0.95, interactive: true });
-  overlaysGroup.addLayer(overlay);
-  // Allow placing selected interior onto this world map by clicking the image
-  overlay.on('click', (e) => handleOverlayClick(overlay, entry.name, e));
-
-  // Track for editing/saving
-  overlayIndex.set(entry.name, { entry, overlay });
-  overlayToName.set(overlay, entry.name);
-
+        const overlay = L.imageOverlay(safeImageUrl(entry.image), bounds, { opacity: 0.95, interactive: true });
+        overlaysGroup.addLayer(overlay);
+        overlayIndex.set(entry.name, { entry, overlay });
+        overlayToName.set(overlay, entry.name);
         if (!toggleLabels || toggleLabels.checked) {
           const marker = L.marker([entry.y + h/2, entry.x + w/2], {
-            icon: L.divIcon({ className: 'map-label', html: `<div class="map-label-text">${entry.name}</div>`, iconSize: [200, 40] })
+            icon: L.divIcon({ className: 'map-label', html: `<div class=\"map-label-text\">${entry.name}</div>`, iconSize: [200, 40] })
           });
           // Try to map atlas entry back to manifest map by name
           const manifestMatch = mapsByName[entry.name] || manifest.maps.find(m => m.name === entry.name);
           marker.on('click', () => {
             if (manifestMatch) {
               stashCurrentLayout();
-              const related = findRelatedInteriors(manifestMatch.name);
-              if (related.length > 0) showMapWithInteriors(manifestMatch, related); else showSingleMap(manifestMatch);
+              showSingleMap(manifestMatch);
             }
           });
           markersLayer.addLayer(marker);
@@ -244,7 +202,6 @@ async function init() {
         const boundsM = [[mOffY, mOffX], [mOffY + h, mOffX + w]];
         const ovM = L.imageOverlay(safeImageUrl(m.image), boundsM, { opacity: 0.9, interactive: true });
         overlaysGroup.addLayer(ovM);
-        ovM.on('click', (e) => handleOverlayClick(ovM, m.name, e));
         overlayIndex.set(m.name, { entry: { name: m.name, image: m.image, width: w, height: h, x: mOffX, y: mOffY }, overlay: ovM });
         overlayToName.set(ovM, m.name);
         if (!toggleLabels || toggleLabels.checked) {
@@ -259,8 +216,6 @@ async function init() {
         mRowMaxH = Math.max(mRowMaxH, h);
         maxX = Math.max(maxX, mOffX);
       });
-      maxY = Math.max(maxY, mOffY + mRowMaxH);
-
       // Optionally append interior maps to the right side for visibility
       if (toggleIncludeInteriors && toggleIncludeInteriors.checked) {
         const padding = 50;
@@ -283,11 +238,10 @@ async function init() {
           const boundsI = [[offsetY, offsetX], [offsetY + h, offsetX + w]];
           const ovI = L.imageOverlay(safeImageUrl(m.image), boundsI, { opacity: 0.9, interactive: true });
           overlaysGroup.addLayer(ovI);
-          ovI.on('click', (e) => handleOverlayClick(ovI, m.name, e));
           overlayIndex.set(m.name, { entry: { name: m.name, image: m.image, width: w, height: h, x: offsetX, y: offsetY }, overlay: ovI });
           if (!toggleLabels || toggleLabels.checked) {
             const marker = L.marker([offsetY + h/2, offsetX + w/2], {
-              icon: L.divIcon({ className: 'map-label', html: `<div class="map-label-text">${m.name}</div>`, iconSize: [200, 40] })
+              icon: L.divIcon({ className: 'map-label', html: `<div class=\"map-label-text\">${m.name}</div>`, iconSize: [200, 40] })
             });
             markersLayer.addLayer(marker);
           }
@@ -307,50 +261,39 @@ async function init() {
       let offsetY = 0;
       let maxHeight = 0;
       const padding = 50;
-
       worldMaps.forEach((m, idx) => {
         const w = m.width || 640;
         const h = m.height || 640;
-        
-        // Arrange in grid (4 per row)
         if (idx > 0 && idx % 4 === 0) {
           offsetY += maxHeight + padding;
           offsetX = 0;
           maxHeight = 0;
         }
-
-    const bounds = [[offsetY, offsetX], [offsetY + h, offsetX + w]];
-    const overlay = L.imageOverlay(safeImageUrl(m.image), bounds, { opacity: 0.9, interactive: true });
-    overlaysGroup.addLayer(overlay);
-    // Allow placing selected interior onto this world map by clicking the image
-    overlay.on('click', (e) => handleOverlayClick(overlay, m.name, e));
-  overlayIndex.set(m.name, { entry: { name: m.name, image: m.image, width: w, height: h, x: offsetX, y: offsetY }, overlay });
-  overlayToName.set(overlay, m.name);
-
-        // Add label
+        const bounds = [[offsetY, offsetX], [offsetY + h, offsetX + w]];
+        const overlay = L.imageOverlay(safeImageUrl(m.image), bounds, { opacity: 0.9, interactive: true });
+        overlaysGroup.addLayer(overlay);
+        overlayIndex.set(m.name, { entry: { name: m.name, image: m.image, width: w, height: h, x: offsetX, y: offsetY }, overlay });
+        overlayToName.set(overlay, m.name);
         const centerY = offsetY + h / 2;
         const centerX = offsetX + w / 2;
         if (!toggleLabels || toggleLabels.checked) {
           const marker = L.marker([centerY, centerX], {
-            icon: L.divIcon({ className: 'map-label', html: `<div class="map-label-text">${m.name}</div>`, iconSize: [200, 40] })
+            icon: L.divIcon({ className: 'map-label', html: `<div class=\"map-label-text\">${m.name}</div>`, iconSize: [200, 40] })
           });
           marker.on('click', () => {
             stashCurrentLayout();
-            const related = findRelatedInteriors(m.name);
-            if (related.length > 0) showMapWithInteriors(m, related); else showSingleMap(m);
+            showSingleMap(m);
           });
           markersLayer.addLayer(marker);
           const idxObj = overlayIndex.get(m.name);
           if (idxObj) idxObj.label = marker;
         }
-
         offsetX += w + padding;
         maxHeight = Math.max(maxHeight, h);
       });
-
-      // Optionally append interior maps under the world grid
       let finalMaxY = offsetY + maxHeight;
       let finalMaxX = offsetX;
+      // Optionally append interior maps under the world grid
       if (toggleIncludeInteriors && toggleIncludeInteriors.checked) {
         const padding = 50;
         let iOffX = 0;
@@ -368,7 +311,6 @@ async function init() {
           const bI = [[iOffY, iOffX], [iOffY + h, iOffX + w]];
           const ovI = L.imageOverlay(safeImageUrl(m.image), bI, { opacity: 0.85, interactive: true });
           overlaysGroup.addLayer(ovI);
-          ovI.on('click', (e) => handleOverlayClick(ovI, m.name, e));
           overlayIndex.set(m.name, { entry: { name: m.name, image: m.image, width: w, height: h, x: iOffX, y: iOffY }, overlay: ovI });
           if (!toggleLabels || toggleLabels.checked) {
             const marker = L.marker([iOffY + h/2, iOffX + w/2], {
@@ -384,33 +326,16 @@ async function init() {
         });
         finalMaxY = iOffY + iRowMaxH;
       }
-
-      // Fit to show all maps
       map.fitBounds([[0, 0], [finalMaxY, finalMaxX]]);
     }
-
-    // Draw connection lines if enabled
     if (toggleLines && toggleLines.checked) {
       drawConnections();
     }
   }
 
-  // Handle placing selection on world overlays
+  // No-op: interior placement removed
   function handleOverlayClick(overlay, overlayName, e) {
-    if (!placeSelection) return; // normal behavior
-    const b = overlay.getBounds();
-    const x = e.latlng.lng - b.getWest();
-    const y = e.latlng.lat - b.getSouth();
-    if (!manualInteriors[overlayName]) manualInteriors[overlayName] = [];
-    manualInteriors[overlayName].push({ interiorName: placeSelection.map.name, x: Math.round(x), y: Math.round(y) });
-    // Visual feedback: drop a small marker at the placement location
-    const marker = L.marker([e.latlng.lat, e.latlng.lng], {
-      icon: L.divIcon({ className: 'interior-marker', html: '📍', iconSize: [20, 20] })
-    });
-    markersLayer.addLayer(marker);
-    // Clear placing mode hint
-    placeSelection = null;
-    mapInfo.textContent = 'Placed interior marker.';
+    // No interior placement
   }
 
   // Enable/disable edit mode
@@ -588,7 +513,8 @@ async function init() {
   function drawConnections() {
     connectionLayer.clearLayers();
     if (!connectionsData || !connectionsData.worldLayout || !Array.isArray(connectionsData.worldLayout.maps)) return;
-    // Build center map by name
+
+    // Build center map by name from current overlays
     const centers = new Map();
     for (const [name, obj] of overlayIndex.entries()) {
       const b = obj.overlay.getBounds();
@@ -596,139 +522,52 @@ async function init() {
       const cy = (b.getSouth() + b.getNorth()) / 2;
       centers.set(name, [cy, cx]);
     }
+
+    // connectionsData.worldLayout.maps can be an array of strings or objects;
+    // support common shapes: { name, connections: [ ... ] } or { name, neighbors: [ ... ] }
     connectionsData.worldLayout.maps.forEach(m => {
-      const a = centers.get(m.name || m.worldMap || m);
-      if (!a) return;
-      (m.connections || []).forEach(nbName => {
-        const b = centers.get(nbName);
-        if (!b) return;
-        const line = L.polyline([a, b], { color: '#00c2ff', weight: 2, opacity: 0.6, interactive: false });
-        connectionLayer.addLayer(line);
+      const srcName = (m && (m.name || m.worldMap)) || m;
+      if (!srcName) return;
+
+      const srcCenter = centers.get(srcName);
+      if (!srcCenter) return;
+
+      // Determine target list with multiple possible field names
+      let targets = null;
+      if (m && Array.isArray(m.connections)) targets = m.connections;
+      else if (m && Array.isArray(m.neighbors)) targets = m.neighbors;
+      else if (m && Array.isArray(m.links)) targets = m.links;
+      else if (m && Array.isArray(m.targets)) targets = m.targets;
+      else if (m && m.to) targets = Array.isArray(m.to) ? m.to : [m.to];
+
+      if (!targets) return;
+
+      targets.forEach(t => {
+        const dstName = (t && (t.name || t.worldMap)) || t;
+        if (!dstName) return;
+        const dstCenter = centers.get(dstName);
+        if (!dstCenter) return;
+        // Draw simple polyline between centers
+        L.polyline([srcCenter, dstCenter], { color: '#0077cc', weight: 2, opacity: 0.7, interactive: false }).addTo(connectionLayer);
       });
     });
   }
 
-  // Find interior maps related to a world map
-  function findRelatedInteriors(worldMapName) {
-    const related = [];
-    const baseName = worldMapName.split(/\s+(Route|City|Town)/)[0];
-    
-    interiorMaps.forEach(interior => {
-      if (interior.name.includes(baseName)) {
-        related.push(interior);
-      }
-    });
-    
-    return related;
-  }
-
-  // Show a single world map with clickable interior markers
-  function showMapWithInteriors(worldMap, interiors) {
-    currentView = 'map-with-interiors';
-    currentMapData = worldMap;
-    overlaysGroup.clearLayers();
-    markersLayer.clearLayers();
-
-    breadcrumb.innerHTML = `<a href="#" id="nav-world">World Map</a> &gt; <strong>${worldMap.name}</strong>`;
-    mapInfo.textContent = `${interiors.length} interiors available`;
-    backBtn.style.display = 'inline-block';
-
-    const w = worldMap.width;
-    const h = worldMap.height;
-    const bounds = [[0, 0], [h, w]];
-    
-  const overlay = L.imageOverlay(safeImageUrl(worldMap.image), bounds);
-    overlaysGroup.addLayer(overlay);
-    map.fitBounds(bounds);
-
-    // Add markers: prefer manual placements if available
-    const manual = manualInteriors[worldMap.name];
-    if (manual && manual.length) {
-      manual.forEach((ent, idx) => {
-        const marker = L.marker([ent.y, ent.x], {
-          icon: L.divIcon({ className: 'interior-marker', html: '🏠', iconSize: [30, 30] })
-        });
-        const intr = mapsByName[ent.interiorName];
-        const enterBtn = intr ? `<button class=\"enter-btn\" data-idx=\"${intr.index}\">Enter</button>` : '';
-        const rmBtn = `<button class=\"rm-btn\" data-world=\"${encodeURIComponent(worldMap.name)}\" data-i=\"${idx}\">Remove</button>`;
-        const popupContent = `<strong>${intr ? intr.name : ent.interiorName}</strong><br>${enterBtn} ${rmBtn}`;
-        marker.bindPopup(popupContent);
-        marker.on('popupopen', (e) => {
-          const c = e && e.popup ? e.popup.getElement().querySelector('.leaflet-popup-content') : document.querySelector('.leaflet-popup-content');
-          if (!c) return;
-          const enter = c.querySelector('.enter-btn');
-          if (enter) {
-            enter.addEventListener('click', () => {
-              const i = parseInt(enter.getAttribute('data-idx'), 10);
-              if (!isNaN(i)) window.navigateToInterior(i);
-            });
-          }
-          const rm = c.querySelector(`.rm-btn[data-world="${encodeURIComponent(worldMap.name)}"][data-i="${idx}"]`);
-          if (rm) {
-            rm.addEventListener('click', () => {
-              const wi = rm.getAttribute('data-world');
-              const di = parseInt(rm.getAttribute('data-i'), 10);
-              const wname = decodeURIComponent(wi);
-              if (manualInteriors[wname]) {
-                manualInteriors[wname].splice(di, 1);
-              }
-              showMapWithInteriors(worldMap, interiors);
-            });
-          }
-        });
-        markersLayer.addLayer(marker);
-      });
-    } else {
-      // Evenly distributed fallback
-      interiors.forEach((interior, idx) => {
-        const markerX = w * 0.2 + (idx % 3) * (w * 0.3);
-        const markerY = h * 0.2 + Math.floor(idx / 3) * (h * 0.3);
-        const marker = L.marker([markerY, markerX], {
-          icon: L.divIcon({ className: 'interior-marker', html: '🏠', iconSize: [30, 30] })
-        });
-        const popupContent = `<strong>${interior.name}</strong><br><button onclick=\"window.navigateToInterior(${interior.index})\">Enter</button>`;
-        marker.bindPopup(popupContent);
-        markersLayer.addLayer(marker);
-      });
-    }
-
-    document.getElementById('nav-world').addEventListener('click', (e) => {
-      e.preventDefault();
-      showWorldView();
-    });
-  }
-
-  // Show a single map (world or interior)
+  // Show a single map (exterior or interior, but no interior navigation)
   function showSingleMap(mapData) {
     currentView = 'single';
     currentMapData = mapData;
     overlaysGroup.clearLayers();
     markersLayer.clearLayers();
-
-    const isInterior = interiorMaps.includes(mapData);
-    breadcrumb.innerHTML = isInterior 
-      ? `<a href="#" id="nav-world">World Map</a> &gt; <strong>${mapData.name}</strong>`
-      : `<strong>${mapData.name}</strong>`;
+    breadcrumb.innerHTML = `<strong>${mapData.name}</strong>`;
     mapInfo.textContent = `${mapData.width}×${mapData.height}px`;
-    backBtn.style.display = isInterior ? 'inline-block' : 'none';
-
+    backBtn.style.display = 'none';
     const w = mapData.width;
     const h = mapData.height;
     const bounds = [[0, 0], [h, w]];
-    
-  const overlay = L.imageOverlay(safeImageUrl(mapData.image), bounds);
+    const overlay = L.imageOverlay(safeImageUrl(mapData.image), bounds);
     overlaysGroup.addLayer(overlay);
     map.fitBounds(bounds);
-
-    if (isInterior) {
-      const navWorld = document.getElementById('nav-world');
-      if (navWorld) {
-        navWorld.addEventListener('click', (e) => {
-          e.preventDefault();
-          showWorldView();
-        });
-      }
-    }
   }
 
   // Global navigation function
@@ -749,61 +588,14 @@ async function init() {
     showWorldView();
   });
 
-  function renderInteriorList(filterText = '') {
-    interiorsList.innerHTML = '';
-    const q = filterText.trim().toLowerCase();
-    // Optionally include world maps in the list
-    let items = interiorMaps;
-    if (searchAllImages && searchAllImages.checked) {
-      items = interiorMaps.concat(worldMaps);
-    }
-    if (q) {
-      items = items.filter(m => m.name.toLowerCase().includes(q));
-    }
-    const maxShow = 200;
-    items.slice(0, maxShow).forEach(m => {
-      const li = document.createElement('li');
-      const isInteriorNow = interiorMaps.includes(m);
-      const toggleTypeBtn = isInteriorNow ? `<button class=\"type-btn\" title=\"Mark as exterior\">➡️ Exterior</button>` : `<button class=\"type-btn\" title=\"Mark as interior\">🏠 Interior</button>`;
-      li.innerHTML = `<a href=\"#\" data-map-idx=\"${m.index}\">${m.name}</a> <button class=\"place-btn\" title=\"Place this on a world map\">📍 Place</button> ${toggleTypeBtn}`;
-      li.querySelector('a').addEventListener('click', (e) => {
-        e.preventDefault();
-        showSingleMap(m);
-      });
-      li.querySelector('.place-btn').addEventListener('click', (e) => {
-        e.preventDefault();
-        placeSelection = { map: m };
-        if (currentView !== 'world') showWorldView();
-        mapInfo.textContent = `Placing “${m.name}”: click a world map image to set its entrance location (Esc to cancel).`;
-      });
-      li.querySelector('.type-btn').addEventListener('click', (e) => {
-        e.preventDefault();
-        const toType = isInteriorNow ? 'world' : 'interior';
-        markMapType(m, toType);
-      });
-      interiorsList.appendChild(li);
-    });
-    if (items.length > maxShow) {
-      const li = document.createElement('li');
-      li.textContent = `... and ${items.length - maxShow} more`;
-      interiorsList.appendChild(li);
-    }
-  }
 
-  // Wire searchbar
-  if (interiorSearch) {
-    interiorSearch.addEventListener('input', () => {
-      renderInteriorList(interiorSearch.value);
-    });
-  }
 
   // Save layout: downloads world-atlas.json and a PNG mosaic (if possible)
   async function saveLayout() {
     if (!worldAtlas) worldAtlas = { unit: 'px', maps: [] };
     worldAtlas.maps = [];
-    // Read current overlay positions into atlas (skip interiors)
+    // Read current overlay positions into atlas (all overlays are exteriors)
     for (const [name, obj] of overlayIndex.entries()) {
-      if (typeof currentType === 'function' && currentType(name) === 'interior') continue;
       const b = obj.overlay.getBounds();
       const w = b.getEast() - b.getWest();
       const h = b.getNorth() - b.getSouth();
@@ -820,45 +612,9 @@ async function init() {
     const blob = new Blob([JSON.stringify(worldAtlas, null, 2)], { type: 'application/json' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-  a.download = (worldAtlasSource === 'custom') ? 'world-atlas (1).json' : 'world-atlas.json';
+    a.download = (worldAtlasSource === 'custom') ? 'world-atlas (1).json' : 'world-atlas.json';
     a.click();
     URL.revokeObjectURL(a.href);
-
-    // Also export manual interior placements if present
-    try {
-      const placements = [];
-      for (const [worldName, ents] of Object.entries(manualInteriors)) {
-        (ents || []).forEach(ent => placements.push({ world: worldName, interior: ent.interiorName, x: ent.x, y: ent.y }));
-      }
-      if (placements.length) {
-        const blob2 = new Blob([JSON.stringify({ placements }, null, 2)], { type: 'application/json' });
-        const a2 = document.createElement('a');
-        a2.href = URL.createObjectURL(blob2);
-        a2.download = 'manual-interiors.json';
-        a2.click();
-        URL.revokeObjectURL(a2.href);
-      }
-    } catch (_) {}
-
-    // Save classification overrides if any
-    try {
-      const overrides = {};
-      manifest.maps.forEach(m => {
-        const init = initialTypeByName[m.name] || 'world';
-        const currIsInterior = interiorMaps.includes(m);
-        const curr = currIsInterior ? 'interior' : 'world';
-        if (curr !== init) overrides[m.name] = curr;
-      });
-      if (Object.keys(overrides).length) {
-        const blob3 = new Blob([JSON.stringify({ overrides }, null, 2)], { type: 'application/json' });
-        const a3 = document.createElement('a');
-        a3.href = URL.createObjectURL(blob3);
-        a3.download = 'viewer-classifications.json';
-        a3.click();
-        URL.revokeObjectURL(a3.href);
-      }
-    } catch (_) {}
-
     // Try to export mosaic PNG
     try {
       const { canvas, url } = await renderMosaicCanvas(worldAtlas.maps);
@@ -912,20 +668,9 @@ async function init() {
     refreshLabelsOnly();
   });
   if (toggleIncludeInteriors) toggleIncludeInteriors.addEventListener('change', () => {
-    // Do not stash when toggling interiors visibility to avoid persisting them into the atlas
     showWorldView();
   });
   if (saveLayoutBtn) saveLayoutBtn.addEventListener('click', saveLayout);
-  if (searchAllImages) searchAllImages.addEventListener('change', () => {
-    renderInteriorList(interiorSearch ? interiorSearch.value : '');
-  });
-  // Cancel placing with Escape key
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && placeSelection) {
-      placeSelection = null;
-      mapInfo.textContent = '';
-    }
-  });
 
   // How-to toggle wiring with persistence
   function updateHowtoToggle() {
@@ -948,7 +693,6 @@ async function init() {
   }
 
   // Initial render
-  renderInteriorList('');
   showWorldView();
 }
 
