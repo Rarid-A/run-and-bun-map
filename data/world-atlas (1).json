@@ -492,6 +492,3835 @@
       "y": 103.20174405234894,
       "parent": "Littleroot Town Mays House 1F",
       "icon": "door"
+    },
+    {
+      "name": "Oldale Town House 1",
+      "x": 10073,
+      "y": 61.444196797094264,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Oldale Town Mart",
+      "x": 10218,
+      "y": 74.9419679709427,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Oldale Town Pokemon Center 1F",
+      "x": 10089.5,
+      "y": -83.03194650817235,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Oldale Town House 2",
+      "x": 10234.5,
+      "y": -83.03194650817235,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Oldale Town",
+      "x": 67.52869760331528,
+      "y": 5.3019583249741205,
+      "parent": "Oldale Town House 2",
+      "icon": "door"
+    },
+    {
+      "name": "Oldale Town",
+      "x": 110.36765450205004,
+      "y": 4.833106637646946,
+      "parent": "Oldale Town Pokemon Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Oldale Town",
+      "x": 65.05382386916237,
+      "y": 4.948463305421055,
+      "parent": "Oldale Town Mart",
+      "icon": "door"
+    },
+    {
+      "name": "Oldale Town",
+      "x": 60.75476600208088,
+      "y": 4.833106637646946,
+      "parent": "Oldale Town House 1",
+      "icon": "door"
+    },
+    {
+      "name": "Oldale Town Pokemon Center 2F",
+      "x": 25.647340665238293,
+      "y": 40.144925196770735,
+      "parent": "Oldale Town Pokemon Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Oldale Town Pokemon Center 1F",
+      "x": 22,
+      "y": 55.98831929998349,
+      "parent": "Oldale Town Pokemon Center 2F",
+      "icon": "door"
+    },
+    {
+      "name": "Route 110 Seaside Cycling Road Middle Entrance",
+      "x": 11400.859409766002,
+      "y": 394.37786263675616,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 110 Seaside Cycling Road Middle Entrance",
+      "x": 11448.412340800796,
+      "y": 394.7313576563093,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 110",
+      "x": 33.41079541106437,
+      "y": 4.238817383985077,
+      "parent": "Route 110 Seaside Cycling Road Middle Entrance",
+      "icon": "door"
+    },
+    {
+      "name": "Route 110",
+      "x": 205.41451993469204,
+      "y": 3.8853223644320307,
+      "parent": "Route 110 Seaside Cycling Road Middle Entrance",
+      "icon": "door"
+    },
+    {
+      "name": "Route 110 Seaside Cycling Road North Entrance",
+      "x": 11528.409375973102,
+      "y": 56.636367113132934,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 110 Seaside Cycling Road North Entrance",
+      "x": 11577.464169466964,
+      "y": 57.23087250263731,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 110",
+      "x": 204.53063645820885,
+      "y": 9.011000147951362,
+      "parent": "Route 110 Seaside Cycling Road North Entrance",
+      "icon": "door"
+    },
+    {
+      "name": "Route 110",
+      "x": 31.289475067504725,
+      "y": 6.006292481750364,
+      "parent": "Route 110 Seaside Cycling Road North Entrance",
+      "icon": "door"
+    },
+    {
+      "name": "Route 110 Trick House Entrance",
+      "x": 11735.90199254208,
+      "y": 778.5132802146355,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 110",
+      "x": 94.39875528840409,
+      "y": 5.655453344527186,
+      "parent": "Route 110 Trick House Entrance",
+      "icon": "door"
+    },
+    {
+      "name": "Route 110 Trick House Puzzle 1",
+      "x": 88.91867773420834,
+      "y": 87.1360553515068,
+      "parent": "Route 110 Trick House Entrance",
+      "icon": "door"
+    },
+    {
+      "name": "Route 110 Trick House Entrance",
+      "x": 94.18039850841603,
+      "y": 3.3491472876969564,
+      "parent": "Route 110 Trick House Puzzle 1",
+      "icon": "door"
+    },
+    {
+      "name": "Route 110 Trick House End",
+      "x": 362.426354974351,
+      "y": 1528.6872092005508,
+      "parent": "Route 110 Trick House Puzzle 1",
+      "icon": "door"
+    },
+    {
+      "name": "Route 110 Trick House Corridor",
+      "x": 41.89607678530294,
+      "y": 103.04333123139436,
+      "parent": "Route 110 Trick House End",
+      "icon": "door"
+    },
+    {
+      "name": "Route 110 Trick House Puzzle 1",
+      "x": 169.1752973988815,
+      "y": 102.86658372161783,
+      "parent": "Route 110 Trick House End",
+      "icon": "door"
+    },
+    {
+      "name": "Route 110 Trick House Entrance",
+      "x": 74.32544468767007,
+      "y": 8.317578045232855,
+      "parent": "Route 110 Trick House Corridor",
+      "icon": "door"
+    },
+    {
+      "name": "Route 110 Trick House End",
+      "x": 217.62490204549798,
+      "y": 328.1614775986079,
+      "parent": "Route 110 Trick House Corridor",
+      "icon": "door"
+    },
+    {
+      "name": "New Mauville Entrance",
+      "x": 11833.866424919139,
+      "y": 1082.9141035278942,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 110",
+      "x": 72.52731581563287,
+      "y": 36.99208425399184,
+      "parent": "New Mauville Entrance",
+      "icon": "door"
+    },
+    {
+      "name": "New Mauville Inside",
+      "x": 71.8966435041926,
+      "y": 117.49462299294667,
+      "parent": "New Mauville Entrance",
+      "icon": "door"
+    },
+    {
+      "name": "New Mauville Entrance",
+      "x": 521,
+      "y": 118.97193330031371,
+      "parent": "New Mauville Inside",
+      "icon": "door"
+    },
+    {
+      "name": "Route 110 Seaside Cycling Road South Entrance",
+      "x": 11513.017703501182,
+      "y": 1210.3647938274112,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 110 Seaside Cycling Road South Entrance",
+      "x": 11560.747411231274,
+      "y": 1208.4205712198695,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 110",
+      "x": 201.70220933346266,
+      "y": 6.359787501303431,
+      "parent": "Route 110 Seaside Cycling Road South Entrance",
+      "icon": "door"
+    },
+    {
+      "name": "Route 110",
+      "x": 31.996581848691275,
+      "y": 5.8295449719738315,
+      "parent": "Route 110 Seaside Cycling Road South Entrance",
+      "icon": "door"
+    },
+    {
+      "name": "Island Cave",
+      "x": 8217.64145755946,
+      "y": -468.834152035084,
+      "parent": null,
+      "icon": "cave"
+    },
+    {
+      "name": "Island Cave",
+      "x": 139.30003589374985,
+      "y": 200.78458739573418,
+      "parent": "Island Cave",
+      "icon": "cave"
+    },
+    {
+      "name": "Island Cave",
+      "x": 136.47160876900367,
+      "y": 342.88958525606307,
+      "parent": "Island Cave",
+      "icon": "cave"
+    },
+    {
+      "name": "Route 105",
+      "x": 135.05739520663056,
+      "y": 53.02366922255641,
+      "parent": "Island Cave",
+      "icon": "door"
+    },
+    {
+      "name": "Granite Cave 1F",
+      "x": 8841.5,
+      "y": -1683.0289747399702,
+      "parent": null,
+      "icon": "cave"
+    },
+    {
+      "name": "Route 106",
+      "x": 599.5,
+      "y": 33.982912332838055,
+      "parent": "Granite Cave 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Granite Cave B1F",
+      "x": 570,
+      "y": 180.45872544163777,
+      "parent": "Granite Cave 1F",
+      "icon": "cave"
+    },
+    {
+      "name": "Granite Cave B1F",
+      "x": 281.5,
+      "y": 55.97928017170216,
+      "parent": "Granite Cave 1F",
+      "icon": "cave"
+    },
+    {
+      "name": "Granite Cave Stevens Room",
+      "x": 90,
+      "y": 65.97762918936769,
+      "parent": "Granite Cave 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Granite Cave 1F",
+      "x": 121.29912573027755,
+      "y": 168.2449270617524,
+      "parent": "Granite Cave Stevens Room",
+      "icon": "door"
+    },
+    {
+      "name": "Granite Cave 1F",
+      "x": 408.4926440034347,
+      "y": 196.1839316645454,
+      "parent": "Granite Cave B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Granite Cave 1F",
+      "x": 73.73084113016871,
+      "y": 73.12131603713159,
+      "parent": "Granite Cave B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Granite Cave B2F",
+      "x": 457.2501357185463,
+      "y": 71.33779986861836,
+      "parent": "Granite Cave B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Granite Cave B2F",
+      "x": 473.304431771083,
+      "y": 197.96744783305863,
+      "parent": "Granite Cave B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Granite Cave B2F",
+      "x": 473.8990353285844,
+      "y": 374.53554851586983,
+      "parent": "Granite Cave B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Granite Cave B2F",
+      "x": 204.54362378046804,
+      "y": 357.29489222024176,
+      "parent": "Granite Cave B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Granite Cave B2F",
+      "x": 139.13723245531838,
+      "y": 323.40808501849017,
+      "parent": "Granite Cave B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Granite Cave B1F",
+      "x": 454.27711793103947,
+      "y": 69.55428370010507,
+      "parent": "Granite Cave B2F",
+      "icon": "door"
+    },
+    {
+      "name": "Granite Cave B1F",
+      "x": 470.92601754107756,
+      "y": 197.37294244355422,
+      "parent": "Granite Cave B2F",
+      "icon": "door"
+    },
+    {
+      "name": "Granite Cave B1F",
+      "x": 472.70982821358166,
+      "y": 375.13005390537427,
+      "parent": "Granite Cave B2F",
+      "icon": "door"
+    },
+    {
+      "name": "Granite Cave B1F",
+      "x": 233.08459454053335,
+      "y": 378.1025808528963,
+      "parent": "Granite Cave B2F",
+      "icon": "door"
+    },
+    {
+      "name": "Granite Cave B1F",
+      "x": 73.73084113016871,
+      "y": 324.00259040799455,
+      "parent": "Granite Cave B2F",
+      "icon": "door"
+    },
+    {
+      "name": "Dewford Town Hall",
+      "x": 9081.681284740118,
+      "y": -1795.349109516899,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Dewford Town Pokemon Center 1F",
+      "x": 9065.28380464267,
+      "y": -1906.329110702717,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Dewford Town House 2",
+      "x": 9162.827788812101,
+      "y": -1875.2210800672983,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Dewford Town Gym",
+      "x": 9193.940956176488,
+      "y": -2018.9906270580166,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Dewford Town House 1",
+      "x": 9304.939282989979,
+      "y": -1970.226687143036,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Dewford Town",
+      "x": 93.9701744046026,
+      "y": 4.202538449091172,
+      "parent": "Dewford Town Hall",
+      "icon": "door"
+    },
+    {
+      "name": "Dewford Town",
+      "x": 113.7312401630649,
+      "y": 5.253485430017478,
+      "parent": "Dewford Town Pokemon Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Dewford Town",
+      "x": 60.54454189826745,
+      "y": 5.253485430017478,
+      "parent": "Dewford Town House 2",
+      "icon": "door"
+    },
+    {
+      "name": "Dewford Town",
+      "x": 65.16947218216288,
+      "y": 7.145189995684823,
+      "parent": "Dewford Town House 1",
+      "icon": "door"
+    },
+    {
+      "name": "Dewford Town",
+      "x": 95.73117275771905,
+      "y": 7.133868338059088,
+      "parent": "Dewford Town Gym",
+      "icon": "door"
+    },
+    {
+      "name": "Dewford Town Pokemon Center 2F",
+      "x": 25.857564769051724,
+      "y": 42.45700855480861,
+      "parent": "Dewford Town Pokemon Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Dewford Town Pokemon Center 1F",
+      "x": 24.5,
+      "y": 56.48823675086676,
+      "parent": "Dewford Town Pokemon Center 2F",
+      "icon": "door"
+    },
+    {
+      "name": "Abandoned Ship Deck",
+      "x": 10777.25,
+      "y": -1843.264693742777,
+      "parent": null,
+      "icon": "generic"
+    },
+    {
+      "name": "Abandoned Ship Corridors 1F",
+      "x": 135.5,
+      "y": 181.96640250949315,
+      "parent": "Abandoned Ship Deck",
+      "icon": "door"
+    },
+    {
+      "name": "Abandoned Ship Corridors 1F",
+      "x": 216.5,
+      "y": 179.96673270596006,
+      "parent": "Abandoned Ship Deck",
+      "icon": "door"
+    },
+    {
+      "name": "Route 108",
+      "x": 221,
+      "y": 87.98192174343734,
+      "parent": "Abandoned Ship Deck",
+      "icon": "door"
+    },
+    {
+      "name": "Abandoned Ship Captains Office",
+      "x": 200,
+      "y": 248.4554234769688,
+      "parent": "Abandoned Ship Deck",
+      "icon": "door"
+    },
+    {
+      "name": "Abandoned Ship Deck",
+      "x": 122.48833284528028,
+      "y": 5.350499421541264,
+      "parent": "Abandoned Ship Captains Office",
+      "icon": "door"
+    },
+    {
+      "name": "Abandoned Ship Deck",
+      "x": 148.9481911540908,
+      "y": 6.239557885881863,
+      "parent": "Abandoned Ship Corridors 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Abandoned Ship Deck",
+      "x": 16.946201388788776,
+      "y": 2.3752728541031733,
+      "parent": "Abandoned Ship Corridors 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Abandoned Ship Rooms 21 F",
+      "x": 53.81162195387313,
+      "y": 38.93735430862467,
+      "parent": "Abandoned Ship Corridors 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Abandoned Ship Rooms 21 F",
+      "x": 57.67654507763197,
+      "y": 129.5994262080479,
+      "parent": "Abandoned Ship Corridors 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Abandoned Ship Rooms 1F",
+      "x": 180.7594814804136,
+      "y": 38.34284891912028,
+      "parent": "Abandoned Ship Corridors 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Abandoned Ship Rooms 1F",
+      "x": 184.62440460417247,
+      "y": 134.35546932408323,
+      "parent": "Abandoned Ship Corridors 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Abandoned Ship Corridors B1F",
+      "x": 89.19053362520408,
+      "y": 148.6235986721892,
+      "parent": "Abandoned Ship Corridors 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Abandoned Ship Corridors B1F",
+      "x": 264.30128130935475,
+      "y": 150.10986214595022,
+      "parent": "Abandoned Ship Corridors 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Abandoned Ship Corridors 1F",
+      "x": 138.25,
+      "y": 117.97808320950966,
+      "parent": "Abandoned Ship Corridors B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Abandoned Ship Corridors 1F",
+      "x": 8.75,
+      "y": 116.97824830774312,
+      "parent": "Abandoned Ship Corridors B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Abandoned Ship Rooms 2 B1F",
+      "x": 57.25,
+      "y": 84.23365527488856,
+      "parent": "Abandoned Ship Corridors B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Abandoned Ship Rooms 2 B1F",
+      "x": 102.5,
+      "y": 86.98320125474658,
+      "parent": "Abandoned Ship Corridors B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Abandoned Ship Rooms B1F",
+      "x": 91,
+      "y": 37.991291068185575,
+      "parent": "Abandoned Ship Corridors B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Abandoned Ship Rooms B1F",
+      "x": 136.5,
+      "y": 38.24124979362722,
+      "parent": "Abandoned Ship Corridors B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Abandoned Ship Corridors B1F",
+      "x": 360.92435940332587,
+      "y": 101.949673608256,
+      "parent": "Abandoned Ship Rooms B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Abandoned Ship Corridors B1F",
+      "x": 215.84109137299387,
+      "y": 101.949673608256,
+      "parent": "Abandoned Ship Rooms B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Abandoned Ship Corridors B1F",
+      "x": 70.75782334266191,
+      "y": 104.62494786102589,
+      "parent": "Abandoned Ship Rooms B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Abandoned Ship Corridors B1F",
+      "x": 222.62732593842094,
+      "y": 5.67254533251761,
+      "parent": "Abandoned Ship Rooms 2 B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Abandoned Ship Corridors B1F",
+      "x": 77.99314251478202,
+      "y": 6.933681709629181,
+      "parent": "Abandoned Ship Rooms 2 B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Abandoned Ship Room B1F",
+      "x": 185.75,
+      "y": 86.98320125474658,
+      "parent": "Abandoned Ship Corridors B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Abandoned Ship Corridors B1F",
+      "x": 74.7765421104774,
+      "y": 6.362443383633297,
+      "parent": "Abandoned Ship Room B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Abandoned Ship Rooms B1F",
+      "x": 183.5,
+      "y": 36.74149744097738,
+      "parent": "Abandoned Ship Corridors B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Abandoned Ship Corridors 1F",
+      "x": 77.78291841096859,
+      "y": 5.0407276693477625,
+      "parent": "Abandoned Ship Rooms 21 F",
+      "icon": "door"
+    },
+    {
+      "name": "Abandoned Ship Corridors 1F",
+      "x": 73.15798812707317,
+      "y": 250.12156362136173,
+      "parent": "Abandoned Ship Rooms 21 F",
+      "icon": "door"
+    },
+    {
+      "name": "Abandoned Ship Corridors 1F",
+      "x": 219.89441258884636,
+      "y": 7.142621631200374,
+      "parent": "Abandoned Ship Rooms 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Abandoned Ship Corridors 1F",
+      "x": 74.41933274995374,
+      "y": 7.142621631200374,
+      "parent": "Abandoned Ship Rooms 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Abandoned Ship Corridors 1F",
+      "x": 216.5308269278315,
+      "y": 246.33815449002702,
+      "parent": "Abandoned Ship Rooms 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Abandoned Ship Corridors 1F",
+      "x": 72.31709171181946,
+      "y": 249.28080603662067,
+      "parent": "Abandoned Ship Rooms 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Slateport City House",
+      "x": 11608.57202673955,
+      "y": -830.1730136014369,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Slateport City",
+      "x": 52.149125112507875,
+      "y": 5.655453344527186,
+      "parent": "Slateport City House",
+      "icon": "door"
+    },
+    {
+      "name": "Slateport City Sterns Shipyard 1F",
+      "x": 11688.95233649847,
+      "y": -740.1562456723923,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Slateport City Oceanic Museum 1F",
+      "x": 11756.737142053626,
+      "y": -550.5090264204841,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Slateport City Mart",
+      "x": 11482.624902045498,
+      "y": -551.6980371994929,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Slateport City Pokemon Fan Club",
+      "x": 11335.163219785161,
+      "y": -552.8870479785018,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Slateport City Harbor",
+      "x": 11723.288546313275,
+      "y": -324.9137719013212,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Slateport City Battle Tent Lobby",
+      "x": 11433.179283050744,
+      "y": -324.9137719013212,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Slateport City Name Raters House",
+      "x": 11353.29412360164,
+      "y": -436.73453067187984,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Slateport City Pokemon Center 1F",
+      "x": 11578.654362889636,
+      "y": -440.09756101084406,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Slateport City Sterns Shipyard 2F",
+      "x": 54.80077554195743,
+      "y": 217.75065557411463,
+      "parent": "Slateport City Sterns Shipyard 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Slateport City Sterns Shipyard 1F",
+      "x": 55.154328932550705,
+      "y": 214.21570537858403,
+      "parent": "Slateport City Sterns Shipyard 2F",
+      "icon": "door"
+    },
+    {
+      "name": "Slateport City",
+      "x": 48.4368145112785,
+      "y": 7.067623920492679,
+      "parent": "Slateport City Sterns Shipyard 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Slateport City",
+      "x": 62.04862004911954,
+      "y": 5.832200854303699,
+      "parent": "Slateport City Mart",
+      "icon": "door"
+    },
+    {
+      "name": "Slateport City",
+      "x": 106.75,
+      "y": 6.997729899290107,
+      "parent": "Slateport City Pokemon Fan Club",
+      "icon": "door"
+    },
+    {
+      "name": "Slateport City",
+      "x": 58.336309447890166,
+      "y": 5.655453344527186,
+      "parent": "Slateport City Name Raters House",
+      "icon": "door"
+    },
+    {
+      "name": "Slateport City",
+      "x": 108.5,
+      "y": 6.246532937097584,
+      "parent": "Slateport City Battle Tent Lobby",
+      "icon": "door"
+    },
+    {
+      "name": "Slateport City",
+      "x": 107.84496525628889,
+      "y": 7.565568788055331,
+      "parent": "Slateport City Pokemon Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Slateport City",
+      "x": 187.73685040502835,
+      "y": 4.946653803174365,
+      "parent": "Slateport City Harbor",
+      "icon": "door"
+    },
+    {
+      "name": "Slateport City",
+      "x": 153.25337167998947,
+      "y": 7.3553793918700885,
+      "parent": "Slateport City Oceanic Museum 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Slateport City Oceanic Museum 2F",
+      "x": 107.21429294484861,
+      "y": 118.33538057768772,
+      "parent": "Slateport City Oceanic Museum 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Slateport City Oceanic Museum 1F",
+      "x": 102.37913855713975,
+      "y": 117.91500178531717,
+      "parent": "Slateport City Oceanic Museum 2F",
+      "icon": "door"
+    },
+    {
+      "name": "Slateport City Pokemon Center 2F",
+      "x": 21.232634485156293,
+      "y": 40.56530398914126,
+      "parent": "Slateport City Pokemon Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Slateport City Pokemon Center 1F",
+      "x": 22.75,
+      "y": 57.48807165263332,
+      "parent": "Slateport City Pokemon Center 2F",
+      "icon": "door"
+    },
+    {
+      "name": "Petalburg City House 2",
+      "x": 9030.244227773162,
+      "y": -51.15956443238099,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Petalburg City House 1",
+      "x": 8875.052699265309,
+      "y": 32.0711900982371,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Petalburg City Pokemon Center 1F",
+      "x": 9032.028038445667,
+      "y": 78.44261047958139,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Petalburg City Mart",
+      "x": 9115.867140053359,
+      "y": 140.865676377545,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Petalburg City Gym",
+      "x": 8952.351161740484,
+      "y": 208.04478539154383,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Petalburg City Wallys House",
+      "x": 8823.526085257226,
+      "y": 253.0041709712247,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Petalburg City",
+      "x": 62.40217343971281,
+      "y": 5.3019583249741205,
+      "parent": "Petalburg City House 2",
+      "icon": "door"
+    },
+    {
+      "name": "Petalburg City",
+      "x": 59.07297317157345,
+      "y": 3.5719702605353985,
+      "parent": "Petalburg City House 1",
+      "icon": "door"
+    },
+    {
+      "name": "Petalburg City",
+      "x": 55.68465901844061,
+      "y": 4.418220776091476,
+      "parent": "Petalburg City Wallys House",
+      "icon": "door"
+    },
+    {
+      "name": "Petalburg City",
+      "x": 84.4337051651932,
+      "y": 3.5741986008035624,
+      "parent": "Petalburg City Gym",
+      "icon": "door"
+    },
+    {
+      "name": "Petalburg City",
+      "x": 59.39696961966999,
+      "y": 5.3019583249741205,
+      "parent": "Petalburg City Mart",
+      "icon": "door"
+    },
+    {
+      "name": "Petalburg City",
+      "x": 112.46989554018433,
+      "y": 6.304397703315621,
+      "parent": "Petalburg City Pokemon Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Petalburg City Pokemon Center 2F",
+      "x": 21.65308269278315,
+      "y": 39.72451169677206,
+      "parent": "Petalburg City Pokemon Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Petalburg City Pokemon Center 1F",
+      "x": 22.25,
+      "y": 54.488566947333666,
+      "parent": "Petalburg City Pokemon Center 2F",
+      "icon": "door"
+    },
+    {
+      "name": "Route 104 Mr Brineys House",
+      "x": 8346.132114179294,
+      "y": 333.47022762261963,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 104",
+      "x": 86.40210666731917,
+      "y": 4.62291724146168,
+      "parent": "Route 104 Mr Brineys House",
+      "icon": "door"
+    },
+    {
+      "name": "Petalburg Woods",
+      "x": 8587.844804515673,
+      "y": 459.31649614155504,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Petalburg Woods",
+      "x": 8251.261976670876,
+      "y": 520.1176395046808,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Petalburg Woods",
+      "x": 8239.241161390704,
+      "y": 648.7898266219936,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 104",
+      "x": 594,
+      "y": 83.9816740960872,
+      "parent": "Petalburg Woods",
+      "icon": "door"
+    },
+    {
+      "name": "Route 104",
+      "x": 274,
+      "y": 83.9816740960872,
+      "parent": "Petalburg Woods",
+      "icon": "door"
+    },
+    {
+      "name": "Route 104",
+      "x": 231,
+      "y": 613.8941720323593,
+      "parent": "Petalburg Woods",
+      "icon": "door"
+    },
+    {
+      "name": "Route 104 Pretty Petal Flower Shop",
+      "x": 8154.5,
+      "y": 842.4572395575367,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 104",
+      "x": 44.98795821607373,
+      "y": 6.7248112033142915,
+      "parent": "Route 104 Pretty Petal Flower Shop",
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City Flat 21 F",
+      "x": 8152.014773343653,
+      "y": 1278.9775269858847,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City House 3",
+      "x": 8488.560386889423,
+      "y": 1355.6687222319542,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City Mart",
+      "x": 8329.80123703656,
+      "y": 1369.93685158006,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City Cutters House",
+      "x": 8219.799578898808,
+      "y": 1485.2708971439165,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City Pokemon Center 1F",
+      "x": 8332.179651266566,
+      "y": 1485.8654025334208,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City Pokemon School",
+      "x": 8507.587700729468,
+      "y": 1549.4774792103933,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City Flat 11 F",
+      "x": 8278.665331091443,
+      "y": 1612.4950504978613,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City House 2",
+      "x": 8555.155985329577,
+      "y": 1645.1928469206043,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City House 1",
+      "x": 8605.10268415969,
+      "y": 1787.8741404016635,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City Gym",
+      "x": 8505.209286499461,
+      "y": 1789.6576565701769,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City Devon Corp 1F",
+      "x": 8260.232620808902,
+      "y": 1853.3398251969684,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City",
+      "x": 41.8345966588723,
+      "y": 6.935000599499557,
+      "parent": "Rustboro City Flat 21 F",
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City Flat 22 F",
+      "x": 57.18095623725259,
+      "y": 118.96594876624349,
+      "parent": "Rustboro City Flat 21 F",
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City Flat 21 F",
+      "x": 58.442300860133166,
+      "y": 119.80670635098454,
+      "parent": "Rustboro City Flat 22 F",
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City Flat 23 F",
+      "x": 26.48823708049201,
+      "y": 119.59651695479928,
+      "parent": "Rustboro City Flat 22 F",
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City Flat 22 F",
+      "x": 23.33487552329058,
+      "y": 118.12519118150244,
+      "parent": "Rustboro City Flat 23 F",
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City",
+      "x": 58.15953275259353,
+      "y": 6.008948364080232,
+      "parent": "Rustboro City Mart",
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City",
+      "x": 88.08389949782661,
+      "y": 6.514621807129025,
+      "parent": "Rustboro City House 3",
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City",
+      "x": 105.11205190671433,
+      "y": 4.833106637646946,
+      "parent": "Rustboro City Pokemon Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City",
+      "x": 90.18614053596089,
+      "y": 5.673864222387985,
+      "parent": "Rustboro City Cutters House",
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City",
+      "x": 114.72807524751732,
+      "y": 6.362443383633297,
+      "parent": "Rustboro City Flat 11 F",
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City Flat 12 F",
+      "x": 42.249630175896215,
+      "y": 102.15959368251171,
+      "parent": "Rustboro City Flat 11 F",
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City Flat 11 F",
+      "x": 41.18897000411639,
+      "y": 101.62935115318214,
+      "parent": "Rustboro City Flat 12 F",
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City Pokemon Center 2F",
+      "x": 27.329133495745722,
+      "y": 41.82644036625283,
+      "parent": "Rustboro City Pokemon Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City Pokemon Center 1F",
+      "x": 22.5,
+      "y": 55.98831929998349,
+      "parent": "Rustboro City Pokemon Center 2F",
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City",
+      "x": 91.75,
+      "y": 5.997894997523531,
+      "parent": "Rustboro City Pokemon School",
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City",
+      "x": 92.28838157409517,
+      "y": 6.7248112033142915,
+      "parent": "Rustboro City House 2",
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City",
+      "x": 95,
+      "y": 2.994634307412923,
+      "parent": "Rustboro City Gym",
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City",
+      "x": 90.50966799187808,
+      "y": 6.715938403186343,
+      "parent": "Rustboro City House 1",
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City",
+      "x": 93.33950209316232,
+      "y": 5.884053618573252,
+      "parent": "Rustboro City Devon Corp 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City Devon Corp 2F",
+      "x": 235.6612203748535,
+      "y": 117.70481238913193,
+      "parent": "Rustboro City Devon Corp 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City Devon Corp 1F",
+      "x": 230.82606598714466,
+      "y": 117.70481238913193,
+      "parent": "Rustboro City Devon Corp 2F",
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City Devon Corp 3F",
+      "x": 43.3061653855663,
+      "y": 118.54556997387297,
+      "parent": "Rustboro City Devon Corp 2F",
+      "icon": "door"
+    },
+    {
+      "name": "Rustboro City Devon Corp 2F",
+      "x": 39.94257972455144,
+      "y": 120.22708514335505,
+      "parent": "Rustboro City Devon Corp 3F",
+      "icon": "door"
+    },
+    {
+      "name": "Route 116 Tunnelers Rest House",
+      "x": 9321.75,
+      "y": 1964.2337378240054,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Rusturf Tunnel",
+      "x": 9468.75,
+      "y": 1962.983944196797,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Rusturf Tunnel",
+      "x": 9752.092946579814,
+      "y": 1933.6121889716248,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Rusturf Tunnel",
+      "x": 10121.34175578816,
+      "y": 1758.2163123403448,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 116",
+      "x": 74.8397809575806,
+      "y": 6.094243014758518,
+      "parent": "Route 116 Tunnelers Rest House",
+      "icon": "door"
+    },
+    {
+      "name": "Route 116",
+      "x": 297.3017787506803,
+      "y": 44.58240680500211,
+      "parent": "Rusturf Tunnel",
+      "icon": "door"
+    },
+    {
+      "name": "Route 116",
+      "x": 74.92004824517143,
+      "y": 209.260399697725,
+      "parent": "Rusturf Tunnel",
+      "icon": "door"
+    },
+    {
+      "name": "Verdanturf Town",
+      "x": 472.70982821358166,
+      "y": 118.30107510354956,
+      "parent": "Rusturf Tunnel",
+      "icon": "door"
+    },
+    {
+      "name": "Verdanturf Town Battle Tent Lobby",
+      "x": 10039.881068410474,
+      "y": 1664.8554058688846,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Verdanturf Town Mart",
+      "x": 10183.1805257683,
+      "y": 1727.278471766848,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Verdanturf Town Pokemon Center 1F",
+      "x": 10247.397709978448,
+      "y": 1726.6839663773437,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Verdanturf Town Friendship Raters House",
+      "x": 10007.7724763054,
+      "y": 1548.3323495260192,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Verdanturf Town Wandas House",
+      "x": 10152.26114077823,
+      "y": 1550.1158656945327,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Verdanturf Town House",
+      "x": 10263.452006030984,
+      "y": 1531.6861986198958,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Verdanturf Town",
+      "x": 58.15953275259353,
+      "y": 5.832200854303699,
+      "parent": "Verdanturf Town Friendship Raters House",
+      "icon": "door"
+    },
+    {
+      "name": "Verdanturf Town",
+      "x": 112.75,
+      "y": 6.246532937097584,
+      "parent": "Verdanturf Town Battle Tent Lobby",
+      "icon": "door"
+    },
+    {
+      "name": "Verdanturf Town",
+      "x": 125.33467696531554,
+      "y": 4.594968285868009,
+      "parent": "Verdanturf Town Wandas House",
+      "icon": "door"
+    },
+    {
+      "name": "Verdanturf Town",
+      "x": 61.80588652114802,
+      "y": 4.62291724146168,
+      "parent": "Verdanturf Town House",
+      "icon": "door"
+    },
+    {
+      "name": "Verdanturf Town",
+      "x": 56.922095885517074,
+      "y": 4.948463305421055,
+      "parent": "Verdanturf Town Mart",
+      "icon": "door"
+    },
+    {
+      "name": "Verdanturf Town",
+      "x": 114.78236068213204,
+      "y": 3.5719702605353985,
+      "parent": "Verdanturf Town Pokemon Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Verdanturf Town Pokemon Center 2F",
+      "x": 23.965547834730867,
+      "y": 40.355114592956,
+      "parent": "Verdanturf Town Pokemon Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Verdanturf Town Pokemon Center 1F",
+      "x": 25.5,
+      "y": 53.98864949645039,
+      "parent": "Verdanturf Town Pokemon Center 2F",
+      "icon": "door"
+    },
+    {
+      "name": "Route 117 Pokemon Day Care",
+      "x": 11113.73509325793,
+      "y": 1693.1160579136708,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 117",
+      "x": 41.62437255505887,
+      "y": 3.9923490529059062,
+      "parent": "Route 117 Pokemon Day Care",
+      "icon": "door"
+    },
+    {
+      "name": "Meteor Falls 1F 1R",
+      "x": 8505.080364111793,
+      "y": 2779.574066347125,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 115",
+      "x": 104,
+      "y": 36.986792141324145,
+      "parent": "Meteor Falls 1F 1R",
+      "icon": "door"
+    },
+    {
+      "name": "Route 114",
+      "x": 443,
+      "y": 372.93131913488526,
+      "parent": "Meteor Falls 1F 1R",
+      "icon": "door"
+    },
+    {
+      "name": "Meteor Falls 1F 1R",
+      "x": 8840.380403995308,
+      "y": 3000.567449846407,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Meteor Falls B1F 1R",
+      "x": 424.54694005597145,
+      "y": 215.8148805178093,
+      "parent": "Meteor Falls 1F 1R",
+      "icon": "door"
+    },
+    {
+      "name": "Meteor Falls 1F 1R",
+      "x": 331.31318760996356,
+      "y": 19.332843042125834,
+      "parent": "Meteor Falls B1F 1R",
+      "icon": "door"
+    },
+    {
+      "name": "Meteor Falls 1F 1R",
+      "x": 58.86274906776002,
+      "y": 228.7009179144196,
+      "parent": "Meteor Falls B1F 1R",
+      "icon": "door"
+    },
+    {
+      "name": "Meteor Falls 1F 2R",
+      "x": 120.24818738128118,
+      "y": 423.7566775743414,
+      "parent": "Meteor Falls B1F 1R",
+      "icon": "door"
+    },
+    {
+      "name": "Meteor Falls 1F 2R",
+      "x": 89.13502001689375,
+      "y": 501.1063753705173,
+      "parent": "Meteor Falls B1F 1R",
+      "icon": "door"
+    },
+    {
+      "name": "Meteor Falls B1F 2R",
+      "x": 283.3820919405018,
+      "y": 550.7110728702388,
+      "parent": "Meteor Falls B1F 1R",
+      "icon": "door"
+    },
+    {
+      "name": "Meteor Falls B1F 1R",
+      "x": 86.6123307711326,
+      "y": 39.09161809712905,
+      "parent": "Meteor Falls B1F 2R",
+      "icon": "door"
+    },
+    {
+      "name": "Meteor Falls B1F 1R",
+      "x": 328.8046532517446,
+      "y": 133.61738164448164,
+      "parent": "Meteor Falls 1F 2R",
+      "icon": "door"
+    },
+    {
+      "name": "Meteor Falls B1F 1R",
+      "x": 120.91525958289962,
+      "y": 181.6927043036974,
+      "parent": "Meteor Falls 1F 2R",
+      "icon": "door"
+    },
+    {
+      "name": "Meteor Falls 1F 1R",
+      "x": 89.80256121069154,
+      "y": 258.7546185662638,
+      "parent": "Meteor Falls 1F 2R",
+      "icon": "door"
+    },
+    {
+      "name": "Meteor Falls 1F 2R",
+      "x": 170.05661744538912,
+      "y": 616.5472461946731,
+      "parent": "Meteor Falls 1F 1R",
+      "icon": "door"
+    },
+    {
+      "name": "Meteor Falls B1F 1R",
+      "x": 89.19053362520408,
+      "y": 601.6846114570627,
+      "parent": "Meteor Falls 1F 1R",
+      "icon": "door"
+    },
+    {
+      "name": "Route 115",
+      "x": 55.00082906887585,
+      "y": 579.4131398219478,
+      "parent": "Meteor Falls 1F 1R",
+      "icon": "door"
+    },
+    {
+      "name": "Meteor Falls Stevens Cave",
+      "x": 70.16321978516055,
+      "y": 632.0268667930885,
+      "parent": "Meteor Falls 1F 1R",
+      "icon": "door"
+    },
+    {
+      "name": "Meteor Falls 1F 1R",
+      "x": 169.70562748477138,
+      "y": 37.4686041993371,
+      "parent": "Meteor Falls Stevens Cave",
+      "icon": "door"
+    },
+    {
+      "name": "Meteor Falls 1F 1R",
+      "x": 8620.170515591268,
+      "y": 3213.2059799920726,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 114 Lanettes House",
+      "x": 9143.907619468891,
+      "y": 3440.0622537168406,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 114",
+      "x": 94.929085374294,
+      "y": 5.3019583249741205,
+      "parent": "Route 114 Lanettes House",
+      "icon": "door"
+    },
+    {
+      "name": "Route 114 Fossil Maniacs House",
+      "x": 9179.761543394987,
+      "y": 3929.699525401092,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 114",
+      "x": 76.54430906344376,
+      "y": 5.3019583249741205,
+      "parent": "Route 114 Fossil Maniacs House",
+      "icon": "door"
+    },
+    {
+      "name": "Route 114 Fossil Maniacs Tunnel",
+      "x": 72.12489168102785,
+      "y": 102.15959368251171,
+      "parent": "Route 114 Fossil Maniacs House",
+      "icon": "door"
+    },
+    {
+      "name": "Route 114 Fossil Maniacs House",
+      "x": 105.24482967774082,
+      "y": 6.5367124126371134,
+      "parent": "Route 114 Fossil Maniacs Tunnel",
+      "icon": "door"
+    },
+    {
+      "name": "Desert Underpass",
+      "x": 104.65022612023945,
+      "y": 373.9410431263654,
+      "parent": "Route 114 Fossil Maniacs Tunnel",
+      "icon": "door"
+    },
+    {
+      "name": "Route 114 Fossil Maniacs Tunnel",
+      "x": 168.2914139223983,
+      "y": 163.30407550419284,
+      "parent": "Desert Underpass",
+      "icon": "door"
+    },
+    {
+      "name": "Fallarbor Town Move Relearners House",
+      "x": 9371.546669778943,
+      "y": 3917.174512653257,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Fallarbor Town Battle Tent Lobby",
+      "x": 9482.142931474196,
+      "y": 3900.528361747133,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Fallarbor Town Cozmos House",
+      "x": 9448.84513225412,
+      "y": 3741.2009173599504,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Fallarbor Town Mart",
+      "x": 9594.523003841954,
+      "y": 3773.3042083931887,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Fallarbor Town Pokemon Center 1F",
+      "x": 9580.25251846192,
+      "y": 3898.150340189116,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Fallarbor Town",
+      "x": 61.51828996322963,
+      "y": 5.832200854303699,
+      "parent": "Fallarbor Town Move Relearners House",
+      "icon": "door"
+    },
+    {
+      "name": "Fallarbor Town",
+      "x": 58.021852652506304,
+      "y": 6.094243014758518,
+      "parent": "Fallarbor Town Cozmos House",
+      "icon": "door"
+    },
+    {
+      "name": "Fallarbor Town",
+      "x": 108.5,
+      "y": 7.996244015189035,
+      "parent": "Fallarbor Town Battle Tent Lobby",
+      "icon": "door"
+    },
+    {
+      "name": "Fallarbor Town",
+      "x": 57.982756057296896,
+      "y": 4.2414732663149435,
+      "parent": "Fallarbor Town Mart",
+      "icon": "door"
+    },
+    {
+      "name": "Fallarbor Town",
+      "x": 109.10630987916946,
+      "y": 5.463674826202744,
+      "parent": "Fallarbor Town Pokemon Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Fallarbor Town Pokemon Center 2F",
+      "x": 24.80644424998458,
+      "y": 36.571705461621306,
+      "parent": "Fallarbor Town Pokemon Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Fallarbor Town Pokemon Center 1F",
+      "x": 24.5,
+      "y": 57.23811292719168,
+      "parent": "Fallarbor Town Pokemon Center 2F",
+      "icon": "door"
+    },
+    {
+      "name": "Route 113 Glass Workshop",
+      "x": 10201.755309858065,
+      "y": 3931.584881136591,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 113",
+      "x": 59.70364548301374,
+      "y": 9.667462749907942,
+      "parent": "Route 113 Glass Workshop",
+      "icon": "door"
+    },
+    {
+      "name": "Route 111 Old Ladys Rest Stop",
+      "x": 11690.596413357189,
+      "y": 3726.373819206732,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 111",
+      "x": 55.86143571373725,
+      "y": 4.418220776091476,
+      "parent": "Route 111 Old Ladys Rest Stop",
+      "icon": "door"
+    },
+    {
+      "name": "Trainer Hill Entrance",
+      "x": 11770.818420318656,
+      "y": 2203.5268156165976,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 111 Winstrate Familys House",
+      "x": 11481.841091372993,
+      "y": 2201.743299448084,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 111",
+      "x": 57.09887258081371,
+      "y": 6.53919089340983,
+      "parent": "Route 111 Winstrate Familys House",
+      "icon": "door"
+    },
+    {
+      "name": "Route 111",
+      "x": 159.3498706905789,
+      "y": 6.72224283882989,
+      "parent": "Trainer Hill Entrance",
+      "icon": "door"
+    },
+    {
+      "name": "Trainer Hill 1F",
+      "x": 154.30449219905663,
+      "y": 247.5992908671386,
+      "parent": "Trainer Hill Entrance",
+      "icon": "door"
+    },
+    {
+      "name": "Trainer Hill Entrance",
+      "x": 41,
+      "y": 306.44584777942873,
+      "parent": "Trainer Hill 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Trainer Hill 2F",
+      "x": 202,
+      "y": 308.9454350338451,
+      "parent": "Trainer Hill 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Trainer Hill 1F",
+      "x": 39,
+      "y": 308.9454350338451,
+      "parent": "Trainer Hill 2F",
+      "icon": "door"
+    },
+    {
+      "name": "Trainer Hill 3F",
+      "x": 200,
+      "y": 309.4453524847284,
+      "parent": "Trainer Hill 2F",
+      "icon": "door"
+    },
+    {
+      "name": "Trainer Hill 2F",
+      "x": 36.5,
+      "y": 305.4460128776622,
+      "parent": "Trainer Hill 3F",
+      "icon": "door"
+    },
+    {
+      "name": "Trainer Hill 4F",
+      "x": 201.5,
+      "y": 306.44584777942873,
+      "parent": "Trainer Hill 3F",
+      "icon": "door"
+    },
+    {
+      "name": "Trainer Hill Roof",
+      "x": 199.5,
+      "y": 307.4456826811953,
+      "parent": "Trainer Hill 4F",
+      "icon": "door"
+    },
+    {
+      "name": "Trainer Hill 3F",
+      "x": 45,
+      "y": 305.4460128776622,
+      "parent": "Trainer Hill 4F",
+      "icon": "door"
+    },
+    {
+      "name": "Trainer Hill 4F",
+      "x": 153.4421715174808,
+      "y": 168.26269537061162,
+      "parent": "Trainer Hill Roof",
+      "icon": "door"
+    },
+    {
+      "name": "Trainer Hill Elevator",
+      "x": 248.19448019647817,
+      "y": 165.78823023374022,
+      "parent": "Trainer Hill Roof",
+      "icon": "door"
+    },
+    {
+      "name": "Trainer Hill Roof",
+      "x": 28.689621649440646,
+      "y": 5.201873074165157,
+      "parent": "Trainer Hill Elevator",
+      "icon": "door"
+    },
+    {
+      "name": "Route 112 Cable Car Station",
+      "x": 11096,
+      "y": 3266.964338781575,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 112",
+      "x": 107.0286403502449,
+      "y": 5.347799801625253,
+      "parent": "Route 112 Cable Car Station",
+      "icon": "door"
+    },
+    {
+      "name": "Fiery Path",
+      "x": 10822.156314940563,
+      "y": 3114.313443778082,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 112",
+      "x": 427.175378948887,
+      "y": 12.609142482912869,
+      "parent": "Fiery Path",
+      "icon": "door"
+    },
+    {
+      "name": "Route 112",
+      "x": 422.1300004573647,
+      "y": 533.0380874376183,
+      "parent": "Fiery Path",
+      "icon": "door"
+    },
+    {
+      "name": "Fiery Path",
+      "x": 10997.735152288324,
+      "y": 3530.5794337954894,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Jagged Pass",
+      "x": 10749,
+      "y": 2954.9770513455505,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 112",
+      "x": 234,
+      "y": 84.9841505695889,
+      "parent": "Jagged Pass",
+      "icon": "door"
+    },
+    {
+      "name": "Mt Chimney",
+      "x": 225,
+      "y": 647.8912002641572,
+      "parent": "Jagged Pass",
+      "icon": "door"
+    },
+    {
+      "name": "Magma Hideout 1F",
+      "x": 263,
+      "y": 437.92587089318147,
+      "parent": "Jagged Pass",
+      "icon": "door"
+    },
+    {
+      "name": "Jagged Pass",
+      "x": 166.49749022023548,
+      "y": 45.39854945730093,
+      "parent": "Magma Hideout 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Magma Hideout 2F 3 R",
+      "x": 328.7904983642024,
+      "y": 246.3396122104101,
+      "parent": "Magma Hideout 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Magma Hideout 3F 3 R",
+      "x": 264.45793616376875,
+      "y": 80.57771875690588,
+      "parent": "Magma Hideout 2F 3 R",
+      "icon": "door"
+    },
+    {
+      "name": "Magma Hideout 1F",
+      "x": 263.7508293825822,
+      "y": 282.06987990214833,
+      "parent": "Magma Hideout 2F 3 R",
+      "icon": "door"
+    },
+    {
+      "name": "Magma Hideout 2F 3 R",
+      "x": 262.2201688581,
+      "y": 357.2922416843242,
+      "parent": "Magma Hideout 3F 3 R",
+      "icon": "door"
+    },
+    {
+      "name": "Magma Hideout 4F",
+      "x": 266.38239376060955,
+      "y": 32.09779362540942,
+      "parent": "Magma Hideout 3F 3 R",
+      "icon": "door"
+    },
+    {
+      "name": "Magma Hideout 3F 3 R",
+      "x": 329.51176003293114,
+      "y": 99.6783575049752,
+      "parent": "Magma Hideout 4F",
+      "icon": "door"
+    },
+    {
+      "name": "Magma Hideout 3F 1R",
+      "x": 743.1692270270614,
+      "y": 321.6732297842949,
+      "parent": "Magma Hideout 4F",
+      "icon": "door"
+    },
+    {
+      "name": "Magma Hideout 4F",
+      "x": 120.10991861527484,
+      "y": 34.47581518342707,
+      "parent": "Magma Hideout 3F 1R",
+      "icon": "door"
+    },
+    {
+      "name": "Magma Hideout 2F 1R",
+      "x": 345.4646669082905,
+      "y": 230.66259371988392,
+      "parent": "Magma Hideout 3F 1R",
+      "icon": "door"
+    },
+    {
+      "name": "Magma Hideout 3F 1R",
+      "x": 282.5411955252481,
+      "y": 83.23402907577454,
+      "parent": "Magma Hideout 2F 1R",
+      "icon": "door"
+    },
+    {
+      "name": "Magma Hideout 2F 2R",
+      "x": 184.1563149405635,
+      "y": 248.0225156850189,
+      "parent": "Magma Hideout 2F 1R",
+      "icon": "door"
+    },
+    {
+      "name": "Magma Hideout 1F",
+      "x": 142.95239059313147,
+      "y": 580.1217616577308,
+      "parent": "Magma Hideout 2F 1R",
+      "icon": "door"
+    },
+    {
+      "name": "Magma Hideout 2F 1R",
+      "x": 409.516554228559,
+      "y": 52.965506550482964,
+      "parent": "Magma Hideout 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Magma Hideout 2F 1R",
+      "x": 172.43503167539455,
+      "y": 77.28550429958001,
+      "parent": "Magma Hideout 2F 2R",
+      "icon": "door"
+    },
+    {
+      "name": "Magma Hideout 3F 1R",
+      "x": 583.9006934663361,
+      "y": 371.5656721042653,
+      "parent": "Magma Hideout 2F 2R",
+      "icon": "door"
+    },
+    {
+      "name": "Magma Hideout 2F 2R",
+      "x": 376.38405189836124,
+      "y": 327.5670703771005,
+      "parent": "Magma Hideout 3F 1R",
+      "icon": "door"
+    },
+    {
+      "name": "Mt Chimney Cable Car Station",
+      "x": 286,
+      "y": 168.97160310384675,
+      "parent": "Mt Chimney",
+      "icon": "door"
+    },
+    {
+      "name": "Jagged Pass",
+      "x": 339,
+      "y": 79.98629684662376,
+      "parent": "Mt Chimney",
+      "icon": "door"
+    },
+    {
+      "name": "Mt Chimney",
+      "x": 107.92054568649694,
+      "y": 5.3526591174740865,
+      "parent": "Mt Chimney Cable Car Station",
+      "icon": "door"
+    },
+    {
+      "name": "Lavaridge Town Gym 1F",
+      "x": 10405.5,
+      "y": 2815.5129602113257,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Lavaridge Town Pokemon Center 1F",
+      "x": 10469,
+      "y": 2960.489020967476,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Lavaridge Town Mart",
+      "x": 10564.5,
+      "y": 2976.9862968466236,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Lavaridge Town Herb Shop",
+      "x": 10516,
+      "y": 2813.5132904077927,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Lavaridge Town House",
+      "x": 10583,
+      "y": 2814.513125309559,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Lavaridge Town",
+      "x": 224.5193428727418,
+      "y": 8.40639578805272,
+      "parent": "Lavaridge Town Gym 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Lavaridge Town Gym B1F",
+      "x": 201.39469145326464,
+      "y": 98.36745735534427,
+      "parent": "Lavaridge Town Gym 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Lavaridge Town Gym B1F",
+      "x": 135.38432285584804,
+      "y": 146.2906396855837,
+      "parent": "Lavaridge Town Gym 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Lavaridge Town Gym B1F",
+      "x": 89.13502001689375,
+      "y": 102.57124527904949,
+      "parent": "Lavaridge Town Gym 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Lavaridge Town Gym B1F",
+      "x": 9.24986056779086,
+      "y": 70.20207826651937,
+      "parent": "Lavaridge Town Gym 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Lavaridge Town Gym B1F",
+      "x": 7.988515944910288,
+      "y": 118.12526059675879,
+      "parent": "Lavaridge Town Gym 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Lavaridge Town Gym B1F",
+      "x": 24.38599604235772,
+      "y": 193.79344322345264,
+      "parent": "Lavaridge Town Gym 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Lavaridge Town Gym B1F",
+      "x": 88.29412360164002,
+      "y": 196.73609477004626,
+      "parent": "Lavaridge Town Gym 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Lavaridge Town Gym B1F",
+      "x": 136.64566747872863,
+      "y": 248.02230743924986,
+      "parent": "Lavaridge Town Gym 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Lavaridge Town Gym B1F",
+      "x": 199.29245041513036,
+      "y": 200.51950390138097,
+      "parent": "Lavaridge Town Gym 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Lavaridge Town Gym B1F",
+      "x": 201.39469145326464,
+      "y": 261.4744287951066,
+      "parent": "Lavaridge Town Gym 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Lavaridge Town Gym B1F",
+      "x": 60.96499010589431,
+      "y": 261.8948075874771,
+      "parent": "Lavaridge Town Gym 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Lavaridge Town Gym 1F",
+      "x": 198.45155399987664,
+      "y": 105.51389682564314,
+      "parent": "Lavaridge Town Gym B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Lavaridge Town Gym 1F",
+      "x": 88.71457180926689,
+      "y": 100.46935131719688,
+      "parent": "Lavaridge Town Gym B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Lavaridge Town Gym 1F",
+      "x": 135.8047710634749,
+      "y": 147.55177606269527,
+      "parent": "Lavaridge Town Gym B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Lavaridge Town Gym 1F",
+      "x": 198.03110579224978,
+      "y": 197.99723114715786,
+      "parent": "Lavaridge Town Gym B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Lavaridge Town Gym 1F",
+      "x": 27.74958170337258,
+      "y": 195.4749583929347,
+      "parent": "Lavaridge Town Gym B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Lavaridge Town Gym 1F",
+      "x": 8.829412360164003,
+      "y": 114.3418514654241,
+      "parent": "Lavaridge Town Gym B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Lavaridge Town Gym 1F",
+      "x": 7.147619529656573,
+      "y": 70.62245705888989,
+      "parent": "Lavaridge Town Gym B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Lavaridge Town Gym 1F",
+      "x": 55.919611614372016,
+      "y": 259.37253483325395,
+      "parent": "Lavaridge Town Gym B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Lavaridge Town Gym 1F",
+      "x": 134.12297823296748,
+      "y": 247.60192864687937,
+      "parent": "Lavaridge Town Gym B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Lavaridge Town Gym 1F",
+      "x": 203.91738069902578,
+      "y": 263.57632275695914,
+      "parent": "Lavaridge Town Gym B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Lavaridge Town",
+      "x": 64.87704717386573,
+      "y": 6.008948364080232,
+      "parent": "Lavaridge Town Herb Shop",
+      "icon": "door"
+    },
+    {
+      "name": "Lavaridge Town",
+      "x": 62.857007040215166,
+      "y": 5.253485430017478,
+      "parent": "Lavaridge Town House",
+      "icon": "door"
+    },
+    {
+      "name": "Lavaridge Town",
+      "x": 59.927299705559896,
+      "y": 6.715938403186343,
+      "parent": "Lavaridge Town Mart",
+      "icon": "door"
+    },
+    {
+      "name": "Lavaridge Town",
+      "x": 111.62899912493062,
+      "y": 7.145189995684823,
+      "parent": "Lavaridge Town Pokemon Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Lavaridge Town Pokemon Center 2F",
+      "x": 23.755323730917436,
+      "y": 36.99208425399184,
+      "parent": "Lavaridge Town Pokemon Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Lavaridge Town Pokemon Center 1F",
+      "x": 25.75,
+      "y": 56.48823675086676,
+      "parent": "Lavaridge Town Pokemon Center 2F",
+      "icon": "door"
+    },
+    {
+      "name": "Mirage Tower 1F",
+      "x": 11578.873541929715,
+      "y": 3087.18629625359,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 111",
+      "x": 169.44062767362348,
+      "y": 35.72837951239582,
+      "parent": "Mirage Tower 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Mirage Tower 2F",
+      "x": 253.10982099136808,
+      "y": 232.46565434179982,
+      "parent": "Mirage Tower 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Mirage Tower 1F",
+      "x": 252.26892457611436,
+      "y": 231.20451796468828,
+      "parent": "Mirage Tower 2F",
+      "icon": "door"
+    },
+    {
+      "name": "Mirage Tower 3F",
+      "x": 295.15464175405384,
+      "y": 71.46057686389015,
+      "parent": "Mirage Tower 2F",
+      "icon": "door"
+    },
+    {
+      "name": "Mirage Tower 2F",
+      "x": 297.67733099981496,
+      "y": 72.30133444863118,
+      "parent": "Mirage Tower 3F",
+      "icon": "door"
+    },
+    {
+      "name": "Mirage Tower 4F",
+      "x": 41.203924347432014,
+      "y": 200.09648732926968,
+      "parent": "Mirage Tower 3F",
+      "icon": "door"
+    },
+    {
+      "name": "Mirage Tower 3F",
+      "x": 23.25,
+      "y": 84.48361400033019,
+      "parent": "Mirage Tower 4F",
+      "icon": "door"
+    },
+    {
+      "name": "Desert Ruins",
+      "x": 11738,
+      "y": 2622.4704474162127,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 111",
+      "x": 137.88582233137674,
+      "y": 49.48871902702583,
+      "parent": "Desert Ruins",
+      "icon": "door"
+    },
+    {
+      "name": "Mauville City Game Corner",
+      "x": 11403,
+      "y": 1577.9605415222059,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Mauville City Bike Shop",
+      "x": 11834,
+      "y": 1709.9387485553905,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Mauville City Gym",
+      "x": 11402,
+      "y": 1708.9389136536238,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Mauville City Pokemon Center 1F",
+      "x": 11623,
+      "y": 1709.9387485553905,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Mauville City House 2",
+      "x": 11577,
+      "y": 1563.962852897474,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Mauville City Mart",
+      "x": 11642,
+      "y": 1563.962852897474,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Mauville City House 1",
+      "x": 11784,
+      "y": 1563.962852897474,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Mauville City",
+      "x": 78,
+      "y": 4.49570744593035,
+      "parent": "Mauville City Gym",
+      "icon": "door"
+    },
+    {
+      "name": "Mauville City",
+      "x": 190,
+      "y": 4.998060095756983,
+      "parent": "Mauville City Game Corner",
+      "icon": "door"
+    },
+    {
+      "name": "Mauville City",
+      "x": 58.021852652506304,
+      "y": 6.514621807129049,
+      "parent": "Mauville City House 2",
+      "icon": "door"
+    },
+    {
+      "name": "Mauville City",
+      "x": 57.09887258081371,
+      "y": 5.832171668783595,
+      "parent": "Mauville City Mart",
+      "icon": "door"
+    },
+    {
+      "name": "Mauville City",
+      "x": 60.28085309615317,
+      "y": 6.715909217666239,
+      "parent": "Mauville City House 1",
+      "icon": "door"
+    },
+    {
+      "name": "Mauville City",
+      "x": 117.93572223933347,
+      "y": 5.463640118574581,
+      "parent": "Mauville City Pokemon Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Mauville City Pokemon Center 2F",
+      "x": 24.80644424998458,
+      "y": 40.35507988532783,
+      "parent": "Mauville City Pokemon Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Mauville City Pokemon Center 1F",
+      "x": 25.75,
+      "y": 57.23811292719169,
+      "parent": "Mauville City Pokemon Center 2F",
+      "icon": "door"
+    },
+    {
+      "name": "Mauville City",
+      "x": 60.54454189826745,
+      "y": 7.355344684241926,
+      "parent": "Mauville City Bike Shop",
+      "icon": "door"
+    },
+    {
+      "name": "Route 119 House",
+      "x": 13081.278265029932,
+      "y": 2285.565956814034,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 119",
+      "x": 60.75476600208088,
+      "y": 5.673864222387985,
+      "parent": "Route 119 House",
+      "icon": "door"
+    },
+    {
+      "name": "Route 119 Weather Institute 1F",
+      "x": 12648.406875168941,
+      "y": 3514.0074824841377,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 119",
+      "x": 157.27264095910988,
+      "y": 4.754619680079596,
+      "parent": "Route 119 Weather Institute 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Route 119 Weather Institute 2F",
+      "x": 281.24748269814353,
+      "y": 182.80898383665178,
+      "parent": "Route 119 Weather Institute 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Route 119 Weather Institute 1F",
+      "x": 281.5,
+      "y": 132.47568928512464,
+      "parent": "Route 119 Weather Institute 2F",
+      "icon": "door"
+    },
+    {
+      "name": "Fortree City House 1",
+      "x": 13350.633676578049,
+      "y": 3983.194944799303,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Fortree City Pokemon Center 1F",
+      "x": 13272.74061054537,
+      "y": 3933.2564920809323,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Fortree City Mart",
+      "x": 13254.307900262827,
+      "y": 3805.4378333374834,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Fortree City House 5",
+      "x": 13385.120682913128,
+      "y": 3823.2729950226158,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Fortree City Gym",
+      "x": 13545.069039880993,
+      "y": 3854.7817806663497,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Fortree City House 2",
+      "x": 13464.202956060808,
+      "y": 3982.0059340202943,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Fortree City House 3",
+      "x": 13591.4481173661,
+      "y": 3982.0059340202943,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Fortree City House 4",
+      "x": 13705.01739684886,
+      "y": 3996.8685687579045,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Fortree City Decoration Shop",
+      "x": 13784.09966999654,
+      "y": 3822.0839842436067,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Fortree City",
+      "x": 59.57374631496663,
+      "y": 6.362443383633297,
+      "parent": "Fortree City Mart",
+      "icon": "door"
+    },
+    {
+      "name": "Fortree City",
+      "x": 61.095515533264795,
+      "y": 5.795053195710796,
+      "parent": "Fortree City House 5",
+      "icon": "door"
+    },
+    {
+      "name": "Fortree City",
+      "x": 57.67654507763197,
+      "y": 4.457416069325864,
+      "parent": "Fortree City House 1",
+      "icon": "door"
+    },
+    {
+      "name": "Fortree City",
+      "x": 55.44678173700187,
+      "y": 7.7271957116001415,
+      "parent": "Fortree City House 2",
+      "icon": "door"
+    },
+    {
+      "name": "Fortree City",
+      "x": 252.70651193807825,
+      "y": 2.3738985021459347,
+      "parent": "Fortree City Gym",
+      "icon": "door"
+    },
+    {
+      "name": "Fortree City",
+      "x": 61.24416642264014,
+      "y": 3.7142843324453443,
+      "parent": "Fortree City House 3",
+      "icon": "door"
+    },
+    {
+      "name": "Fortree City",
+      "x": 59.46035575013606,
+      "y": 6.389558585215209,
+      "parent": "Fortree City House 4",
+      "icon": "door"
+    },
+    {
+      "name": "Fortree City",
+      "x": 58.419799524508676,
+      "y": 3.4170316376931464,
+      "parent": "Fortree City Decoration Shop",
+      "icon": "door"
+    },
+    {
+      "name": "Fortree City",
+      "x": 108.68586167154261,
+      "y": 6.304432410943783,
+      "parent": "Fortree City Pokemon Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Fortree City Pokemon Center 2F",
+      "x": 25.857564769051724,
+      "y": 38.46341002728865,
+      "parent": "Fortree City Pokemon Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Fortree City Pokemon Center 1F",
+      "x": 23,
+      "y": 56.23827802542513,
+      "parent": "Fortree City Pokemon Center 2F",
+      "icon": "door"
+    },
+    {
+      "name": "Pacifidlog Town House 4",
+      "x": 15782.562226758613,
+      "y": -306.86805371706504,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Pacifidlog Town House 5",
+      "x": 16023.971271104167,
+      "y": -450.7383579771334,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Pacifidlog Town House 3",
+      "x": 15941.321376611477,
+      "y": -500.67681069550423,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Pacifidlog Town House 1",
+      "x": 16007.916975051628,
+      "y": -323.5142046231887,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Pacifidlog Town Pokemon Center 1F",
+      "x": 15881.86102086134,
+      "y": -360.3735387724624,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Pacifidlog Town House 2",
+      "x": 15797.427315696148,
+      "y": -470.35703583077907,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Pacifidlog Town",
+      "x": 74.41933274995374,
+      "y": 6.094243014758518,
+      "parent": "Pacifidlog Town House 4",
+      "icon": "door"
+    },
+    {
+      "name": "Pacifidlog Town",
+      "x": 73.3682122308866,
+      "y": 7.145189995684823,
+      "parent": "Pacifidlog Town House 2",
+      "icon": "door"
+    },
+    {
+      "name": "Pacifidlog Town",
+      "x": 72.10686760800603,
+      "y": 4.62291724146168,
+      "parent": "Pacifidlog Town House 3",
+      "icon": "door"
+    },
+    {
+      "name": "Pacifidlog Town",
+      "x": 71.8966435041926,
+      "y": 6.094243014758518,
+      "parent": "Pacifidlog Town House 5",
+      "icon": "door"
+    },
+    {
+      "name": "Pacifidlog Town",
+      "x": 73.57843633470003,
+      "y": 6.094243014758518,
+      "parent": "Pacifidlog Town House 1",
+      "icon": "door"
+    },
+    {
+      "name": "Pacifidlog Town",
+      "x": 110.15743039823661,
+      "y": 7.145189995684823,
+      "parent": "Pacifidlog Town Pokemon Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Pacifidlog Town Pokemon Center 2F",
+      "x": 24.596220146171152,
+      "y": 40.9856827815118,
+      "parent": "Pacifidlog Town Pokemon Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Pacifidlog Town Pokemon Center 1F",
+      "x": 24.75,
+      "y": 54.98848439821694,
+      "parent": "Pacifidlog Town Pokemon Center 2F",
+      "icon": "door"
+    },
+    {
+      "name": "Victory Road 1F",
+      "x": 19880.923364520673,
+      "y": 1130.4011208436627,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Victory Road 1F",
+      "x": 19883.896382308183,
+      "y": 1356.9076742448447,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Ever Grande City Pokemon Center 1F",
+      "x": 20026,
+      "y": 1022.9189367673766,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Ever Grande City Pokemon Center 2F",
+      "x": 23.12465141947715,
+      "y": 41.39873826433887,
+      "parent": "Ever Grande City Pokemon Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Ever Grande City Pokemon Center 1F",
+      "x": 24,
+      "y": 56.97948654449398,
+      "parent": "Ever Grande City Pokemon Center 2F",
+      "icon": "door"
+    },
+    {
+      "name": "Ever Grande City",
+      "x": 115.41303299357233,
+      "y": 9.239760647993995,
+      "parent": "Ever Grande City Pokemon Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Ever Grande City Pokemon League 1F",
+      "x": 19879.734157405674,
+      "y": 1710.733505789012,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Ever Grande City",
+      "x": 157.56994273786054,
+      "y": 8.914832138651729,
+      "parent": "Ever Grande City Pokemon League 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Ever Grande City Pokemon League 2F",
+      "x": 22.29763340630102,
+      "y": 70.74339264711087,
+      "parent": "Ever Grande City Pokemon League 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Ever Grande City Pokemon League 1F",
+      "x": 22.5,
+      "y": 57.23811292719168,
+      "parent": "Ever Grande City Pokemon League 2F",
+      "icon": "door"
+    },
+    {
+      "name": "Ever Grande City Hall 5",
+      "x": 154.89422672910442,
+      "y": 164.97249688356058,
+      "parent": "Ever Grande City Pokemon League 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Ever Grande City Pokemon League 1F",
+      "x": 88.00132651020137,
+      "y": 6.240883153840636,
+      "parent": "Ever Grande City Hall 5",
+      "icon": "door"
+    },
+    {
+      "name": "Ever Grande City Sidneys Room",
+      "x": 86.51481761644796,
+      "y": 164.37931676201495,
+      "parent": "Ever Grande City Hall 5",
+      "icon": "door"
+    },
+    {
+      "name": "Ever Grande City Hall 5",
+      "x": 105.24482967774082,
+      "y": 7.728471895560449,
+      "parent": "Ever Grande City Sidneys Room",
+      "icon": "door"
+    },
+    {
+      "name": "Ever Grande City Hall 1",
+      "x": 106.13673501399286,
+      "y": 183.10756179936277,
+      "parent": "Ever Grande City Sidneys Room",
+      "icon": "door"
+    },
+    {
+      "name": "Ever Grande City Sidneys Room",
+      "x": 88.00132651020137,
+      "y": 10.105217269617825,
+      "parent": "Ever Grande City Hall 1",
+      "icon": "door"
+    },
+    {
+      "name": "Ever Grande City Phoebes Room",
+      "x": 87.70402473145069,
+      "y": 167.35189279353548,
+      "parent": "Ever Grande City Hall 1",
+      "icon": "door"
+    },
+    {
+      "name": "Ever Grande City Hall 1",
+      "x": 104.35292434148877,
+      "y": 6.539461116551624,
+      "parent": "Ever Grande City Phoebes Room",
+      "icon": "door"
+    },
+    {
+      "name": "Ever Grande City Hall 2",
+      "x": 106.13673501399286,
+      "y": 182.81030910461055,
+      "parent": "Ever Grande City Phoebes Room",
+      "icon": "door"
+    },
+    {
+      "name": "Ever Grande City Phoebes Room",
+      "x": 88.8932318464534,
+      "y": 6.8354376273435316,
+      "parent": "Ever Grande City Hall 2",
+      "icon": "door"
+    },
+    {
+      "name": "Ever Grande City Glacias Room",
+      "x": 89.78513718270544,
+      "y": 166.4601347092789,
+      "parent": "Ever Grande City Hall 2",
+      "icon": "door"
+    },
+    {
+      "name": "Ever Grande City Hall 2",
+      "x": 104.94752789899015,
+      "y": 8.62022997981706,
+      "parent": "Ever Grande City Glacias Room",
+      "icon": "door"
+    },
+    {
+      "name": "Ever Grande City Hall 3",
+      "x": 106.43403679274354,
+      "y": 183.10756179936277,
+      "parent": "Ever Grande City Glacias Room",
+      "icon": "door"
+    },
+    {
+      "name": "Ever Grande City Glacias Room",
+      "x": 90.97434429770817,
+      "y": 7.429943016847961,
+      "parent": "Ever Grande City Hall 3",
+      "icon": "door"
+    },
+    {
+      "name": "Ever Grande City Drakes Room",
+      "x": 88.00132651020137,
+      "y": 167.05464009878327,
+      "parent": "Ever Grande City Hall 3",
+      "icon": "door"
+    },
+    {
+      "name": "Ever Grande City Hall 3",
+      "x": 104.35292434148877,
+      "y": 5.944955727047194,
+      "parent": "Ever Grande City Drakes Room",
+      "icon": "door"
+    },
+    {
+      "name": "Ever Grande City Hall 4",
+      "x": 103.75832078398741,
+      "y": 184.59382527312383,
+      "parent": "Ever Grande City Drakes Room",
+      "icon": "door"
+    },
+    {
+      "name": "Ever Grande City Drakes Room",
+      "x": 89.13502001689375,
+      "y": 9.240697753954557,
+      "parent": "Ever Grande City Hall 4",
+      "icon": "door"
+    },
+    {
+      "name": "Ever Grande City Champions Room",
+      "x": 89.13502001689375,
+      "y": 506.9691879206518,
+      "parent": "Ever Grande City Hall 4",
+      "icon": "door"
+    },
+    {
+      "name": "Ever Grande City Hall 4",
+      "x": 104.0556225627381,
+      "y": 5.051872374831811,
+      "parent": "Ever Grande City Champions Room",
+      "icon": "door"
+    },
+    {
+      "name": "Ever Grande City Hall Of Fame",
+      "x": 102.86641544773538,
+      "y": 166.1628329305282,
+      "parent": "Ever Grande City Champions Room",
+      "icon": "door"
+    },
+    {
+      "name": "Ever Grande City Champions Room",
+      "x": 120.24818738128118,
+      "y": 86.17383459685838,
+      "parent": "Ever Grande City Hall Of Fame",
+      "icon": "door"
+    },
+    {
+      "name": "Route 123 Berry Masters House",
+      "x": 13544.630393628317,
+      "y": 1692.0750070176912,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 123",
+      "x": 60.98795987733972,
+      "y": 4.594968285868009,
+      "parent": "Route 123 Berry Masters House",
+      "icon": "door"
+    },
+    {
+      "name": "Mt Pyre 1F",
+      "x": 15144.105932672288,
+      "y": 1968.5429014481508,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 121 Safari Zone Entrance",
+      "x": 15065.263526569986,
+      "y": 2667.5368084970432,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 121",
+      "x": 237.84142300054424,
+      "y": 6.539461116551624,
+      "parent": "Route 121 Safari Zone Entrance",
+      "icon": "door"
+    },
+    {
+      "name": "Safari Zone South",
+      "x": 44.00066325510068,
+      "y": 131.08834021772648,
+      "parent": "Route 121 Safari Zone Entrance",
+      "icon": "door"
+    },
+    {
+      "name": "Route 121 Safari Zone Entrance",
+      "x": 525,
+      "y": 97.97407957734856,
+      "parent": "Safari Zone South",
+      "icon": "door"
+    },
+    {
+      "name": "Ancient Tomb",
+      "x": 13943.744357737096,
+      "y": 3149.118341412126,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 120",
+      "x": 137.17871555019022,
+      "y": 52.316679183450276,
+      "parent": "Ancient Tomb",
+      "icon": "door"
+    },
+    {
+      "name": "Scorched Slab",
+      "x": 14040.841091372993,
+      "y": 3851.281864770226,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 120",
+      "x": 122.5,
+      "y": 53.48629684662376,
+      "parent": "Scorched Slab",
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City Lilycove Museum 1F",
+      "x": 15932,
+      "y": 2805.8908700676902,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City Lilycove Museum 2F",
+      "x": 265.19318664560683,
+      "y": 201.53722887399962,
+      "parent": "Lilycove City Lilycove Museum 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City",
+      "x": 156.97533918035919,
+      "y": 6.836713811303839,
+      "parent": "Lilycove City Lilycove Museum 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City Lilycove Museum 1F",
+      "x": 216.13839315174457,
+      "y": 184.5925490891635,
+      "parent": "Lilycove City Lilycove Museum 2F",
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City House 4",
+      "x": 15947.570605992962,
+      "y": 2663.446995884855,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City House 3",
+      "x": 15930.327102825422,
+      "y": 2536.22284253091,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City Harbor",
+      "x": 15948.165209550463,
+      "y": 2374.5173765857094,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City Contest Lobby",
+      "x": 16123.573259013365,
+      "y": 2501.1470245501496,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City Cove Lily Motel 1F",
+      "x": 16348.333403748878,
+      "y": 2503.5250461081673,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City Pokemon Trainer Fan Club",
+      "x": 16380.441995853951,
+      "y": 2664.0415012743592,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City Pokemon Center 1F",
+      "x": 16139.0329515084,
+      "y": 2663.446995884855,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City House 2",
+      "x": 16634.932318464533,
+      "y": 2646.219199596827,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City House 1",
+      "x": 16424.442659109052,
+      "y": 2791.278514635904,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City Move Deleters House",
+      "x": 16330.495297023837,
+      "y": 2790.089503856895,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City Department Store 1F",
+      "x": 16186.601236108509,
+      "y": 2791.2904911315313,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City",
+      "x": 59.283197275386875,
+      "y": 3.5719702605353985,
+      "parent": "Lilycove City House 4",
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City",
+      "x": 61.341513267932996,
+      "y": 4.594968285868009,
+      "parent": "Lilycove City House 3",
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City",
+      "x": 186.32263684265527,
+      "y": 6.007138861833521,
+      "parent": "Lilycove City Harbor",
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City",
+      "x": 234.4058979633405,
+      "y": 6.710159670204904,
+      "parent": "Lilycove City Contest Lobby",
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City Contest Hall",
+      "x": 343.6538956566621,
+      "y": 168.2573836059519,
+      "parent": "Lilycove City Contest Lobby",
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City Contest Hall",
+      "x": 150.9672977833279,
+      "y": 166.84340352773964,
+      "parent": "Lilycove City Contest Lobby",
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City Contest Lobby",
+      "x": 492.85342648702357,
+      "y": 7.776306719765124,
+      "parent": "Lilycove City Contest Hall",
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City Contest Lobby",
+      "x": 313.2483040656405,
+      "y": 7.069316680658993,
+      "parent": "Lilycove City Contest Hall",
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City",
+      "x": 92.75815497021225,
+      "y": 8.917482674569275,
+      "parent": "Lilycove City Pokemon Trainer Fan Club",
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City",
+      "x": 92.4986056779086,
+      "y": 9.667462749907942,
+      "parent": "Lilycove City Cove Lily Motel 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City Cove Lily Motel 2F",
+      "x": 36.36876995972315,
+      "y": 117.70481238913193,
+      "parent": "Lilycove City Cove Lily Motel 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City Cove Lily Motel 1F",
+      "x": 38.891459205484296,
+      "y": 120.01689574716978,
+      "parent": "Lilycove City Cove Lily Motel 2F",
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City Pokemon Center 2F",
+      "x": 27.959805807186008,
+      "y": 38.67359942347392,
+      "parent": "Lilycove City Pokemon Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City Pokemon Center 1F",
+      "x": 25.25,
+      "y": 55.238443123658584,
+      "parent": "Lilycove City Pokemon Center 2F",
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City",
+      "x": 111.41877502111718,
+      "y": 6.094243014758518,
+      "parent": "Lilycove City Pokemon Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City",
+      "x": 41.18897000411639,
+      "y": 7.953170971622053,
+      "parent": "Lilycove City House 2",
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City",
+      "x": 57.81162854869288,
+      "y": 5.884053618573252,
+      "parent": "Lilycove City House 1",
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City",
+      "x": 59.57374631496663,
+      "y": 6.362443383633297,
+      "parent": "Lilycove City Move Deleters House",
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City",
+      "x": 140.2194772435569,
+      "y": 7.774439294370222,
+      "parent": "Lilycove City Department Store 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City Department Store 2F",
+      "x": 265.30281901254693,
+      "y": 101.72909938918174,
+      "parent": "Lilycove City Department Store 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City Department Store 3F",
+      "x": 216.74105103164493,
+      "y": 101.72909938918174,
+      "parent": "Lilycove City Department Store 2F",
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City Department Store 1F",
+      "x": 265.30281901254693,
+      "y": 101.51890999299647,
+      "parent": "Lilycove City Department Store 2F",
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City Department Store 2F",
+      "x": 263.62102618203954,
+      "y": 102.14947818155225,
+      "parent": "Lilycove City Department Store 3F",
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City Department Store 4F",
+      "x": 217.79217155071208,
+      "y": 102.56985697392277,
+      "parent": "Lilycove City Department Store 3F",
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City Department Store 5F",
+      "x": 217.58194744689865,
+      "y": 100.46796301207016,
+      "parent": "Lilycove City Department Store 4F",
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City Department Store 3F",
+      "x": 265.30281901254693,
+      "y": 101.939288785367,
+      "parent": "Lilycove City Department Store 4F",
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City Department Store 4F",
+      "x": 264.8823708049201,
+      "y": 101.72909938918174,
+      "parent": "Lilycove City Department Store 5F",
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City Department Store Rooftop",
+      "x": 219.26374027740607,
+      "y": 101.30872059681121,
+      "parent": "Lilycove City Department Store 5F",
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City Department Store 5F",
+      "x": 217.92220382424864,
+      "y": 134.058216629331,
+      "parent": "Lilycove City Department Store Rooftop",
+      "icon": "door"
+    },
+    {
+      "name": "Aqua Hideout 1F",
+      "x": 16876,
+      "y": 2805.899290077596,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Lilycove City",
+      "x": 216.37467504308353,
+      "y": 38.172909170593265,
+      "parent": "Aqua Hideout 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Aqua Hideout B1F",
+      "x": 360.6244584051392,
+      "y": 456.0040222823065,
+      "parent": "Aqua Hideout 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Aqua Hideout 1F",
+      "x": 470.92601754107756,
+      "y": 359.6702632423419,
+      "parent": "Aqua Hideout B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Aqua Hideout B2F",
+      "x": 294.32876096317347,
+      "y": 362.64279018986394,
+      "parent": "Aqua Hideout B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Aqua Hideout B2F",
+      "x": 59.46035575013606,
+      "y": 325.18895065108586,
+      "parent": "Aqua Hideout B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Aqua Hideout B1F",
+      "x": 296.7071751931789,
+      "y": 357.2922416843242,
+      "parent": "Aqua Hideout B2F",
+      "icon": "door"
+    },
+    {
+      "name": "Aqua Hideout B1F",
+      "x": 201.57060599296122,
+      "y": 358.4812524633331,
+      "parent": "Aqua Hideout B2F",
+      "icon": "door"
+    },
+    {
+      "name": "Aqua Hideout B1F",
+      "x": 55.29813084762653,
+      "y": 328.1614775986079,
+      "parent": "Aqua Hideout B2F",
+      "icon": "door"
+    },
+    {
+      "name": "Route 124 Diving Treasure Hunters House",
+      "x": 18153.246610516537,
+      "y": 2304.049027279009,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 124",
+      "x": 58.232076756319735,
+      "y": 7.565568788055331,
+      "parent": "Route 124 Diving Treasure Hunters House",
+      "icon": "door"
+    },
+    {
+      "name": "Shoal Cave Low Tide Entrance Room",
+      "x": 18664.011066410207,
+      "y": 2766.6697868584706,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Shoal Cave Low Tide Inner Room",
+      "x": 442.31151442345384,
+      "y": 512.8557404884531,
+      "parent": "Shoal Cave Low Tide Entrance Room",
+      "icon": "door"
+    },
+    {
+      "name": "Shoal Cave Low Tide Inner Room",
+      "x": 317.0179485506504,
+      "y": 462.4102854039906,
+      "parent": "Shoal Cave Low Tide Entrance Room",
+      "icon": "door"
+    },
+    {
+      "name": "Shoal Cave Low Tide Inner Room",
+      "x": 108.47563756772918,
+      "y": 516.2187708274173,
+      "parent": "Shoal Cave Low Tide Entrance Room",
+      "icon": "door"
+    },
+    {
+      "name": "Shoal Cave Low Tide Entrance Room",
+      "x": 649.1720325758677,
+      "y": 68.93976183005005,
+      "parent": "Shoal Cave Low Tide Inner Room",
+      "icon": "door"
+    },
+    {
+      "name": "Shoal Cave Low Tide Entrance Room",
+      "x": 550.787151991183,
+      "y": 128.63355034666412,
+      "parent": "Shoal Cave Low Tide Inner Room",
+      "icon": "door"
+    },
+    {
+      "name": "Shoal Cave Low Tide Entrance Room",
+      "x": 236.2918926862938,
+      "y": 68.09900424530908,
+      "parent": "Shoal Cave Low Tide Inner Room",
+      "icon": "door"
+    },
+    {
+      "name": "Shoal Cave Low Tide Lower Room",
+      "x": 248.90533891509952,
+      "y": 297.6258248796137,
+      "parent": "Shoal Cave Low Tide Inner Room",
+      "icon": "door"
+    },
+    {
+      "name": "Shoal Cave Low Tide Lower Room",
+      "x": 312.8134664743818,
+      "y": 377.49779543001273,
+      "parent": "Shoal Cave Low Tide Inner Room",
+      "icon": "door"
+    },
+    {
+      "name": "Shoal Cave Low Tide Stairs Room",
+      "x": 618.0588652114802,
+      "y": 360.6826437351919,
+      "parent": "Shoal Cave Low Tide Inner Room",
+      "icon": "door"
+    },
+    {
+      "name": "Shoal Cave Low Tide Stairs Room",
+      "x": 680.2851999402551,
+      "y": 534.7194637765876,
+      "parent": "Shoal Cave Low Tide Inner Room",
+      "icon": "door"
+    },
+    {
+      "name": "Shoal Cave Low Tide Inner Room",
+      "x": 120.56170619230635,
+      "y": 165.07989766070912,
+      "parent": "Shoal Cave Low Tide Stairs Room",
+      "icon": "door"
+    },
+    {
+      "name": "Shoal Cave Low Tide Inner Room",
+      "x": 56.5685424949238,
+      "y": 40.296155758480054,
+      "parent": "Shoal Cave Low Tide Stairs Room",
+      "icon": "door"
+    },
+    {
+      "name": "Shoal Cave Low Tide Inner Room",
+      "x": 312.1876438938607,
+      "y": 38.17384310723671,
+      "parent": "Shoal Cave Low Tide Lower Room",
+      "icon": "door"
+    },
+    {
+      "name": "Shoal Cave Low Tide Inner Room",
+      "x": 122.32947314527271,
+      "y": 184.87427622175534,
+      "parent": "Shoal Cave Low Tide Lower Room",
+      "icon": "door"
+    },
+    {
+      "name": "Shoal Cave Low Tide Inner Room",
+      "x": 39.59797974644666,
+      "y": 113.11478725248477,
+      "parent": "Shoal Cave Low Tide Lower Room",
+      "icon": "door"
+    },
+    {
+      "name": "Shoal Cave Low Tide Ice Room",
+      "x": 458.558747599476,
+      "y": 39.58782318544893,
+      "parent": "Shoal Cave Low Tide Lower Room",
+      "icon": "door"
+    },
+    {
+      "name": "Shoal Cave Low Tide Lower Room",
+      "x": 282.13560569343247,
+      "y": 311.0710642655532,
+      "parent": "Shoal Cave Low Tide Ice Room",
+      "icon": "door"
+    },
+    {
+      "name": "Shoal Cave Low Tide Lower Room",
+      "x": 491.0835065081693,
+      "y": 199.2571874649117,
+      "parent": "Shoal Cave Low Tide Inner Room",
+      "icon": "door"
+    },
+    {
+      "name": "Route 125",
+      "x": 329.6313947794561,
+      "y": 63.05057148250799,
+      "parent": "Shoal Cave Low Tide Entrance Room",
+      "icon": "door"
+    },
+    {
+      "name": "Mossdeep City Game Corner 1F",
+      "x": 18889,
+      "y": 2051.9468383688295,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Mossdeep City Mart",
+      "x": 18906,
+      "y": 2146.9311540366516,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Mossdeep City Pokemon Center 1F",
+      "x": 18760,
+      "y": 2174.9265312861153,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Mossdeep City House 4",
+      "x": 18600,
+      "y": 2176.926201089648,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Mossdeep City Stevens House",
+      "x": 18616,
+      "y": 2274.9100214627706,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Mossdeep City House 1",
+      "x": 18763,
+      "y": 2287.9078751857355,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Mossdeep City Gym",
+      "x": 18922,
+      "y": 2287.9078751857355,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Mossdeep City House 3",
+      "x": 19100,
+      "y": 2336.8997853722967,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Mossdeep City House 2",
+      "x": 19387,
+      "y": 2030.950305431732,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Mossdeep City Space Center 1F",
+      "x": 19339,
+      "y": 2191.9237246161465,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Mossdeep City",
+      "x": 63.99316369738255,
+      "y": 6.185695873856765,
+      "parent": "Mossdeep City Stevens House",
+      "icon": "door"
+    },
+    {
+      "name": "Mossdeep City",
+      "x": 65.58415395505227,
+      "y": 6.008948364080232,
+      "parent": "Mossdeep City House 4",
+      "icon": "door"
+    },
+    {
+      "name": "Mossdeep City",
+      "x": 62.932503525602726,
+      "y": 6.892685912962876,
+      "parent": "Mossdeep City House 1",
+      "icon": "door"
+    },
+    {
+      "name": "Mossdeep City",
+      "x": 111.83922322874403,
+      "y": 7.145189995684823,
+      "parent": "Mossdeep City Pokemon Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Mossdeep City Pokemon Center 2F",
+      "x": 25.016668353798007,
+      "y": 39.09397821584445,
+      "parent": "Mossdeep City Pokemon Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Mossdeep City Pokemon Center 1F",
+      "x": 23.25,
+      "y": 58.987824005283144,
+      "parent": "Mossdeep City Pokemon Center 2F",
+      "icon": "door"
+    },
+    {
+      "name": "Mossdeep City",
+      "x": 92,
+      "y": 8.496161466072323,
+      "parent": "Mossdeep City Game Corner 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Mossdeep City Game Corner B1F",
+      "x": 88.75,
+      "y": 134.22540036321612,
+      "parent": "Mossdeep City Game Corner 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Mossdeep City Game Corner 1F",
+      "x": 58.86274906776002,
+      "y": 120.43727453954033,
+      "parent": "Mossdeep City Game Corner B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Mossdeep City",
+      "x": 59.04341622907671,
+      "y": 9.190403540057742,
+      "parent": "Mossdeep City Mart",
+      "icon": "door"
+    },
+    {
+      "name": "Mossdeep City",
+      "x": 112.68011964399776,
+      "y": 8.402577948954244,
+      "parent": "Mossdeep City Gym",
+      "icon": "door"
+    },
+    {
+      "name": "Mossdeep City",
+      "x": 59.57374631496663,
+      "y": 7.246180932515942,
+      "parent": "Mossdeep City House 3",
+      "icon": "door"
+    },
+    {
+      "name": "Mossdeep City",
+      "x": 58.232076756319735,
+      "y": 6.7248112033142915,
+      "parent": "Mossdeep City House 2",
+      "icon": "door"
+    },
+    {
+      "name": "Mossdeep City",
+      "x": 124,
+      "y": 5.246698035331036,
+      "parent": "Mossdeep City Space Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Mossdeep City Space Center 2F",
+      "x": 218.5,
+      "y": 133.72548291233284,
+      "parent": "Mossdeep City Space Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Mossdeep City Space Center 1F",
+      "x": 216.75,
+      "y": 134.22540036321612,
+      "parent": "Mossdeep City Space Center 2F",
+      "icon": "door"
+    },
+    {
+      "name": "Underwater Route 126",
+      "x": 17808,
+      "y": 1333.832260194816,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Underwater Route 127",
+      "x": 18785.625916767982,
+      "y": 904.6573824695646,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Underwater Route 124",
+      "x": 17870.002574146427,
+      "y": 2309.3425699802906,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Underwater Route 128",
+      "x": 19094.711519161527,
+      "y": 161.14423027409015,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Route 109 Seashore House",
+      "x": 11462.172777953727,
+      "y": -1156.5491747867384,
+      "parent": null,
+      "icon": "door"
     }
   ],
   "groups": [
