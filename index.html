@@ -32,6 +32,27 @@
 
         <style>
           .interior-marker .interior-marker-label {
+            display: none;
+          }
+          .interior-marker .interior-marker-icon {
+            font-size: 28px;
+            background: #fffbe6;
+            border: 2px solid #e0b800;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+            pointer-events: auto;
+            cursor: pointer;
+            transition: box-shadow 0.2s;
+          }
+          .interior-marker .interior-marker-icon:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            background: #fff2b2;
+          }
             background: #fffbe6;
             border: 2px solid #e0b800;
             border-radius: 8px;

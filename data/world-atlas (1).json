@@ -393,5 +393,43 @@
       "x": 13185,
       "y": 1475
     }
-  ]
+  ],
+  "interiorPlacements": [
+    {
+      "name": "Sootopolis City",
+      "x": 17711.80119448899,
+      "y": 1067.895132252264,
+      "parent": null,
+      "icon": "generic"
+    },
+    {
+      "name": "Sootopolis City Gym 1F",
+      "x": 503,
+      "y": 437.4710252600297,
+      "parent": "Sootopolis City",
+      "icon": "door"
+    },
+    {
+      "name": "Sootopolis City Gym B1F",
+      "x": 184.92170638292313,
+      "y": 54.691648962494746,
+      "parent": "Sootopolis City Gym 1F",
+      "icon": "stairs"
+    },
+    {
+      "name": "Sootopolis City Gym B1F",
+      "x": 41.622249025095236,
+      "y": 184.29382387445713,
+      "parent": "Sootopolis City Gym 1F",
+      "icon": "stairs"
+    },
+    {
+      "name": "Sootopolis City Gym B1F",
+      "x": 218.21950560299933,
+      "y": 375.13005390537427,
+      "parent": "Sootopolis City Gym 1F",
+      "icon": "stairs"
+    }
+  ],
+  "groups": []
 }

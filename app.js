@@ -113,13 +113,13 @@ async function init() {
     });
   }
 
-  // ...existing code...
-  // (moved below DOM assignments)
   // --- Interior Placement State ---
   // Holds placements before saving
+  // Each placement: { name, x, y, parent, icon } where parent is the map name (null for world)
+  // Multiple placements per interior/parent allowed
   let interiorPlacements = [];
   let selectedInteriorForPlacement = null;
-    let interiorGroups = [];
+  let interiorGroups = [];
 
   // Checkbox to include world maps in search list
   const searchAllImages = document.getElementById('search-all-images');
@@ -194,11 +194,8 @@ async function init() {
 
   function renderSearchList(query) {
     const q = (query || '').trim().toLowerCase();
-    // Only show interiors by default; show exteriors if checkbox is checked
-    let items = manifest.maps.filter(m => currentType(m.name) === 'interior');
-    if (searchAllImages && searchAllImages.checked) {
-      items = manifest.maps;
-    }
+    // Show both interiors and exteriors for placement
+    let items = manifest.maps;
     if (q) {
       // Support search by #number (e.g., #519)
       const numberMatch = q.match(/^#?(\d{3})$/);
@@ -235,13 +232,29 @@ async function init() {
       link.onclick = (e) => { e.preventDefault(); showSingleMap(m); };
       li.appendChild(link);
       li.appendChild(btn);
-      // Add 'Place' button in Edit Interiors mode for interiors
-      if (editInteriorsToggle && editInteriorsToggle.checked && type === 'interior') {
+      // Add icon picker and 'Place' button in Edit Interiors mode for both interiors and exteriors
+      if (editInteriorsToggle && editInteriorsToggle.checked) {
+        const iconPicker = document.createElement('select');
+        iconPicker.style.marginLeft = '8px';
+        const icons = [
+          { value: 'door', label: '🚪' },
+          { value: 'cave', label: '⛰️' },
+          { value: 'stairs', label: '⬆️' },
+          { value: 'dive', label: '🌊' },
+          { value: 'generic', label: '⭐' }
+        ];
+        icons.forEach(ic => {
+          const opt = document.createElement('option');
+          opt.value = ic.value;
+          opt.textContent = ic.label;
+          iconPicker.appendChild(opt);
+        });
+        li.appendChild(iconPicker);
         const placeBtn = document.createElement('button');
         placeBtn.textContent = 'Place';
-        placeBtn.style.marginLeft = '8px';
+        placeBtn.style.marginLeft = '4px';
         placeBtn.onclick = (e) => {
-          selectedInteriorForPlacement = m;
+          selectedInteriorForPlacement = { ...m, icon: iconPicker.value };
         };
         li.appendChild(placeBtn);
       }
@@ -352,6 +365,9 @@ async function init() {
     worldAtlasSource = 'embedded';
   }
 
+  // Load interior placements and groups from worldAtlas (after it is loaded)
+  loadInteriorPlacementsAndGroups();
+
 
 
   // New classification: exterior if in worldAtlas, otherwise interior. If atlas is empty, all are exterior.
@@ -413,20 +429,23 @@ async function init() {
   // Handle placing an interior on the world map
   map.on('click', (e) => {
     if (editInteriorsToggle && editInteriorsToggle.checked && selectedInteriorForPlacement) {
-      // Only allow placement in world view
-      if (currentView !== 'world') return;
+      // Allow placement in world or single map view
+      let parent = null;
+      if (currentView === 'single' && currentMapData) {
+        parent = currentMapData.name;
+      }
       // Place at clicked location
       const m = selectedInteriorForPlacement;
-      interiorPlacements = interiorPlacements.filter(p => p.name !== m.name); // Remove old placement if any
+      // Allow multiple placements for same interior/parent
       interiorPlacements.push({
         name: m.name,
         x: e.latlng.lng,
-        y: e.latlng.lat
+        y: e.latlng.lat,
+        parent: parent,
+        icon: m.icon || 'door'
       });
       selectedInteriorForPlacement = null;
-      // Optionally, re-render markers (to be implemented in next step)
       renderInteriorMarkers();
-      // Optionally, visually indicate placement
     }
   });
 
@@ -435,35 +454,88 @@ async function init() {
     // Remove all existing interior markers
     interiorMarkersLayer.clearLayers();
     if (!showInteriorsToggle || !showInteriorsToggle.checked) return;
-    // Only show in world view
-    if (currentView !== 'world') return;
+    // Show markers for current view (world or single map)
+    let parent = null;
+    if (currentView === 'single' && currentMapData) {
+      parent = currentMapData.name;
+    }
     for (const placement of interiorPlacements) {
-      const m = manifest.maps.find(x => x.name === placement.name);
-      if (!m) continue;
-      const group = interiorGroups.find(g => g.members.includes(placement.name));
-      const marker = L.marker([placement.y, placement.x], {
-        icon: L.divIcon({ className: 'interior-marker', html: `<div class=\"interior-marker-label\">${placement.name}</div>`, iconSize: [120, 32] })
-      });
-      marker.on('click', () => {
-        showSingleMap(m);
-      });
-      marker.on('mouseover', (e) => {
-        const tooltip = document.createElement('div');
-        tooltip.className = 'interior-tooltip';
-        tooltip.textContent = group ? `${placement.name} (Group: ${group.name})` : placement.name;
-        document.body.appendChild(tooltip);
-        function moveTooltip(ev) {
-          tooltip.style.left = (ev.originalEvent.pageX + 12) + 'px';
-          tooltip.style.top = (ev.originalEvent.pageY - 8) + 'px';
+      let show = false;
+      let markerX = placement.x;
+      let markerY = placement.y;
+      if (parent === null) {
+        // World view: show only world-placed markers
+        show = !placement.parent;
+      } else {
+        // Single map view
+        if (placement.parent === parent) {
+          show = true;
+        } else if (!placement.parent && worldAtlas && Array.isArray(worldAtlas.maps)) {
+          // Marker placed in world, check if it's inside this map's atlas bounds
+          const atlasEntry = worldAtlas.maps.find(e => e.name === parent);
+          if (atlasEntry) {
+            if (
+              placement.x >= atlasEntry.x && placement.x <= atlasEntry.x + atlasEntry.width &&
+              placement.y >= atlasEntry.y && placement.y <= atlasEntry.y + atlasEntry.height
+            ) {
+              show = true;
+              // Transform world coords to local map coords
+              markerX = placement.x - atlasEntry.x;
+              markerY = placement.y - atlasEntry.y;
+            }
+          }
         }
-        moveTooltip(e);
-        marker.on('mousemove', moveTooltip);
-        marker.on('mouseout', () => {
-          tooltip.remove();
-          marker.off('mousemove', moveTooltip);
+      }
+      if (show) {
+        const m = manifest.maps.find(x => x.name === placement.name);
+        if (!m) continue;
+        const group = interiorGroups.find(g => g.members.includes(placement.name));
+        // Choose icon
+        let iconHtml = '';
+        switch (placement.icon) {
+          case 'cave': iconHtml = '⛰️'; break;
+          case 'stairs': iconHtml = '⬆️'; break;
+          case 'dive': iconHtml = '🌊'; break;
+          case 'generic': iconHtml = '⭐'; break;
+          default: iconHtml = '🚪';
+        }
+        const marker = L.marker([markerY, markerX], {
+          icon: L.divIcon({ className: 'interior-marker', html: `<div class=\"interior-marker-icon\">${iconHtml}</div>`, iconSize: [32, 32] })
         });
-      });
-      interiorMarkersLayer.addLayer(marker);
+        marker.on('click', () => {
+          showSingleMap(m);
+        });
+        marker.on('mouseover', (e) => {
+          const tooltip = document.createElement('div');
+          tooltip.className = 'interior-tooltip';
+          tooltip.textContent = group ? `${placement.name} (Group: ${group.name})` : placement.name;
+          document.body.appendChild(tooltip);
+          function moveTooltip(ev) {
+            tooltip.style.left = (ev.originalEvent.pageX + 12) + 'px';
+            tooltip.style.top = (ev.originalEvent.pageY - 8) + 'px';
+          }
+          moveTooltip(e);
+          marker.on('mousemove', moveTooltip);
+          marker.on('mouseout', () => {
+            tooltip.remove();
+            marker.off('mousemove', moveTooltip);
+          });
+        });
+        interiorMarkersLayer.addLayer(marker);
+      }
+    }
+
+    // Helper: for a world marker, find the exterior map name it should show up in
+    function placementOnExteriorName(placement, manifest, worldAtlas) {
+      // If the marker is placed on the world map (parent: null), find the exterior map whose bounds contain the marker
+      if (!worldAtlas || !Array.isArray(worldAtlas.maps)) return null;
+      for (const entry of worldAtlas.maps) {
+        const x = placement.x, y = placement.y;
+        if (x >= entry.x && x <= entry.x + entry.width && y >= entry.y && y <= entry.y + entry.height) {
+          return entry.name;
+        }
+      }
+      return null;
     }
   }
 
@@ -873,6 +945,10 @@ async function init() {
 
   // Show a single map (exterior or interior, but no interior navigation)
   function showSingleMap(mapData) {
+  // Remove any lingering tooltips
+  document.querySelectorAll('.interior-tooltip').forEach(el => el.remove());
+  // Remove any lingering tooltips
+  document.querySelectorAll('.interior-tooltip').forEach(el => el.remove());
     currentView = 'single';
     currentMapData = mapData;
     overlaysGroup.clearLayers();
@@ -887,16 +963,8 @@ async function init() {
     overlaysGroup.addLayer(overlay);
     map.fitBounds(bounds);
 
-    // Show interior markers for this map if any are placed here
-    interiorMarkersLayer.clearLayers();
-    for (const placement of interiorPlacements) {
-      if (placement.name === mapData.name) {
-        const marker = L.marker([h/2, w/2], {
-          icon: L.divIcon({ className: 'interior-marker', html: `<div class=\"interior-marker-label\">${placement.name}</div>`, iconSize: [120, 32] })
-        });
-        interiorMarkersLayer.addLayer(marker);
-      }
-    }
+    // Show interior markers for this map (handled by renderInteriorMarkers)
+    renderInteriorMarkers();
   }
 
   // Global navigation function
