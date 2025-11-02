@@ -429,7 +429,78 @@
       "y": 375.13005390537427,
       "parent": "Sootopolis City Gym 1F",
       "icon": "stairs"
+    },
+    {
+      "name": "Littleroot Town Professor Birchs Lab",
+      "x": 10106.32367010873,
+      "y": -722.3209009638603,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Littleroot Town",
+      "x": 110.89356347400374,
+      "y": 10.40242088037154,
+      "parent": "Littleroot Town Professor Birchs Lab",
+      "icon": "door"
+    },
+    {
+      "name": "Littleroot Town Brendans House 1F",
+      "x": 10073.17886763055,
+      "y": -597.303177417373,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Littleroot Town Brendans House 2F",
+      "x": 134.35028842544403,
+      "y": 101.44583260274045,
+      "parent": "Littleroot Town Brendans House 1F",
+      "icon": "stairs"
+    },
+    {
+      "name": "Littleroot Town",
+      "x": 135.41094859722384,
+      "y": 7.416157401627299,
+      "parent": "Littleroot Town Brendans House 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Littleroot Town Brendans House 1F",
+      "x": 120.38492949700971,
+      "y": 102.86658372161783,
+      "parent": "Littleroot Town Brendans House 2F",
+      "icon": "stairs"
+    },
+    {
+      "name": "Littleroot Town Mays House 1F",
+      "x": 10216,
+      "y": -594.5327719993396,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Littleroot Town",
+      "x": 25.647340665238293,
+      "y": 6.304432410943783,
+      "parent": "Littleroot Town Mays House 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Littleroot Town Mays House 2F",
+      "x": 42.04482076268573,
+      "y": 103.20174405234894,
+      "parent": "Littleroot Town Mays House 1F",
+      "icon": "door"
     }
   ],
-  "groups": []
+  "groups": [
+    {
+      "name": "Brendans house",
+      "members": [
+        "Littleroot Town Brendans House 1F",
+        "Littleroot Town Brendans House 2F"
+      ]
+    }
+  ]
 }

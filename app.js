@@ -429,19 +429,29 @@ async function init() {
   // Handle placing an interior on the world map
   map.on('click', (e) => {
     if (editInteriorsToggle && editInteriorsToggle.checked && selectedInteriorForPlacement) {
-      // Allow placement in world or single map view
       let parent = null;
+      let markerX = e.latlng.lng;
+      let markerY = e.latlng.lat;
+      let storeAsWorld = false;
       if (currentView === 'single' && currentMapData) {
         parent = currentMapData.name;
+        // If this map is in the world atlas, convert to world coordinates and store as world marker
+        if (worldAtlas && Array.isArray(worldAtlas.maps)) {
+          const atlasEntry = worldAtlas.maps.find(e => e.name === currentMapData.name);
+          if (atlasEntry) {
+            markerX = e.latlng.lng + atlasEntry.x;
+            markerY = e.latlng.lat + atlasEntry.y;
+            parent = null;
+            storeAsWorld = true;
+          }
+        }
       }
-      // Place at clicked location
       const m = selectedInteriorForPlacement;
-      // Allow multiple placements for same interior/parent
       interiorPlacements.push({
         name: m.name,
-        x: e.latlng.lng,
-        y: e.latlng.lat,
-        parent: parent,
+        x: markerX,
+        y: markerY,
+        parent: parent, // null for world, map name for interiors
         icon: m.icon || 'door'
       });
       selectedInteriorForPlacement = null;
@@ -469,6 +479,7 @@ async function init() {
       } else {
         // Single map view
         if (placement.parent === parent) {
+          // Marker placed in this interior, use local coordinates
           show = true;
         } else if (!placement.parent && worldAtlas && Array.isArray(worldAtlas.maps)) {
           // Marker placed in world, check if it's inside this map's atlas bounds
