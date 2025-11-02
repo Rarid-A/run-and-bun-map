@@ -1,3 +1,42 @@
+
+// ---
+// Interior Placement & Grouping Data Structure (for manual placement and grouping of interiors)
+//
+// Add this to world-atlas.json or a new file (e.g., interior-placements.json):
+//
+// {
+//   "unit": "px",
+//   "maps": [...], // existing exteriors
+//   "interiorPlacements": [
+//     {
+//       "name": "Petalburg Gym", // map name (must match manifest)
+//       "x": 1234,                // x position on world map
+//       "y": 567,                 // y position on world map
+//       "group": "Gyms"          // (optional) group name
+//     },
+//     {
+//       "name": "Underwater 1",
+//       "x": 2000,
+//       "y": 800,
+//       "group": "Underwater"
+//     }
+//     // ...
+//   ],
+//   "groups": [
+//     {
+//       "name": "Underwater",
+//       "members": ["Underwater 1", "Underwater 2", ...]
+//     },
+//     {
+//       "name": "Mt. Pyre",
+//       "members": ["Mt. Pyre 1F", "Mt. Pyre 2F", ...]
+//     }
+//   ]
+// }
+//
+// - Each interior placement has a name (matching the map), x/y position, and optional group.
+// - Groups are named collections of interiors for joint placement or highlighting.
+// ---
 // Enhanced interactive Pokemon map with world stitching and interior navigation
 // Features:
 // - Stitched world map from outdoor locations
@@ -5,6 +44,83 @@
 // - Breadcrumb navigation to return to world view
 
 async function init() {
+  // --- Group Management UI Logic ---
+  function renderGroupList() {
+    groupListDiv.innerHTML = '';
+    // List all groups
+    interiorGroups.forEach((group, idx) => {
+      const groupDiv = document.createElement('div');
+      groupDiv.style.marginBottom = '0.5em';
+      groupDiv.innerHTML = `<strong>${group.name}</strong> <button data-idx="${idx}" class="remove-group">Remove</button>`;
+      // List members
+      const members = document.createElement('ul');
+      group.members.forEach((m, mIdx) => {
+        const li = document.createElement('li');
+        li.textContent = m;
+        const rmBtn = document.createElement('button');
+        rmBtn.textContent = 'Remove';
+        rmBtn.onclick = () => {
+          group.members.splice(mIdx, 1);
+          renderGroupList();
+        };
+        li.appendChild(rmBtn);
+        members.appendChild(li);
+      });
+      groupDiv.appendChild(members);
+      // Add member dropdown
+      const addDiv = document.createElement('div');
+      const select = document.createElement('select');
+      select.innerHTML = '<option value="">Add interior...</option>' +
+        interiorMaps.filter(im => !group.members.includes(im.name)).map(im => `<option value="${im.name}">${im.name}</option>`).join('');
+      addDiv.appendChild(select);
+      const addBtn = document.createElement('button');
+      addBtn.textContent = 'Add';
+      addBtn.onclick = () => {
+        if (select.value) {
+          group.members.push(select.value);
+          renderGroupList();
+        }
+      };
+      addDiv.appendChild(addBtn);
+      groupDiv.appendChild(addDiv);
+      groupListDiv.appendChild(groupDiv);
+    });
+    // Add new group
+    const newDiv = document.createElement('div');
+    const nameInput = document.createElement('input');
+    nameInput.placeholder = 'New group name';
+    newDiv.appendChild(nameInput);
+    const createBtn = document.createElement('button');
+    createBtn.textContent = 'Create Group';
+    createBtn.onclick = () => {
+      const name = nameInput.value.trim();
+      if (name && !interiorGroups.some(g => g.name === name)) {
+        interiorGroups.push({ name, members: [] });
+        renderGroupList();
+      }
+    };
+    newDiv.appendChild(createBtn);
+    groupListDiv.appendChild(newDiv);
+    // Remove group buttons
+    groupListDiv.querySelectorAll('.remove-group').forEach(btn => {
+      btn.onclick = () => {
+        const idx = parseInt(btn.getAttribute('data-idx'), 10);
+        if (!isNaN(idx)) {
+          interiorGroups.splice(idx, 1);
+          renderGroupList();
+        }
+      };
+    });
+  }
+
+  // ...existing code...
+  // (moved below DOM assignments)
+  // --- Interior Placement State ---
+  // Holds placements before saving
+  let interiorPlacements = [];
+  let selectedInteriorForPlacement = null;
+    let interiorGroups = [];
+
   // Checkbox to include world maps in search list
   const searchAllImages = document.getElementById('search-all-images');
 
@@ -14,7 +130,67 @@ async function init() {
   // Use the existing #interiors-list element for search results/list of maps
   const searchList = document.getElementById('interiors-list');
 
+  // New UI controls for interiors
+  const editInteriorsToggle = document.getElementById('edit-interiors');
+  const showInteriorsToggle = document.getElementById('show-interiors');
+  const manageGroupsBtn = document.getElementById('manage-groups');
+  const groupModal = document.getElementById('group-modal');
+  const closeGroupModalBtn = document.getElementById('close-group-modal');
+  const groupListDiv = document.getElementById('group-list');
 
+  // Show group modal: render group list (moved here after DOM assignments)
+  if (manageGroupsBtn && groupModal) {
+    manageGroupsBtn.addEventListener('click', () => {
+      renderGroupList();
+    });
+  }
+
+  // Wire up group modal open/close
+  if (manageGroupsBtn && groupModal) {
+    manageGroupsBtn.addEventListener('click', () => {
+      groupModal.style.display = 'block';
+    });
+  }
+  if (closeGroupModalBtn && groupModal) {
+    closeGroupModalBtn.addEventListener('click', () => {
+      groupModal.style.display = 'none';
+    });
+  }
+
+  // Wire up edit/show interiors toggles (logic to be implemented in next steps)
+  if (editInteriorsToggle) {
+    editInteriorsToggle.addEventListener('change', () => {
+      // Re-render search list to show/hide 'Place' buttons
+      renderSearchList(interiorSearch ? interiorSearch.value : '');
+      // Optionally, visually indicate edit mode
+      if (editInteriorsToggle.checked) {
+        map._container.classList.add('editing-interiors');
+      } else {
+        map._container.classList.remove('editing-interiors');
+        selectedInteriorForPlacement = null;
+      }
+    });
+  }
+  if (showInteriorsToggle) {
+    showInteriorsToggle.addEventListener('change', () => {
+      renderInteriorMarkers();
+    });
+  }
+
+
+    // Load interior placements/groups from worldAtlas if present
+    function loadInteriorPlacementsAndGroups() {
+      if (worldAtlas && Array.isArray(worldAtlas.interiorPlacements)) {
+        interiorPlacements = JSON.parse(JSON.stringify(worldAtlas.interiorPlacements));
+      } else {
+        interiorPlacements = [];
+      }
+      if (worldAtlas && Array.isArray(worldAtlas.groups)) {
+        interiorGroups = JSON.parse(JSON.stringify(worldAtlas.groups));
+      } else {
+        interiorGroups = [];
+      }
+    }
 
   function renderSearchList(query) {
     const q = (query || '').trim().toLowerCase();
@@ -23,7 +199,25 @@ async function init() {
     if (searchAllImages && searchAllImages.checked) {
       items = manifest.maps;
     }
-    if (q) items = items.filter(m => m.name.toLowerCase().includes(q));
+    if (q) {
+      // Support search by #number (e.g., #519)
+      const numberMatch = q.match(/^#?(\d{3})$/);
+      if (numberMatch) {
+        const num = numberMatch[1];
+        // Only allow numbers between 001 and 519
+        if (parseInt(num, 10) >= 1 && parseInt(num, 10) <= 519) {
+          items = items.filter(m => {
+            // Match number in image filename (e.g., exports/#001 Petalburg City.png)
+            if (m.image && m.image.match(new RegExp(`#${num}(\\D|$)`))) return true;
+            return false;
+          });
+        } else {
+          items = [];
+        }
+      } else {
+        items = items.filter(m => m.name.toLowerCase().includes(q));
+      }
+    }
     searchList.innerHTML = '';
     items.forEach(m => {
       const li = document.createElement('li');
@@ -41,6 +235,16 @@ async function init() {
       link.onclick = (e) => { e.preventDefault(); showSingleMap(m); };
       li.appendChild(link);
       li.appendChild(btn);
+      // Add 'Place' button in Edit Interiors mode for interiors
+      if (editInteriorsToggle && editInteriorsToggle.checked && type === 'interior') {
+        const placeBtn = document.createElement('button');
+        placeBtn.textContent = 'Place';
+        placeBtn.style.marginLeft = '8px';
+        placeBtn.onclick = (e) => {
+          selectedInteriorForPlacement = m;
+        };
+        li.appendChild(placeBtn);
+      }
       searchList.appendChild(li);
     });
     if (!items.length) {
@@ -71,6 +275,9 @@ async function init() {
       renderSearchList('');
       return;
     }
+      // Save interior placements/groups to worldAtlas
+      worldAtlas.interiorPlacements = JSON.parse(JSON.stringify(interiorPlacements));
+      worldAtlas.groups = JSON.parse(JSON.stringify(interiorGroups));
     for (const [name, obj] of overlayIndex.entries()) {
       const match = name.toLowerCase().includes(q);
       if (obj.overlay && overlaysGroup.hasLayer(obj.overlay)) obj.overlay.setOpacity(match ? 0.95 : 0.15);
@@ -200,6 +407,66 @@ async function init() {
     zoomSnap: 0.25,
   });
 
+  // Layer group for interior markers
+  let interiorMarkersLayer = L.layerGroup().addTo(map);
+
+  // Handle placing an interior on the world map
+  map.on('click', (e) => {
+    if (editInteriorsToggle && editInteriorsToggle.checked && selectedInteriorForPlacement) {
+      // Only allow placement in world view
+      if (currentView !== 'world') return;
+      // Place at clicked location
+      const m = selectedInteriorForPlacement;
+      interiorPlacements = interiorPlacements.filter(p => p.name !== m.name); // Remove old placement if any
+      interiorPlacements.push({
+        name: m.name,
+        x: e.latlng.lng,
+        y: e.latlng.lat
+      });
+      selectedInteriorForPlacement = null;
+      // Optionally, re-render markers (to be implemented in next step)
+      renderInteriorMarkers();
+      // Optionally, visually indicate placement
+    }
+  });
+
+  // Render interior markers (to be implemented in next step)
+  function renderInteriorMarkers() {
+    // Remove all existing interior markers
+    interiorMarkersLayer.clearLayers();
+    if (!showInteriorsToggle || !showInteriorsToggle.checked) return;
+    // Only show in world view
+    if (currentView !== 'world') return;
+    for (const placement of interiorPlacements) {
+      const m = manifest.maps.find(x => x.name === placement.name);
+      if (!m) continue;
+      const group = interiorGroups.find(g => g.members.includes(placement.name));
+      const marker = L.marker([placement.y, placement.x], {
+        icon: L.divIcon({ className: 'interior-marker', html: `<div class=\"interior-marker-label\">${placement.name}</div>`, iconSize: [120, 32] })
+      });
+      marker.on('click', () => {
+        showSingleMap(m);
+      });
+      marker.on('mouseover', (e) => {
+        const tooltip = document.createElement('div');
+        tooltip.className = 'interior-tooltip';
+        tooltip.textContent = group ? `${placement.name} (Group: ${group.name})` : placement.name;
+        document.body.appendChild(tooltip);
+        function moveTooltip(ev) {
+          tooltip.style.left = (ev.originalEvent.pageX + 12) + 'px';
+          tooltip.style.top = (ev.originalEvent.pageY - 8) + 'px';
+        }
+        moveTooltip(e);
+        marker.on('mousemove', moveTooltip);
+        marker.on('mouseout', () => {
+          tooltip.remove();
+          marker.off('mousemove', moveTooltip);
+        });
+      });
+      interiorMarkersLayer.addLayer(marker);
+    }
+  }
+
   let currentView = 'world';
   let currentMapData = null;
   let overlaysGroup = L.layerGroup().addTo(map);
@@ -236,6 +503,9 @@ async function init() {
     currentMapData = null;
     overlaysGroup.clearLayers();
     markersLayer.clearLayers();
+
+  // Render interior markers
+  renderInteriorMarkers();
 
     breadcrumb.innerHTML = '<strong>World Map</strong>';
     mapInfo.textContent = worldAtlas && Array.isArray(worldAtlas.maps)
@@ -616,6 +886,17 @@ async function init() {
     const overlay = L.imageOverlay(safeImageUrl(mapData.image), bounds);
     overlaysGroup.addLayer(overlay);
     map.fitBounds(bounds);
+
+    // Show interior markers for this map if any are placed here
+    interiorMarkersLayer.clearLayers();
+    for (const placement of interiorPlacements) {
+      if (placement.name === mapData.name) {
+        const marker = L.marker([h/2, w/2], {
+          icon: L.divIcon({ className: 'interior-marker', html: `<div class=\"interior-marker-label\">${placement.name}</div>`, iconSize: [120, 32] })
+        });
+        interiorMarkersLayer.addLayer(marker);
+      }
+    }
   }
 
   // Global navigation function

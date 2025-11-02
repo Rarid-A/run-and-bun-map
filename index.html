@@ -26,6 +26,54 @@
   <label class="toggle"><input type="checkbox" id="toggle-labels" checked/> Show labels</label>
   <button id="save-layout" title="Download updated world layout JSON">💾 Save layout</button>
       </div>
+        <label><input type="checkbox" id="edit-interiors"> Edit Interiors</label>
+        <label><input type="checkbox" id="show-interiors" checked> Show Interiors</label>
+        <button id="manage-groups" type="button">Manage Groups</button>
+
+        <style>
+          .interior-marker .interior-marker-label {
+            background: #fffbe6;
+            border: 2px solid #e0b800;
+            border-radius: 8px;
+            padding: 2px 8px;
+            font-size: 14px;
+            color: #7a5c00;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+            pointer-events: auto;
+            cursor: pointer;
+            transition: box-shadow 0.2s;
+          }
+          .interior-marker .interior-marker-label:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            background: #fff2b2;
+          }
+          .editing-interiors .interior-marker .interior-marker-label {
+            outline: 2px dashed #e0b800;
+          }
+          /* Group boundary (future use) */
+          .interior-group-boundary {
+            border: 2px dashed #0077ff;
+            background: rgba(0,119,255,0.07);
+            border-radius: 16px;
+            pointer-events: none;
+            position: absolute;
+            z-index: 10;
+          }
+          /* Tooltip for marker */
+          .interior-tooltip {
+            position: absolute;
+            background: #fff;
+            border: 1px solid #888;
+            border-radius: 6px;
+            padding: 4px 10px;
+            font-size: 13px;
+            color: #333;
+            pointer-events: none;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            white-space: nowrap;
+          }
+        </style>
 
       <h3>Interior Maps</h3>
       <input type="text" id="interior-search" placeholder="Search interiors..." />
@@ -33,6 +81,12 @@
       <div class="scrollable-list">
         <ul id="interiors-list"></ul>
       </div>
+        <!-- Group management modal placeholder -->
+        <div id="group-modal" style="display:none; position:fixed; left:50%; top:50%; transform:translate(-50%,-50%); background:#fff; border:1px solid #888; padding:1em; z-index:1000;">
+          <h3>Manage Interior Groups</h3>
+          <div id="group-list"></div>
+          <button id="close-group-modal" type="button">Close</button>
+        </div>
       <label class="toggle"><input type="checkbox" id="toggle-include-interiors"/> Include interiors in world view</label>
 
     </aside>
