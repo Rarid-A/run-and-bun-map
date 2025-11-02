@@ -5,6 +5,85 @@
 // - Breadcrumb navigation to return to world view
 
 async function init() {
+  // Checkbox to include world maps in search list
+  const searchAllImages = document.getElementById('search-all-images');
+
+  // Add search bar support for interiors/world maps (must be declared before use)
+  const interiorSearch = document.getElementById('interior-search');
+
+  // Use the existing #interiors-list element for search results/list of maps
+  const searchList = document.getElementById('interiors-list');
+
+
+
+  function renderSearchList(query) {
+    const q = (query || '').trim().toLowerCase();
+    // Only show interiors by default; show exteriors if checkbox is checked
+    let items = manifest.maps.filter(m => currentType(m.name) === 'interior');
+    if (searchAllImages && searchAllImages.checked) {
+      items = manifest.maps;
+    }
+    if (q) items = items.filter(m => m.name.toLowerCase().includes(q));
+    searchList.innerHTML = '';
+    items.forEach(m => {
+      const li = document.createElement('li');
+      li.style.display = 'flex';
+      li.style.alignItems = 'center';
+      li.style.marginBottom = '2px';
+      const type = currentType(m.name);
+      const btn = document.createElement('button');
+      btn.textContent = type === 'exterior' ? 'Mark as Interior' : 'Mark as Exterior';
+      btn.style.marginLeft = '8px';
+      btn.onclick = () => markMapType(m, type === 'exterior' ? 'interior' : 'exterior');
+      const link = document.createElement('a');
+      link.href = '#';
+      link.textContent = m.name;
+      link.onclick = (e) => { e.preventDefault(); showSingleMap(m); };
+      li.appendChild(link);
+      li.appendChild(btn);
+      searchList.appendChild(li);
+    });
+    if (!items.length) {
+      const li = document.createElement('li');
+      li.textContent = 'No maps found.';
+      searchList.appendChild(li);
+    }
+  }
+
+  // Wire up the 'Include world maps' checkbox to re-render the list
+  if (searchAllImages) {
+    searchAllImages.addEventListener('change', () => {
+      renderSearchList(interiorSearch ? interiorSearch.value : '');
+    });
+  }
+  // Initial render: show only interiors by default (must be after manifest is loaded)
+  // ...existing code...
+
+  // Helper: filter overlays and labels by search
+  function filterOverlaysBySearch(query) {
+    const q = (query || '').trim().toLowerCase();
+    // Show all if empty
+    if (!q) {
+      for (const [name, obj] of overlayIndex.entries()) {
+        if (obj.overlay && overlaysGroup.hasLayer(obj.overlay)) obj.overlay.setOpacity(0.95);
+        if (obj.label && markersLayer.hasLayer(obj.label)) obj.label._icon.style.opacity = 1;
+      }
+      renderSearchList('');
+      return;
+    }
+    for (const [name, obj] of overlayIndex.entries()) {
+      const match = name.toLowerCase().includes(q);
+      if (obj.overlay && overlaysGroup.hasLayer(obj.overlay)) obj.overlay.setOpacity(match ? 0.95 : 0.15);
+      if (obj.label && markersLayer.hasLayer(obj.label)) obj.label._icon.style.opacity = match ? 1 : 0.2;
+    }
+    renderSearchList(q);
+  }
+  // Wire up search bar
+  if (interiorSearch) {
+    interiorSearch.addEventListener('input', (e) => {
+      filterOverlaysBySearch(e.target.value);
+    });
+  }
   const mapContainer = document.getElementById('map');
   const EDIT_SNAP = 8; // px corner snap tolerance
   
@@ -33,6 +112,7 @@ async function init() {
       console.error('Could not load maps manifest', e);
     }
   }
+
 
   if (!manifest || !manifest.maps || !manifest.maps.length) {
     document.getElementById('info').innerHTML = '<p>No map data found. Please run the extraction pipeline.</p>';
@@ -66,6 +146,7 @@ async function init() {
   }
 
 
+
   // New classification: exterior if in worldAtlas, otherwise interior. If atlas is empty, all are exterior.
   const mapsByName = {};
   manifest.maps.forEach((m, idx) => {
@@ -82,16 +163,34 @@ async function init() {
   // If atlas is empty, treat all as exterior
   const allExterior = !exteriorNames.size;
 
+  // Track type overrides for marking maps as interior/exterior
+  const typeOverrides = {};
+  function currentType(name) {
+    if (typeOverrides[name]) return typeOverrides[name];
+    if (allExterior) return 'exterior';
+    return exteriorNames.has(name) ? 'exterior' : 'interior';
+  }
+  function markMapType(map, toType) {
+    if (!map || (toType !== 'exterior' && toType !== 'interior')) return;
+    const fromType = currentType(map.name);
+    if (fromType === toType) return;
+    typeOverrides[map.name] = toType;
+    showWorldView();
+  }
+
   function isExterior(map) {
     if (allExterior) return true;
     return exteriorNames.has(map.name);
   }
 
-  // For convenience
-  const worldMaps = manifest.maps.filter(m => isExterior(m));
-  const interiorMaps = manifest.maps.filter(m => !isExterior(m));
+  // For convenience, use currentType (with overrides)
+  const worldMaps = manifest.maps.filter(m => currentType(m.name) === 'exterior');
+  const interiorMaps = manifest.maps.filter(m => currentType(m.name) === 'interior');
 
   console.log(`Found ${worldMaps.length} exterior maps and ${interiorMaps.length} interior maps (by atlas)`);
+
+  // Now that all dependencies are defined, render the search list
+  renderSearchList('');
 
   // Create Leaflet map
   const map = L.map(mapContainer, {
@@ -105,7 +204,6 @@ async function init() {
   let currentMapData = null;
   let overlaysGroup = L.layerGroup().addTo(map);
   let markersLayer = L.layerGroup().addTo(map);
-  let connectionLayer = L.layerGroup().addTo(map);
   let editEnabled = false;
   let dragState = null; // {overlay, startLatLng, startBounds}
   // Keep an index of overlays for edit/save/connect
@@ -124,18 +222,16 @@ async function init() {
   const toggleLabels = document.getElementById('toggle-labels');
   const toggleIncludeInteriors = document.getElementById('toggle-include-interiors');
   const saveLayoutBtn = document.getElementById('save-layout');
-  const howtoSection = document.getElementById('howto');
-  const howtoToggle = document.getElementById('toggle-howto');
 
-  // Try to load optional connections data
-  let connectionsData = null;
-  try {
-    const res = await fetch('data/map-connections.json', { cache: 'no-cache' });
-    if (res.ok) connectionsData = await res.json();
-  } catch (_) {}
 
   // Show world view with stitched maps (exteriors only)
   function showWorldView() {
+    // If search bar is present, clear it and reset overlays and list
+    if (interiorSearch) {
+      interiorSearch.value = '';
+      filterOverlaysBySearch('');
+      renderSearchList('');
+    }
     currentView = 'world';
     currentMapData = null;
     overlaysGroup.clearLayers();
@@ -148,7 +244,6 @@ async function init() {
     backBtn.style.display = 'none';
 
     overlayIndex.clear();
-    connectionLayer.clearLayers();
 
     // Use mutableAtlas if present, else worldAtlas if present, else grid fallback
     const atlasToUse = (mutableAtlas && Array.isArray(mutableAtlas.maps) && mutableAtlas.maps.length)
@@ -328,9 +423,6 @@ async function init() {
       }
       map.fitBounds([[0, 0], [finalMaxY, finalMaxX]]);
     }
-    if (toggleLines && toggleLines.checked) {
-      drawConnections();
-    }
   }
 
   // No-op: interior placement removed
@@ -495,7 +587,6 @@ async function init() {
         obj.label.setLatLng([y + h/2, x + w/2]);
       }
     }
-    if (toggleLines && toggleLines.checked) drawConnections();
   });
 
   map.on('mouseup', () => {
@@ -506,52 +597,9 @@ async function init() {
     stashCurrentLayout();
     dragState = null;
     map.dragging.enable();
-    if (toggleLines && toggleLines.checked) drawConnections();
   });
 
   // Draw connection lines between world map centers using connections data
-  function drawConnections() {
-    connectionLayer.clearLayers();
-    if (!connectionsData || !connectionsData.worldLayout || !Array.isArray(connectionsData.worldLayout.maps)) return;
-
-    // Build center map by name from current overlays
-    const centers = new Map();
-    for (const [name, obj] of overlayIndex.entries()) {
-      const b = obj.overlay.getBounds();
-      const cx = (b.getWest() + b.getEast()) / 2;
-      const cy = (b.getSouth() + b.getNorth()) / 2;
-      centers.set(name, [cy, cx]);
-    }
-
-    // connectionsData.worldLayout.maps can be an array of strings or objects;
-    // support common shapes: { name, connections: [ ... ] } or { name, neighbors: [ ... ] }
-    connectionsData.worldLayout.maps.forEach(m => {
-      const srcName = (m && (m.name || m.worldMap)) || m;
-      if (!srcName) return;
-
-      const srcCenter = centers.get(srcName);
-      if (!srcCenter) return;
-
-      // Determine target list with multiple possible field names
-      let targets = null;
-      if (m && Array.isArray(m.connections)) targets = m.connections;
-      else if (m && Array.isArray(m.neighbors)) targets = m.neighbors;
-      else if (m && Array.isArray(m.links)) targets = m.links;
-      else if (m && Array.isArray(m.targets)) targets = m.targets;
-      else if (m && m.to) targets = Array.isArray(m.to) ? m.to : [m.to];
-
-      if (!targets) return;
-
-      targets.forEach(t => {
-        const dstName = (t && (t.name || t.worldMap)) || t;
-        if (!dstName) return;
-        const dstCenter = centers.get(dstName);
-        if (!dstCenter) return;
-        // Draw simple polyline between centers
-        L.polyline([srcCenter, dstCenter], { color: '#0077cc', weight: 2, opacity: 0.7, interactive: false }).addTo(connectionLayer);
-      });
-    });
-  }
 
   // Show a single map (exterior or interior, but no interior navigation)
   function showSingleMap(mapData) {
@@ -672,25 +720,6 @@ async function init() {
   });
   if (saveLayoutBtn) saveLayoutBtn.addEventListener('click', saveLayout);
 
-  // How-to toggle wiring with persistence
-  function updateHowtoToggle() {
-    if (!howtoSection || !howtoToggle) return;
-    const collapsed = howtoSection.classList.contains('collapsed');
-    howtoToggle.textContent = collapsed ? '▸' : '▾';
-  }
-  if (howtoSection && howtoToggle) {
-    // Restore persisted state
-    try {
-      const persisted = localStorage.getItem('howtoCollapsed');
-      if (persisted === '1') howtoSection.classList.add('collapsed');
-    } catch (_) {}
-    updateHowtoToggle();
-    howtoToggle.addEventListener('click', () => {
-      howtoSection.classList.toggle('collapsed');
-      updateHowtoToggle();
-      try { localStorage.setItem('howtoCollapsed', howtoSection.classList.contains('collapsed') ? '1' : '0'); } catch (_) {}
-    });
-  }
 
   // Initial render
   showWorldView();

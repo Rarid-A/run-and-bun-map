@@ -6,8 +6,8 @@
       "image": "exports/atlas/#001 Petalburg City.png",
       "width": 480,
       "height": 480,
-      "x": 8704,
-      "y": -160
+      "x": 8706,
+      "y": -141
     },
     {
       "name": "Route 130",
@@ -46,8 +46,8 @@
       "image": "exports/atlas/#002 Slateport City.png",
       "width": 640,
       "height": 960,
-      "x": 11264,
-      "y": -1072
+      "x": 11265,
+      "y": -1085
     },
     {
       "name": "Route 127",
@@ -70,8 +70,8 @@
       "image": "exports/atlas/#004 Rustboro City.png",
       "width": 640,
       "height": 960,
-      "x": 8064,
-      "y": 1120
+      "x": 8066,
+      "y": 1139
     },
     {
       "name": "Route 125",
@@ -94,16 +94,16 @@
       "image": "exports/atlas/#006 Lilycove City.png",
       "width": 1280,
       "height": 640,
-      "x": 15742,
-      "y": 2280
+      "x": 15746,
+      "y": 2255
     },
     {
       "name": "Route 116",
       "image": "exports/atlas/#032 Route 116.png",
       "width": 1600,
       "height": 320,
-      "x": 8704,
-      "y": 1760
+      "x": 8706,
+      "y": 1779
     },
     {
       "name": "Mossdeep City",
@@ -118,40 +118,40 @@
       "image": "exports/atlas/#023 Route 107.png",
       "width": 960,
       "height": 320,
-      "x": 9344,
-      "y": -2080
+      "x": 9346,
+      "y": -2061
     },
     {
       "name": "Route 105",
       "image": "exports/atlas/#021 Route 105.png",
       "width": 640,
       "height": 1280,
-      "x": 8064,
-      "y": -1440
+      "x": 8066,
+      "y": -1421
     },
     {
       "name": "Route 106",
       "image": "exports/atlas/#022 Route 106.png",
       "width": 1280,
       "height": 320,
-      "x": 8064,
-      "y": -1760
+      "x": 8066,
+      "y": -1741
     },
     {
       "name": "Route 108",
       "image": "exports/atlas/#024 Route 108.png",
       "width": 960,
       "height": 320,
-      "x": 10304,
-      "y": -2080
+      "x": 10306,
+      "y": -2061
     },
     {
       "name": "Route 110",
       "image": "exports/atlas/#026 Route 110.png",
       "width": 640,
       "height": 1600,
-      "x": 11264,
-      "y": -112
+      "x": 11265,
+      "y": -125
     },
     {
       "name": "Pacifidlog Town",
@@ -166,8 +166,8 @@
       "image": "exports/atlas/#038 Route 122.png",
       "width": 640,
       "height": 640,
-      "x": 14784,
-      "y": 1808
+      "x": 14785,
+      "y": 1795
     },
     {
       "name": "Route 103",
@@ -190,8 +190,8 @@
       "image": "exports/atlas/#037 Route 121.png",
       "width": 1280,
       "height": 320,
-      "x": 14460,
-      "y": 2448
+      "x": 14465,
+      "y": 2435
     },
     {
       "name": "Route 109",
@@ -222,8 +222,8 @@
       "image": "exports/atlas/#031 Route 115.png",
       "width": 640,
       "height": 1280,
-      "x": 8064,
-      "y": 2080
+      "x": 8066,
+      "y": 2099
     },
     {
       "name": "Ever Grande City",
@@ -238,16 +238,16 @@
       "image": "exports/atlas/#020 Route 104.png",
       "width": 640,
       "height": 1280,
-      "x": 8064,
-      "y": -160
+      "x": 8066,
+      "y": -141
     },
     {
       "name": "Fortree City",
       "image": "exports/atlas/#005 Fortree City.png",
       "width": 640,
       "height": 320,
-      "x": 13180,
-      "y": 3728
+      "x": 13185,
+      "y": 3715
     },
     {
       "name": "Littleroot Town",
@@ -270,8 +270,8 @@
       "image": "exports/atlas/#012 Dewford Town.png",
       "width": 320,
       "height": 320,
-      "x": 9024,
-      "y": -2080
+      "x": 9026,
+      "y": -2061
     },
     {
       "name": "Route 101",
@@ -294,104 +294,104 @@
       "image": "exports/atlas/#028 Route 112.png",
       "width": 640,
       "height": 960,
-      "x": 10643,
-      "y": 2764
+      "x": 10638,
+      "y": 2741
     },
     {
       "name": "Route 119",
       "image": "exports/atlas/#035 Route 119.png",
       "width": 640,
       "height": 2240,
-      "x": 12540,
-      "y": 1808
+      "x": 12545,
+      "y": 1795
     },
     {
       "name": "Route 120",
       "image": "exports/atlas/#036 Route 120.png",
       "width": 640,
       "height": 1600,
-      "x": 13820,
-      "y": 2448
+      "x": 13825,
+      "y": 2435
     },
     {
       "name": "Mauville City",
       "image": "exports/#003 Mauville City.png",
       "width": 640,
       "height": 320,
-      "x": 11264,
-      "y": 1488
+      "x": 11265,
+      "y": 1475
     },
     {
       "name": "Lavaridge Town",
       "image": "exports/#013 Lavaridge Town.png",
       "width": 320,
       "height": 320,
-      "x": 10323,
-      "y": 2764
+      "x": 10318,
+      "y": 2741
     },
     {
       "name": "Fallarbor Town",
       "image": "exports/#014 Fallarbor Town.png",
       "width": 320,
       "height": 320,
-      "x": 9344,
-      "y": 3728
+      "x": 9346,
+      "y": 3699
     },
     {
       "name": "Verdanturf Town",
       "image": "exports/#015 Verdanturf Town.png",
       "width": 320,
       "height": 320,
-      "x": 9984,
-      "y": 1440
+      "x": 9986,
+      "y": 1459
     },
     {
       "name": "Route 111",
       "image": "exports/#027 Route 111.png",
       "width": 640,
       "height": 2240,
-      "x": 11264,
-      "y": 1808
+      "x": 11266,
+      "y": 1779
     },
     {
       "name": "Route 113",
       "image": "exports/#029 Route 113.png",
       "width": 1600,
       "height": 320,
-      "x": 9664,
-      "y": 3728
+      "x": 9666,
+      "y": 3699
     },
     {
       "name": "Route 114",
       "image": "exports/#030 Route 114.png",
       "width": 640,
       "height": 1280,
-      "x": 8704,
-      "y": 2768
+      "x": 8706,
+      "y": 2739
     },
     {
       "name": "Route 117",
       "image": "exports/#033 Route 117.png",
       "width": 960,
       "height": 320,
-      "x": 10304,
-      "y": 1440
+      "x": 10306,
+      "y": 1459
     },
     {
       "name": "Route 118",
       "image": "exports/#034 Route 118.png",
       "width": 1280,
       "height": 320,
-      "x": 11904,
-      "y": 1488
+      "x": 11905,
+      "y": 1475
     },
     {
       "name": "Route 123",
       "image": "exports/#039 Route 123.png",
       "width": 2240,
       "height": 320,
-      "x": 13184,
-      "y": 1488
+      "x": 13185,
+      "y": 1475
     }
   ]
 }
