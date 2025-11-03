@@ -746,20 +746,6 @@
       "icon": "cave"
     },
     {
-      "name": "Island Cave",
-      "x": 139.30003589374985,
-      "y": 200.78458739573418,
-      "parent": "Island Cave",
-      "icon": "cave"
-    },
-    {
-      "name": "Island Cave",
-      "x": 136.47160876900367,
-      "y": 342.88958525606307,
-      "parent": "Island Cave",
-      "icon": "cave"
-    },
-    {
       "name": "Route 105",
       "x": 135.05739520663056,
       "y": 53.02366922255641,
