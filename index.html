@@ -53,6 +53,7 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.25);
             background: #fff2b2;
           }
+          .interior-marker .interior-marker-label {
             background: #fffbe6;
             border: 2px solid #e0b800;
             border-radius: 8px;
@@ -103,10 +104,17 @@
         <ul id="interiors-list"></ul>
       </div>
         <!-- Group management modal placeholder -->
-        <div id="group-modal" style="display:none; position:fixed; left:50%; top:50%; transform:translate(-50%,-50%); background:#fff; border:1px solid #888; padding:1em; z-index:1000;">
-          <h3>Manage Interior Groups</h3>
-          <div id="group-list"></div>
-          <button id="close-group-modal" type="button">Close</button>
+        <div id="group-modal" style="display:none; position:fixed; left:20px; top:50%; transform:translateY(-50%); background:#fff; border:2px solid #888; border-radius:8px; padding:0; z-index:1000; box-shadow: 0 4px 20px rgba(0,0,0,0.3); width:400px; max-width:calc(100vw - 40px); height:80vh; max-height:600px;">
+          <div style="padding:1em 1.5em; border-bottom:1px solid #ddd; display:flex; justify-content:space-between; align-items:center; background:#f5f5f5; border-radius:8px 8px 0 0;">
+            <h3 style="margin:0;">Manage Interior Groups</h3>
+            <button id="close-group-modal" type="button" style="background:#e74c3c; color:white; border:none; padding:6px 12px; border-radius:4px; cursor:pointer; font-weight:bold;">✕ Close</button>
+          </div>
+          <div style="padding:1em 1.5em; border-bottom:1px solid #ddd;">
+            <input type="text" id="group-search" placeholder="🔍 Search groups..." style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; box-sizing:border-box;"/>
+          </div>
+          <div id="group-list-container" style="padding:1em 1.5em; overflow-y:auto; height:calc(100% - 140px);">
+            <div id="group-list"></div>
+          </div>
         </div>
       <label class="toggle"><input type="checkbox" id="toggle-include-interiors"/> Include interiors in world view</label>
 
@@ -118,6 +126,7 @@
   <script src="data/maps.js"></script>
   <!-- Optional pre-bundled atlas for file:// usage; generated alongside data/world-atlas.json -->
   <script src="data/world-atlas.js"></script>
-  <script src="app.js"></script>
+  <!-- Modular entry point: app.js imports js/state.js, js/map.js, js/ui.js, js/utils.js -->
+  <script type="module" src="app.js"></script>
 </body>
 </html>

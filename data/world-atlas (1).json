@@ -392,6 +392,22 @@
       "height": 320,
       "x": 13185,
       "y": 1475
+    },
+    {
+      "name": "Battle Frontier Outside West",
+      "image": "exports/#170 Battle Frontier Outside West.png",
+      "width": 896,
+      "height": 1152,
+      "x": 18684,
+      "y": -2318
+    },
+    {
+      "name": "Battle Frontier Outside East",
+      "image": "exports/#180 Battle Frontier Outside East.png",
+      "width": 1152,
+      "height": 1152,
+      "x": 19580,
+      "y": -2318
     }
   ],
   "interiorPlacements": [
@@ -743,20 +759,6 @@
       "x": 8217.64145755946,
       "y": -468.834152035084,
       "parent": null,
-      "icon": "cave"
-    },
-    {
-      "name": "Island Cave",
-      "x": 139.30003589374985,
-      "y": 200.78458739573418,
-      "parent": "Island Cave",
-      "icon": "cave"
-    },
-    {
-      "name": "Island Cave",
-      "x": 136.47160876900367,
-      "y": 342.88958525606307,
-      "parent": "Island Cave",
       "icon": "cave"
     },
     {
@@ -4412,15 +4414,1066 @@
       "y": 675.5797866661258,
       "parent": "Mt Pyre Exterior",
       "icon": "door"
+    },
+    {
+      "name": "Sootopolis City Mystery Events House 1F",
+      "x": 826.6011761944014,
+      "y": 376.6778624221725,
+      "parent": "Sootopolis City",
+      "icon": "door"
+    },
+    {
+      "name": "Sootopolis City Pokemon Center 1F",
+      "x": 696.2622318300756,
+      "y": 458.2313481420536,
+      "parent": "Sootopolis City",
+      "icon": "door"
+    },
+    {
+      "name": "Sootopolis City House 6",
+      "x": 859.3961363892963,
+      "y": 506.9952880570341,
+      "parent": "Sootopolis City",
+      "icon": "door"
+    },
+    {
+      "name": "Sootopolis City Lotad And Seedot House",
+      "x": 776.9882876944323,
+      "y": 551.5554400483094,
+      "parent": "Sootopolis City",
+      "icon": "door"
+    },
+    {
+      "name": "Sootopolis City House 4",
+      "x": 713.08016013515,
+      "y": 675.9875625899837,
+      "parent": "Sootopolis City",
+      "icon": "door"
+    },
+    {
+      "name": "Sootopolis City House 2",
+      "x": 733.2616741012391,
+      "y": 859.2727160635309,
+      "parent": "Sootopolis City",
+      "icon": "door"
+    },
+    {
+      "name": "Cave Of Origin Entrance",
+      "x": 507.0605383979899,
+      "y": 697.0065022085098,
+      "parent": "Sootopolis City",
+      "icon": "door"
+    },
+    {
+      "name": "Sootopolis City House 1",
+      "x": 152.20225116092234,
+      "y": 856.7504433093078,
+      "parent": "Sootopolis City",
+      "icon": "door"
+    },
+    {
+      "name": "Sootopolis City House 3",
+      "x": 152.20225116092234,
+      "y": 678.5098353442067,
+      "parent": "Sootopolis City",
+      "icon": "door"
+    },
+    {
+      "name": "Sootopolis City House 5",
+      "x": 151.36135474566862,
+      "y": 536.4218035229705,
+      "parent": "Sootopolis City",
+      "icon": "door"
+    },
+    {
+      "name": "Sootopolis City House 7",
+      "x": 137.90701210160918,
+      "y": 391.8114989475112,
+      "parent": "Sootopolis City",
+      "icon": "door"
+    },
+    {
+      "name": "Sootopolis City Mart",
+      "x": 284.22298835575555,
+      "y": 486.81710602324904,
+      "parent": "Sootopolis City",
+      "icon": "door"
+    },
+    {
+      "name": "Underwater Route 124",
+      "x": 459.12944272852815,
+      "y": 83.23458439782524,
+      "parent": "Sootopolis City",
+      "icon": "door"
+    },
+    {
+      "name": "Sootopolis City",
+      "x": 135.7645019878171,
+      "y": 11.293862345311137,
+      "parent": "Sootopolis City Gym 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Sootopolis City",
+      "x": 62.75572683030609,
+      "y": 7.953170971622053,
+      "parent": "Sootopolis City Mystery Events House 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Sootopolis City Mystery Events House B1F",
+      "x": 57.27564927611034,
+      "y": 105.34104885848923,
+      "parent": "Sootopolis City Mystery Events House 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Sootopolis City Mystery Events House 1F",
+      "x": 58.442300860133166,
+      "y": 118.75575937005824,
+      "parent": "Sootopolis City Mystery Events House B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Sootopolis City Pokemon Center 2F",
+      "x": 25.016668353798007,
+      "y": 41.19587217769704,
+      "parent": "Sootopolis City Pokemon Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Sootopolis City",
+      "x": 113.31079195543803,
+      "y": 8.40632637279637,
+      "parent": "Sootopolis City Pokemon Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Sootopolis City",
+      "x": 66.89290021890307,
+      "y": 6.836762895302304,
+      "parent": "Sootopolis City Lotad And Seedot House",
+      "icon": "door"
+    },
+    {
+      "name": "Sootopolis City",
+      "x": 63.47392976327024,
+      "y": 4.755994032036852,
+      "parent": "Sootopolis City House 6",
+      "icon": "door"
+    },
+    {
+      "name": "Sootopolis City",
+      "x": 64.0685333207716,
+      "y": 6.390883853173982,
+      "parent": "Sootopolis City House 4",
+      "icon": "door"
+    },
+    {
+      "name": "Sootopolis City",
+      "x": 64.8117877676483,
+      "y": 7.2826419374306095,
+      "parent": "Sootopolis City House 2",
+      "icon": "door"
+    },
+    {
+      "name": "Sootopolis City",
+      "x": 64.21718421014694,
+      "y": 7.431268284806716,
+      "parent": "Sootopolis City House 1",
+      "icon": "door"
+    },
+    {
+      "name": "Sootopolis City",
+      "x": 62.13607175889218,
+      "y": 6.390883853173982,
+      "parent": "Sootopolis City House 3",
+      "icon": "door"
+    },
+    {
+      "name": "Sootopolis City",
+      "x": 64.36583509952229,
+      "y": 4.755994032036852,
+      "parent": "Sootopolis City House 5",
+      "icon": "door"
+    },
+    {
+      "name": "Sootopolis City",
+      "x": 64.36583509952229,
+      "y": 7.579894632182824,
+      "parent": "Sootopolis City House 7",
+      "icon": "door"
+    },
+    {
+      "name": "Sootopolis City",
+      "x": 64.16994039267918,
+      "y": 7.069433422739409,
+      "parent": "Sootopolis City Mart",
+      "icon": "door"
+    },
+    {
+      "name": "Sootopolis City",
+      "x": 154.59692495035375,
+      "y": 81.4443914901934,
+      "parent": "Cave Of Origin Entrance",
+      "icon": "door"
+    },
+    {
+      "name": "Cave Of Origin 1F",
+      "x": 156.38073562285783,
+      "y": 328.7586335240299,
+      "parent": "Cave Of Origin Entrance",
+      "icon": "door"
+    },
+    {
+      "name": "Cave Of Origin Entrance",
+      "x": 186.5,
+      "y": 85.48497606075614,
+      "parent": "Cave Of Origin 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Cave Of Origin B1F",
+      "x": 234,
+      "y": 279.95286445435033,
+      "parent": "Cave Of Origin 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Cave Of Origin 1F",
+      "x": 150.94090653804176,
+      "y": 247.60192864687937,
+      "parent": "Cave Of Origin B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Underwater Route 126",
+      "x": 459.75,
+      "y": 123.98897969291728,
+      "parent": "Sootopolis City",
+      "icon": "dive"
+    },
+    {
+      "name": "Underwater Sootopolis City",
+      "x": 730.4413049657036,
+      "y": 231.88923056439236,
+      "parent": "Underwater Route 126",
+      "icon": "door"
+    },
+    {
+      "name": "Underwater Route 126",
+      "x": 152.25,
+      "y": 22.2438913653624,
+      "parent": "Underwater Sootopolis City",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Lounge 3",
+      "x": 1047.3449523589304,
+      "y": 650.050368885758,
+      "parent": "Battle Frontier Outside East",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Battle Pyramid Lobby",
+      "x": 936,
+      "y": 924.4662374112595,
+      "parent": "Battle Frontier Outside East",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Ranking Hall",
+      "x": 566.6714502834614,
+      "y": 953.6299047157945,
+      "parent": "Battle Frontier Outside East",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Battle Arena Lobby",
+      "x": 631.4832380511095,
+      "y": 681.0320533125532,
+      "parent": "Battle Frontier Outside East",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Battle Palace Lobby",
+      "x": 728.0753044591511,
+      "y": 249.56620306266268,
+      "parent": "Battle Frontier Outside East",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Lounge 5",
+      "x": 358.56020515798514,
+      "y": 331.1090377389655,
+      "parent": "Battle Frontier Outside East",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Lounge 8",
+      "x": 231.90964741019525,
+      "y": 331.7035431284694,
+      "parent": "Battle Frontier Outside East",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Pokemon Center 1F",
+      "x": 55.31239083229116,
+      "y": 330.51453234946075,
+      "parent": "Battle Frontier Outside East",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Lounge 1",
+      "x": 73.74510111483335,
+      "y": 445.84857791331706,
+      "parent": "Battle Frontier Outside East",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Lounge 4",
+      "x": 855.0399156869565,
+      "y": 441.0925347972816,
+      "parent": "Battle Frontier Outside West",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Lounge 2",
+      "x": 726.0109437091612,
+      "y": 445.2540725238132,
+      "parent": "Battle Frontier Outside West",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Mart",
+      "x": 821.7421164668802,
+      "y": 332.89255390747803,
+      "parent": "Battle Frontier Outside West",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Reception Gate",
+      "x": 423,
+      "y": 107.02154531946508,
+      "parent": "Battle Frontier Outside West",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Reception Gate",
+      "x": 423,
+      "y": 172.01081393429104,
+      "parent": "Battle Frontier Outside West",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Battle Factory Lobby",
+      "x": 183.1406563273158,
+      "y": 539.4471788245446,
+      "parent": "Battle Frontier Outside West",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Lounge 7",
+      "x": 86.2670273047588,
+      "y": 827.9367057297386,
+      "parent": "Battle Frontier Outside West",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Battle Dome Lobby",
+      "x": 310.41987694089437,
+      "y": 873.1840682325301,
+      "parent": "Battle Frontier Outside West",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Battle Pike Lobby",
+      "x": 679.0372626665537,
+      "y": 714.5957405523568,
+      "parent": "Battle Frontier Outside West",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Scotts House",
+      "x": 709.9566476566245,
+      "y": 1065.353920359962,
+      "parent": "Battle Frontier Outside West",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Lounge 6",
+      "x": 87.08300731354575,
+      "y": 1018.1371058871182,
+      "parent": "Battle Frontier Outside East",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Battle Tower Lobby",
+      "x": 264.56680939136936,
+      "y": 921.2794705295801,
+      "parent": "Battle Frontier Outside East",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Exchange Service Corner",
+      "x": 166.9860735876257,
+      "y": 698.5776082111543,
+      "parent": "Battle Frontier Outside East",
+      "icon": "door"
+    },
+    {
+      "name": "Ever Grande City",
+      "x": 408,
+      "y": 82.98315998018825,
+      "parent": "Victory Road 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Ever Grande City",
+      "x": 633,
+      "y": 626.893346541192,
+      "parent": "Victory Road 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Victory Road B1F",
+      "x": 618,
+      "y": 421.92719167904903,
+      "parent": "Victory Road 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Victory Road B1F",
+      "x": 554,
+      "y": 469.9192669638435,
+      "parent": "Victory Road 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Victory Road B1F",
+      "x": 249,
+      "y": 488.916130097408,
+      "parent": "Victory Road 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Victory Road B1F",
+      "x": 471,
+      "y": 631.8925210500248,
+      "parent": "Victory Road 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Victory Road 1F",
+      "x": 553.6646096690666,
+      "y": 275.7228464731322,
+      "parent": "Victory Road B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Victory Road 1F",
+      "x": 711.3494218736668,
+      "y": 372.5804818306699,
+      "parent": "Victory Road B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Victory Road 1F",
+      "x": 490.0249993622774,
+      "y": 438.33055546753843,
+      "parent": "Victory Road B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Victory Road 1F",
+      "x": 312.541197284454,
+      "y": 389.54824276921653,
+      "parent": "Victory Road B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Victory Road B2F",
+      "x": 666.0945878777277,
+      "y": 53.72797419381249,
+      "parent": "Victory Road B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Victory Road B2F",
+      "x": 586.1915216036479,
+      "y": 390.25523280832266,
+      "parent": "Victory Road B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Victory Road B2F",
+      "x": 134.35028842544403,
+      "y": 409.34396386418774,
+      "parent": "Victory Road B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Victory Road B1F",
+      "x": 665.3874810965411,
+      "y": 104.63125700945275,
+      "parent": "Victory Road B2F",
+      "icon": "door"
+    },
+    {
+      "name": "Victory Road B1F",
+      "x": 216.37467504308353,
+      "y": 439.7445355457507,
+      "parent": "Victory Road B2F",
+      "icon": "door"
+    },
+    {
+      "name": "Victory Road B1F",
+      "x": 521.8448045156721,
+      "y": 392.37620292564105,
+      "parent": "Victory Road B2F",
+      "icon": "door"
+    },
+    {
+      "name": "Victory Road B1F",
+      "x": 505.58134854838147,
+      "y": 453.884336327873,
+      "parent": "Victory Road B2F",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside West",
+      "x": 137.88582233137674,
+      "y": 86.96853046608456,
+      "parent": "Artisan Cave B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Artisan Cave 1F",
+      "x": 618.7184335382291,
+      "y": 776.3409054718775,
+      "parent": "Artisan Cave B1F",
+      "icon": "door"
+    },
+    {
+      "name": "Artisan Cave B1F",
+      "x": 103.5,
+      "y": 263.95418524021795,
+      "parent": "Artisan Cave 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside East",
+      "x": 167,
+      "y": 69.48629684662376,
+      "parent": "Artisan Cave 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Battle Palace Lobby",
+      "x": 143.2994573578279,
+      "y": 7.728471895560449,
+      "parent": "Battle Frontier Battle Palace Corridor",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Battle Palace Battle Room",
+      "x": 105.24482967774082,
+      "y": 167.3531689774958,
+      "parent": "Battle Frontier Battle Palace Corridor",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Battle Palace Battle Room",
+      "x": 167.380901436633,
+      "y": 165.56965280898254,
+      "parent": "Battle Frontier Battle Palace Corridor",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Battle Palace Corridor",
+      "x": 11.25,
+      "y": 6.246532937097584,
+      "parent": "Battle Frontier Battle Palace Battle Room",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Pokemon Center 1F",
+      "x": 22.5,
+      "y": 57.48807165263332,
+      "parent": "Battle Frontier Pokemon Center 2F",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Battle Tower Lobby",
+      "x": 88.29412360164002,
+      "y": 6.7248112033142915,
+      "parent": "Battle Frontier Battle Tower Battle Room",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside West",
+      "x": 64.16994039267918,
+      "y": 6.53919089340983,
+      "parent": "Battle Frontier Mart",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside West",
+      "x": 74.62274646642075,
+      "y": 4.755944948038369,
+      "parent": "Battle Frontier Reception Gate",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside West",
+      "x": 73.73084113016871,
+      "y": 196.1866803684599,
+      "parent": "Battle Frontier Reception Gate",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside West",
+      "x": 161.4348658616194,
+      "y": 5.645052496377468,
+      "parent": "Battle Frontier Battle Factory Lobby",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside West",
+      "x": 73,
+      "y": 8.246202740630679,
+      "parent": "Battle Frontier Lounge 7",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside West",
+      "x": 190.46303805496635,
+      "y": 7.142621631200374,
+      "parent": "Battle Frontier Battle Dome Lobby",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside West",
+      "x": 31.289475067504725,
+      "y": 6.008948364080232,
+      "parent": "Battle Frontier Lounge 2",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside West",
+      "x": 72.25,
+      "y": 6.996409113422487,
+      "parent": "Battle Frontier Lounge 4",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside West",
+      "x": 85.62291228019592,
+      "y": 10.40242088037154,
+      "parent": "Battle Frontier Battle Pike Lobby",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside West",
+      "x": 46.84582425360877,
+      "y": 6.362443383633297,
+      "parent": "Battle Frontier Scotts House",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside East",
+      "x": 209.00315046172824,
+      "y": 5.942305191129648,
+      "parent": "Battle Frontier Battle Palace Lobby",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Battle Palace Corridor",
+      "x": 90.3797407402068,
+      "y": 119.19558189172065,
+      "parent": "Battle Frontier Battle Palace Lobby",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside East",
+      "x": 72.25,
+      "y": 6.996409113422487,
+      "parent": "Battle Frontier Lounge 3",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside East",
+      "x": 120.10991861527484,
+      "y": 7.429844848850996,
+      "parent": "Battle Frontier Battle Arena Lobby",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside East",
+      "x": 119.40729096602747,
+      "y": 7.143871105814472,
+      "parent": "Battle Frontier Battle Pyramid Lobby",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside East",
+      "x": 429.3037685159823,
+      "y": 7.7110961601010715,
+      "parent": "Battle Frontier Ranking Hall",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside East",
+      "x": 206.3274344529721,
+      "y": 7.425918128973176,
+      "parent": "Battle Frontier Battle Tower Lobby",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Battle Tower Battle Room",
+      "x": 102.86641544773538,
+      "y": 134.35281878816568,
+      "parent": "Battle Frontier Battle Tower Lobby",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside East",
+      "x": 71.75,
+      "y": 6.996409113422487,
+      "parent": "Battle Frontier Lounge 6",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside East",
+      "x": 120.25,
+      "y": 9.247358428264818,
+      "parent": "Battle Frontier Exchange Service Corner",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside East",
+      "x": 72.25,
+      "y": 6.996409113422487,
+      "parent": "Battle Frontier Lounge 1",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside East",
+      "x": 110.30865786510141,
+      "y": 10.24242479788551,
+      "parent": "Battle Frontier Pokemon Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside East",
+      "x": 72.25,
+      "y": 6.746450387980872,
+      "parent": "Battle Frontier Lounge 8",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside East",
+      "x": 31.996581848691275,
+      "y": 6.008919178560128,
+      "parent": "Battle Frontier Lounge 5",
+      "icon": "door"
+    },
+    {
+      "name": "Artisan Cave B1F",
+      "x": 19314,
+      "y": -2049.0498596665016,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Artisan Cave 1F",
+      "x": 20036.356077123346,
+      "y": -1284.9916911507787,
+      "parent": null,
+      "icon": "door"
     }
   ],
   "groups": [
     {
-      "name": "Brendans house",
+      "name": "Rustboro City Pokemon Center",
+      "members": [
+        "Rustboro City Pokemon Center 1F",
+        "Rustboro City Pokemon Center 2F"
+      ]
+    },
+    {
+      "name": "Littleroot Town Mays House",
+      "members": [
+        "Littleroot Town Mays House 1F",
+        "Littleroot Town Mays House 2F"
+      ]
+    },
+    {
+      "name": "Slateport City Pokemon Center",
+      "members": [
+        "Slateport City Pokemon Center 1F",
+        "Slateport City Pokemon Center 2F"
+      ]
+    },
+    {
+      "name": "Lilycove City Lilycove Museum",
+      "members": [
+        "Lilycove City Lilycove Museum 1F",
+        "Lilycove City Lilycove Museum 2F"
+      ]
+    },
+    {
+      "name": "Littleroot Town Brendans House",
       "members": [
         "Littleroot Town Brendans House 1F",
         "Littleroot Town Brendans House 2F"
       ]
+    },
+    {
+      "name": "Petalburg City Pokemon Center",
+      "members": [
+        "Petalburg City Pokemon Center 1F",
+        "Petalburg City Pokemon Center 2F"
+      ]
+    },
+    {
+      "name": "Rustboro City Devon Corp",
+      "members": [
+        "Rustboro City Devon Corp 1F",
+        "Rustboro City Devon Corp 2F",
+        "Rustboro City Devon Corp 3F"
+      ]
+    },
+    {
+      "name": "Mirage Tower",
+      "members": [
+        "Mirage Tower 1F",
+        "Mirage Tower 2F",
+        "Mirage Tower 3F",
+        "Mirage Tower 4F"
+      ]
+    },
+    {
+      "name": "Mt Pyre",
+      "members": [
+        "Mt Pyre 1F",
+        "Mt Pyre 2F",
+        "Mt Pyre 3F",
+        "Mt Pyre 4F",
+        "Mt Pyre 5F",
+        "Mt Pyre 6F",
+        "Mt Pyre Exterior",
+        "Mt Pyre Summit"
+      ]
+    },
+    {
+      "name": "Trainer Hill",
+      "members": [
+        "Trainer Hill 1F",
+        "Trainer Hill 2F",
+        "Trainer Hill 3F",
+        "Trainer Hill 4F",
+        "Trainer Hill Entrance"
+      ]
+    },
+    {
+      "name": "Slateport City Sterns Shipyard",
+      "members": [
+        "Slateport City Sterns Shipyard 1F",
+        "Slateport City Sterns Shipyard 2F"
+      ]
+    },
+    {
+      "name": "Granite Cave",
+      "members": [
+        "Granite Cave 1F",
+        "Granite Cave B1F",
+        "Granite Cave B2F"
+      ]
+    },
+    {
+      "name": "Route 119 Weather Institute",
+      "members": [
+        "Route 119 Weather Institute 1F",
+        "Route 119 Weather Institute 2F"
+      ]
+    },
+    {
+      "name": "Dewford Town Pokemon Center",
+      "members": [
+        "Dewford Town Pokemon Center 1F",
+        "Dewford Town Pokemon Center 2F"
+      ]
+    },
+    {
+      "name": "Lavaridge Town Gym",
+      "members": [
+        "Lavaridge Town Gym 1F",
+        "Lavaridge Town Gym B1F"
+      ]
+    },
+    {
+      "name": "Aqua Hideout",
+      "members": [
+        "Aqua Hideout 1F",
+        "Aqua Hideout B1F",
+        "Aqua Hideout B2F"
+      ]
+    },
+    {
+      "name": "Verdanturf Town Pokemon Center",
+      "members": [
+        "Verdanturf Town Pokemon Center 1F",
+        "Verdanturf Town Pokemon Center 2F"
+      ]
+    },
+    {
+      "name": "Slateport City Oceanic Museum",
+      "members": [
+        "Slateport City Oceanic Museum 1F",
+        "Slateport City Oceanic Museum 2F"
+      ]
+    },
+    {
+      "name": "Mossdeep City Pokemon Center",
+      "members": [
+        "Mossdeep City Pokemon Center 1F",
+        "Mossdeep City Pokemon Center 2F"
+      ]
+    },
+    {
+      "name": "Oldale Town Pokemon Center",
+      "members": [
+        "Oldale Town Pokemon Center 1F",
+        "Oldale Town Pokemon Center 2F"
+      ]
+    },
+    {
+      "name": "Ever Grande City Pokemon Center",
+      "members": [
+        "Ever Grande City Pokemon Center 1F",
+        "Ever Grande City Pokemon Center 2F"
+      ]
+    },
+    {
+      "name": "Mossdeep City Game Corner",
+      "members": [
+        "Mossdeep City Game Corner 1F",
+        "Mossdeep City Game Corner B1F"
+      ]
+    },
+    {
+      "name": "Lilycove City Pokemon Center",
+      "members": [
+        "Lilycove City Pokemon Center 1F",
+        "Lilycove City Pokemon Center 2F"
+      ]
+    },
+    {
+      "name": "Ever Grande City Pokemon League",
+      "members": [
+        "Ever Grande City Pokemon League 1F",
+        "Ever Grande City Pokemon League 2F"
+      ]
+    },
+    {
+      "name": "Lilycove City Department Store",
+      "members": [
+        "Lilycove City Department Store 1F",
+        "Lilycove City Department Store 2F",
+        "Lilycove City Department Store 3F",
+        "Lilycove City Department Store 4F",
+        "Lilycove City Department Store 5F"
+      ]
+    },
+    {
+      "name": "Lilycove City Cove Lily Motel",
+      "members": [
+        "Lilycove City Cove Lily Motel 1F",
+        "Lilycove City Cove Lily Motel 2F"
+      ]
+    },
+    {
+      "name": "Lavaridge Town Pokemon Center",
+      "members": [
+        "Lavaridge Town Pokemon Center 1F",
+        "Lavaridge Town Pokemon Center 2F"
+      ]
+    },
+    {
+      "name": "Abandoned Ship Corridors",
+      "members": [
+        "Abandoned Ship Corridors 1F",
+        "Abandoned Ship Corridors B1F"
+      ]
+    },
+    {
+      "name": "Mossdeep City Space Center",
+      "members": [
+        "Mossdeep City Space Center 1F",
+        "Mossdeep City Space Center 2F"
+      ]
+    },
+    {
+      "name": "Fallarbor Town Pokemon Center",
+      "members": [
+        "Fallarbor Town Pokemon Center 1F",
+        "Fallarbor Town Pokemon Center 2F"
+      ]
+    },
+    {
+      "name": "Pacifidlog Town Pokemon Center",
+      "members": [
+        "Pacifidlog Town Pokemon Center 1F",
+        "Pacifidlog Town Pokemon Center 2F"
+      ]
+    },
+    {
+      "name": "Mauville City Pokemon Center",
+      "members": [
+        "Mauville City Pokemon Center 1F",
+        "Mauville City Pokemon Center 2F"
+      ]
+    },
+    {
+      "name": "Fortree City Pokemon Center",
+      "members": [
+        "Fortree City Pokemon Center 1F",
+        "Fortree City Pokemon Center 2F"
+      ]
+    },
+    {
+      "name": "Sootopolis City Gym",
+      "members": [
+        "Sootopolis City Gym 1F",
+        "Sootopolis City Gym B1F"
+      ]
+    },
+    {
+      "name": "Sootopolis City Pokemon Center",
+      "members": [
+        "Sootopolis City Pokemon Center 1F",
+        "Sootopolis City Pokemon Center 2F"
+      ]
+    },
+    {
+      "name": "Battle Frontier Pokemon Center",
+      "members": [
+        "Battle Frontier Pokemon Center 1F",
+        "Battle Frontier Pokemon Center 2F"
+      ]
     }
-  ]
+  ],
+  "groupLayouts": {
+    "Battle Frontier Pokemon Center": {
+      "Battle Frontier Pokemon Center 1F": {
+        "offsetX": 0,
+        "offsetY": 0
+      },
+      "Battle Frontier Pokemon Center 2F": {
+        "offsetX": 224,
+        "offsetY": 0
+      }
+    }
+  }
 }
