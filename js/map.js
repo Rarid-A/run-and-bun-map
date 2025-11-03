@@ -1,6 +1,25 @@
-// Add map drag/edit event handlers (modularized from app.js)
-export function wireMapEditEvents(map, overlayIndex, overlayToName, setOverlayPxBounds, getOverlayPxBounds, snapOverlayToNeighbors, stashCurrentLayout) {
+// --- Overlay Drag/Edit/Snap Logic ---
+// Sets up drag/edit/snap handlers for overlays on the map
+export function setupOverlayEditHandlers({
+  map,
+  overlayIndex,
+  overlayToName,
+  setOverlayPxBounds,
+  getOverlayPxBounds,
+  snapOverlayToNeighbors,
+  stashCurrentLayout
+}) {
   let dragState = null;
+
+  function onDocumentMouseUp() {
+    if (dragState) {
+      dragState = null;
+      map.dragging.enable();
+      if (typeof stashCurrentLayout === 'function') stashCurrentLayout();
+    }
+    document.removeEventListener('mouseup', onDocumentMouseUp);
+  }
+
   map.on('mousedown', (e) => {
     if (!map._container.classList.contains('editing') || !e.originalEvent) return;
     const target = e.originalEvent.target;
@@ -12,43 +31,211 @@ export function wireMapEditEvents(map, overlayIndex, overlayToName, setOverlayPx
       startLatLng: e.latlng,
       startBounds: overlay.getBounds(),
     };
+    // Ensure mouseup even if the pointer leaves the map
+    document.addEventListener('mouseup', onDocumentMouseUp);
   });
 
   map.on('mousemove', (e) => {
     if (!dragState) return;
-    const dx = e.latlng.lng - dragState.startLatLng.lng;
-    const dy = e.latlng.lat - dragState.startLatLng.lat;
-    const b = dragState.startBounds;
-    const x = b.getWest() + dx;
-    const y = b.getSouth() + dy;
-    const w = b.getEast() - b.getWest();
-    const h = b.getNorth() - b.getSouth();
-    setOverlayPxBounds(dragState.overlay, x, y, w, h);
-    // Move label marker with overlay while dragging
-    const name = overlayToName.get(dragState.overlay);
-    if (name) {
-      const obj = overlayIndex.get(name);
-      if (obj && obj.label) {
-        obj.label.setLatLng([y + h/2, x + w/2]);
-      }
+    const { overlay, startLatLng, startBounds } = dragState;
+    const dx = e.latlng.lng - startLatLng.lng;
+    const dy = e.latlng.lat - startLatLng.lat;
+    const newBounds = L.latLngBounds(
+      [startBounds.getSouth() + dy, startBounds.getWest() + dx],
+      [startBounds.getNorth() + dy, startBounds.getEast() + dx]
+    );
+    overlay.setBounds(newBounds);
+    if (typeof snapOverlayToNeighbors === 'function') {
+      snapOverlayToNeighbors(overlay, overlayIndex, getOverlayPxBounds, setOverlayPxBounds, 8);
     }
   });
+} // close setupOverlayEditHandlers
 
-  map.on('mouseup', () => {
-    if (!dragState) return;
-    // Snap corners on release
-    snapOverlayToNeighbors(dragState.overlay, overlayIndex, getOverlayPxBounds, setOverlayPxBounds, 10);
-    // Persist after snapping so leaving the view keeps positions
-    stashCurrentLayout({ overlayIndex, mutableAtlas: map._mutableAtlas, currentType, mapsByName });
-    dragState = null;
-    map.dragging.enable();
+// End of setupOverlayEditHandlers
+// Exports a function to save the current atlas layout as JSON and PNG
+export async function saveLayout({
+  worldAtlas,
+  worldAtlasSource,
+  overlayIndex,
+  mapsByName
+}) {
+  if (!worldAtlas) worldAtlas = { unit: 'px', maps: [] };
+  worldAtlas.maps = [];
+  for (const [name, obj] of overlayIndex.entries()) {
+    const b = obj.overlay.getBounds();
+    const w = b.getEast() - b.getWest();
+    const h = b.getNorth() - b.getSouth();
+    worldAtlas.maps.push({
+      name,
+      image: obj.entry.image || (mapsByName[name] ? mapsByName[name].image : obj.entry.image),
+      width: Math.round(w),
+      height: Math.round(h),
+      x: Math.round(b.getWest()),
+      y: Math.round(b.getSouth()),
+    });
+  }
+  // Download JSON
+  const blob = new Blob([JSON.stringify(worldAtlas, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = (worldAtlasSource === 'custom') ? 'world-atlas (1).json' : 'world-atlas.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+
+// --- Interior Marker Placement and Rendering ---
+// Renders interior markers on the map and handles placement
+export function renderInteriorMarkers({
+  map,
+  interiorPlacements,
+  showInteriorsToggle,
+  currentView,
+  currentMapData,
+  worldAtlas,
+  manifest,
+  interiorGroups,
+  showSingleMap
+}) {
+  // Remove all existing interior markers
+  if (!map._interiorMarkersLayer) return;
+  map._interiorMarkersLayer.clearLayers();
+  if (!showInteriorsToggle || !showInteriorsToggle.checked) return;
+  // Show markers for current view (world or single map)
+  let parent = null;
+  if (currentView === 'single' && currentMapData) {
+    parent = currentMapData.name;
+  }
+  for (const placement of interiorPlacements) {
+    const m = manifest.maps.find(x => x.name === placement.name);
+    if (!m) continue;
+    const group = interiorGroups.find(g => g.members.includes(placement.name));
+    // Choose icon
+    let iconHtml = '';
+    switch (placement.icon) {
+      case 'cave': iconHtml = '⛰️'; break;
+      case 'stairs': iconHtml = '⬆️'; break;
+      case 'dive': iconHtml = '🌊'; break;
+      case 'generic': iconHtml = '⭐'; break;
+      default: iconHtml = '🚪';
+    }
+    let markerX = placement.x;
+    let markerY = placement.y;
+    if (parent !== null && worldAtlas && Array.isArray(worldAtlas.maps)) {
+      const atlasEntry = worldAtlas.maps.find(e => e.name === parent);
+      if (atlasEntry) {
+        markerX = placement.x - atlasEntry.x;
+        markerY = placement.y - atlasEntry.y;
+    const marker = L.marker([markerY, markerX], {
+      icon: L.divIcon({ className: 'interior-marker', html: `<div class="interior-marker-icon">${iconHtml}</div>`, iconSize: [32, 32] })
+    });
+    marker.on('click', () => {
+      showSingleMap(m);
+    });
+    marker.on('mouseover', (e) => {
+      const tooltip = document.createElement('div');
+      tooltip.className = 'interior-tooltip';
+      tooltip.textContent = group ? `${placement.name} (Group: ${group.name})` : placement.name;
+      document.body.appendChild(tooltip);
+      function moveTooltip(ev) {
+        tooltip.style.left = (ev.originalEvent.pageX + 12) + 'px';
+        tooltip.style.top = (ev.originalEvent.pageY - 8) + 'px';
+      }
+      moveTooltip(e);
+      marker.on('mousemove', moveTooltip);
+      marker.on('mouseout', () => {
+        tooltip.remove();
+        marker.off('mousemove', moveTooltip);
+      });
+    });
+    map._interiorMarkersLayer.addLayer(marker);
+  }
+      marker.on('click', () => {
+        showSingleMap(m);
+      });
+      marker.on('mouseover', (e) => {
+        const tooltip = document.createElement('div');
+        tooltip.className = 'interior-tooltip';
+        tooltip.textContent = group ? `${placement.name} (Group: ${group.name})` : placement.name;
+        document.body.appendChild(tooltip);
+        function moveTooltip(ev) {
+          tooltip.style.left = (ev.originalEvent.pageX + 12) + 'px';
+          tooltip.style.top = (ev.originalEvent.pageY - 8) + 'px';
+        }
+        moveTooltip(e);
+        marker.on('mousemove', moveTooltip);
+        marker.on('mouseout', () => {
+          tooltip.remove();
+          marker.off('mousemove', moveTooltip);
+        });
+      });
+      map._interiorMarkersLayer.addLayer(marker);
+    }
+  }
+}
+
+// Setup map click handler for placing interiors
+export function setupInteriorPlacement({
+  map,
+  editInteriorsToggle,
+  selectedInteriorForPlacement,
+  currentView,
+  currentMapData,
+  worldAtlas,
+  interiorPlacements,
+  renderInteriorMarkers
+}) {
+  map.on('click', (e) => {
+    if (editInteriorsToggle && editInteriorsToggle.checked && selectedInteriorForPlacement.value) {
+      let parent = null;
+      let markerX = e.latlng.lng;
+      let markerY = e.latlng.lat;
+      if (currentView.value === 'single' && currentMapData.value) {
+        parent = currentMapData.value.name;
+        if (worldAtlas && Array.isArray(worldAtlas.maps)) {
+          const atlasEntry = worldAtlas.maps.find(entry => entry.name === currentMapData.value.name);
+          if (atlasEntry) {
+            markerX = e.latlng.lng + atlasEntry.x;
+            markerY = e.latlng.lat + atlasEntry.y;
+            parent = null;
+          }
+        }
+      }
+      const m = selectedInteriorForPlacement.value;
+      interiorPlacements.push({
+        name: m.name,
+        x: markerX,
+        y: markerY,
+        parent: parent,
+        icon: m.icon || 'door'
+      });
+      selectedInteriorForPlacement.value = null;
+      renderInteriorMarkers();
+    }
   });
 }
+// Add map drag/edit event handlers (modularized from app.js)
+function wireMapEditEvents(map, overlayIndex, overlayToName, setOverlayPxBounds, getOverlayPxBounds, snapOverlayToNeighbors, stashCurrentLayout) {
+  let dragState = null;
+  map.on('mousedown', (e) => {
+    if (!map._container.classList.contains('editing') || !e.originalEvent) return;
+    const target = e.originalEvent.target;
+    const overlay = findOverlayByTarget(overlayIndex, target);
+    if (!overlay) return;
+    map.dragging.disable();
+    dragState = {
+      // dragState fields here
+    };
+  });
+}
+
+// Use global access for getGroupForMap, getGroupByName (attached to window.state)
+// ...existing code...
 // --- Overlay, marker, and navigation logic from app.js ---
 import { safeImageUrl } from './utils.js';
 import { mapsByName, currentType } from './state.js';
 
-export let overlaysGroup, markersLayer, overlayIndex, overlayToName, dragState;
+let overlaysGroup, markersLayer, overlayIndex, overlayToName;
 
 // Setup map overlay and marker groups, and initialize drag/edit state
 export function setupMap(map, manifest, worldAtlas, worldMaps, interiorMaps, mutableAtlasRef, toggleLabels, toggleIncludeInteriors) {
@@ -80,7 +267,12 @@ export function showWorldView({
   setMapInfo,
   backBtn
 }) {
-  // Clear overlays and markers
+
+  // Use the map's own overlay groups and indexes
+  overlaysGroup = map._overlaysGroup;
+  markersLayer = map._markersLayer;
+  overlayIndex = map._overlayIndex;
+  overlayToName = map._overlayToName;
   overlaysGroup.clearLayers();
   markersLayer.clearLayers();
   overlayIndex.clear();
@@ -299,93 +491,7 @@ export function showSingleMap({
   if (typeof renderInteriorMarkers === 'function') renderInteriorMarkers();
 }
 
-export function renderInteriorMarkers({
-  map,
-  manifest,
-  worldAtlas,
-  interiorPlacements,
-  interiorGroups,
-  currentView,
-  currentMapData,
-  showInteriorsToggle,
-  showSingleMap
-}) {
-  // Remove all existing interior markers
-  if (!map._interiorMarkersLayer) map._interiorMarkersLayer = L.layerGroup().addTo(map);
-  map._interiorMarkersLayer.clearLayers();
-  if (!showInteriorsToggle || !showInteriorsToggle.checked) return;
-  // Show markers for current view (world or single map)
-  let parent = null;
-  if (currentView === 'single' && currentMapData) {
-    parent = currentMapData.name;
-  }
-  for (const placement of interiorPlacements) {
-    let show = false;
-    let markerX = placement.x;
-    let markerY = placement.y;
-    if (parent === null) {
-      // World view: show only world-placed markers
-      show = !placement.parent;
-    } else {
-      // Single map view
-      if (placement.parent === parent) {
-        // Marker placed in this interior, use local coordinates
-        show = true;
-      } else if (!placement.parent && worldAtlas && Array.isArray(worldAtlas.maps)) {
-        // Marker placed in world, check if it's inside this map's atlas bounds
-        const atlasEntry = worldAtlas.maps.find(e => e.name === parent);
-        if (atlasEntry) {
-          if (
-            placement.x >= atlasEntry.x && placement.x <= atlasEntry.x + atlasEntry.width &&
-            placement.y >= atlasEntry.y && placement.y <= atlasEntry.y + atlasEntry.height
-          ) {
-            show = true;
-            // Transform world coords to local map coords
-            markerX = placement.x - atlasEntry.x;
-            markerY = placement.y - atlasEntry.y;
-          }
-        }
-      }
-    }
-    if (show) {
-      const m = manifest.maps.find(x => x.name === placement.name);
-      if (!m) continue;
-      const group = interiorGroups.find(g => g.members.includes(placement.name));
-      // Choose icon
-      let iconHtml = '';
-      switch (placement.icon) {
-        case 'cave': iconHtml = '⛰️'; break;
-        case 'stairs': iconHtml = '⬆️'; break;
-        case 'dive': iconHtml = '🌊'; break;
-        case 'generic': iconHtml = '⭐'; break;
-        default: iconHtml = '🚪';
-      }
-      const marker = L.marker([markerY, markerX], {
-        icon: L.divIcon({ className: 'interior-marker', html: `<div class="interior-marker-icon">${iconHtml}</div>`, iconSize: [32, 32] })
-      });
-      marker.on('click', () => {
-        if (typeof showSingleMap === 'function') showSingleMap(m);
-      });
-      marker.on('mouseover', (e) => {
-        const tooltip = document.createElement('div');
-        tooltip.className = 'interior-tooltip';
-        tooltip.textContent = group ? `${placement.name} (Group: ${group.name})` : placement.name;
-        document.body.appendChild(tooltip);
-        function moveTooltip(ev) {
-          tooltip.style.left = (ev.originalEvent.pageX + 12) + 'px';
-          tooltip.style.top = (ev.originalEvent.pageY - 8) + 'px';
-        }
-        moveTooltip(e);
-        marker.on('mousemove', moveTooltip);
-        marker.on('mouseout', () => {
-          tooltip.remove();
-          marker.off('mousemove', moveTooltip);
-        });
-      });
-      map._interiorMarkersLayer.addLayer(marker);
-    }
-  }
-}
+// ...existing code...
 
 export function setEditEnabled(map, enabled) {
   if (enabled) {
@@ -520,28 +626,7 @@ export function createMap(container) {
 }
 
 // Render interior markers on the map
-export function renderInteriorMarkers(map, placements) {
-  // Remove existing markers if any
-  if (map._interiorMarkersLayer) {
-    map.removeLayer(map._interiorMarkersLayer);
-  }
-  const layer = L.layerGroup();
-  if (Array.isArray(placements)) {
-    placements.forEach(placement => {
-      // Example: use a marker icon for each interior
-      const marker = L.marker([placement.y, placement.x], {
-        title: placement.name,
-        icon: L.divIcon({
-          className: 'interior-marker',
-          html: `<span class="interior-marker-icon">🏠</span><span class="interior-marker-label">${placement.name}</span>`
-        })
-      });
-      marker.addTo(layer);
-    });
-  }
-  layer.addTo(map);
-  map._interiorMarkersLayer = layer;
-}
+// ...existing code...
 
 // Utility: get pixel bounds from overlay
 export function getOverlayPxBounds(overlay) {

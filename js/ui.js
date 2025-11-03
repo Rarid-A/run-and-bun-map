@@ -1,3 +1,196 @@
+// --- Interior Placement and Search UI Logic ---
+// Renders the search list for interiors/exteriors and supports placement/editing
+export function renderSearchList({
+  query = '', manifest, currentType, markMapType, showSingleMap, editInteriorsToggle, selectedInteriorForPlacement, searchList, interiorMaps
+}) {
+  const q = (query || '').trim().toLowerCase();
+  let items = manifest.maps;
+  // Only show interiors if editing interiors and not including world maps
+  const includeWorldMaps = document.getElementById('search-all-images');
+  const includeWorldMapsChecked = includeWorldMaps && includeWorldMaps.checked;
+  if (
+    editInteriorsToggle && editInteriorsToggle.checked &&
+    !includeWorldMapsChecked &&
+    !q // only filter if not searching
+  ) {
+    items = items.filter(m => currentType(m.name) === 'interior');
+  }
+  if (q) {
+    const numberMatch = q.match(/^#?(\d{3})$/);
+    if (numberMatch) {
+      const num = numberMatch[1];
+      if (parseInt(num, 10) >= 1 && parseInt(num, 10) <= 519) {
+        items = items.filter(m => m.image && m.image.match(new RegExp(`#${num}(\D|$)`)));
+      } else {
+        items = [];
+      }
+    } else {
+      items = items.filter(m => m.name.toLowerCase().includes(q));
+    }
+  }
+  searchList.innerHTML = '';
+  items.forEach(m => {
+    const type = currentType(m.name);
+    // Prevent exteriors from being placed as interiors
+    if (editInteriorsToggle && editInteriorsToggle.checked && type !== 'interior') {
+      return;
+    }
+    const li = document.createElement('li');
+    li.style.display = 'flex';
+    li.style.alignItems = 'center';
+    li.style.marginBottom = '2px';
+    const btn = document.createElement('button');
+    btn.textContent = type === 'exterior' ? 'Mark as Interior' : 'Mark as Exterior';
+    btn.style.marginLeft = '8px';
+    btn.onclick = () => markMapType(m, type === 'exterior' ? 'interior' : 'exterior');
+    const link = document.createElement('a');
+    link.href = '#';
+    link.textContent = m.name;
+    link.onclick = (e) => { e.preventDefault(); showSingleMap(m); };
+    li.appendChild(link);
+    li.appendChild(btn);
+    // Add icon picker and 'Place' button in Edit Interiors mode
+    if (editInteriorsToggle && editInteriorsToggle.checked) {
+      const iconPicker = document.createElement('select');
+      iconPicker.style.marginLeft = '8px';
+      const icons = [
+        { value: 'door', label: '🚪' },
+        { value: 'cave', label: '⛰️' },
+        { value: 'stairs', label: '⬆️' },
+        { value: 'dive', label: '🌊' },
+        { value: 'generic', label: '⭐' }
+      ];
+      icons.forEach(ic => {
+        const opt = document.createElement('option');
+        opt.value = ic.value;
+        opt.textContent = ic.label;
+        iconPicker.appendChild(opt);
+      });
+      li.appendChild(iconPicker);
+      const placeBtn = document.createElement('button');
+      placeBtn.textContent = 'Place';
+      placeBtn.style.marginLeft = '4px';
+      placeBtn.onclick = (e) => {
+        selectedInteriorForPlacement.value = { ...m, icon: iconPicker.value };
+      };
+      li.appendChild(placeBtn);
+    }
+    searchList.appendChild(li);
+  });
+  if (!items.length) {
+    const li = document.createElement('li');
+    li.textContent = 'No maps found.';
+    searchList.appendChild(li);
+  }
+}
+
+// Filters overlays and labels by search query
+export function filterOverlaysBySearch({query, overlayIndex, overlaysGroup, markersLayer, renderSearchList, worldAtlas, interiorPlacements, interiorGroups, searchList, manifest}) {
+  const q = (query || '').trim().toLowerCase();
+  if (!q) {
+    for (const [name, obj] of overlayIndex.entries()) {
+      if (obj.overlay && overlaysGroup.hasLayer(obj.overlay)) obj.overlay.setOpacity(0.95);
+      if (obj.label && markersLayer.hasLayer(obj.label)) obj.label._icon.style.opacity = 1;
+    }
+    renderSearchList({query: '', manifest, searchList});
+    return;
+  }
+  // Save interior placements/groups to worldAtlas
+  if (worldAtlas) {
+    worldAtlas.interiorPlacements = JSON.parse(JSON.stringify(interiorPlacements));
+    worldAtlas.groups = JSON.parse(JSON.stringify(interiorGroups));
+  }
+  for (const [name, obj] of overlayIndex.entries()) {
+    const match = name.toLowerCase().includes(q);
+    if (obj.overlay && overlaysGroup.hasLayer(obj.overlay)) obj.overlay.setOpacity(match ? 0.95 : 0.15);
+    if (obj.label && markersLayer.hasLayer(obj.label)) obj.label._icon.style.opacity = match ? 1 : 0.2;
+  }
+  renderSearchList({query: q, manifest, searchList});
+}
+// --- Group Management UI Logic ---
+// Renders and manages the group modal for interior grouping
+export function renderGroupList({interiorGroups, interiorMaps, groupListDiv}) {
+  groupListDiv.innerHTML = '';
+  // List all groups
+  interiorGroups.forEach((group, idx) => {
+    const groupDiv = document.createElement('div');
+    groupDiv.style.marginBottom = '0.5em';
+    groupDiv.innerHTML = `<strong>${group.name}</strong> <button data-idx="${idx}" class="remove-group">Remove</button>`;
+    // List members
+    const members = document.createElement('ul');
+    group.members.forEach((m, mIdx) => {
+      const li = document.createElement('li');
+      li.textContent = m;
+      const rmBtn = document.createElement('button');
+      rmBtn.textContent = 'Remove';
+      rmBtn.onclick = () => {
+        group.members.splice(mIdx, 1);
+        renderGroupList({interiorGroups, interiorMaps, groupListDiv});
+      };
+      li.appendChild(rmBtn);
+      members.appendChild(li);
+    });
+    groupDiv.appendChild(members);
+    // Add member dropdown
+    const addDiv = document.createElement('div');
+    const select = document.createElement('select');
+    select.innerHTML = '<option value="">Add interior...</option>' +
+      interiorMaps.filter(im => !group.members.includes(im.name)).map(im => `<option value="${im.name}">${im.name}</option>`).join('');
+    addDiv.appendChild(select);
+    const addBtn = document.createElement('button');
+    addBtn.textContent = 'Add';
+    addBtn.onclick = () => {
+      if (select.value) {
+        group.members.push(select.value);
+        renderGroupList({interiorGroups, interiorMaps, groupListDiv});
+      }
+    };
+    addDiv.appendChild(addBtn);
+    groupDiv.appendChild(addDiv);
+    groupListDiv.appendChild(groupDiv);
+  });
+  // Add new group
+  const newDiv = document.createElement('div');
+  const nameInput = document.createElement('input');
+  nameInput.placeholder = 'New group name';
+  newDiv.appendChild(nameInput);
+  const createBtn = document.createElement('button');
+  createBtn.textContent = 'Create Group';
+  createBtn.onclick = () => {
+    const name = nameInput.value.trim();
+    if (name && !interiorGroups.some(g => g.name === name)) {
+      interiorGroups.push({ name, members: [] });
+      renderGroupList({interiorGroups, interiorMaps, groupListDiv});
+    }
+  };
+  newDiv.appendChild(createBtn);
+  groupListDiv.appendChild(newDiv);
+  // Remove group buttons
+  groupListDiv.querySelectorAll('.remove-group').forEach(btn => {
+    btn.onclick = () => {
+      const idx = parseInt(btn.getAttribute('data-idx'), 10);
+      if (!isNaN(idx)) {
+        interiorGroups.splice(idx, 1);
+        renderGroupList({interiorGroups, interiorMaps, groupListDiv});
+      }
+    };
+  });
+}
+
+// Wire up group modal open/close
+export function wireGroupModal({manageGroupsBtn, groupModal, closeGroupModalBtn, onOpen}) {
+  if (manageGroupsBtn && groupModal) {
+    manageGroupsBtn.addEventListener('click', () => {
+      groupModal.style.display = 'block';
+      if (typeof onOpen === 'function') onOpen();
+    });
+  }
+  if (closeGroupModalBtn && groupModal) {
+    closeGroupModalBtn.addEventListener('click', () => {
+      groupModal.style.display = 'none';
+    });
+  }
+}
 // --- UI element references and event wiring from app.js ---
 export const breadcrumb = document.getElementById('breadcrumb');
 export const mapInfo = document.getElementById('current-map-info');
@@ -47,6 +240,7 @@ export function setupUI({
   onManageGroups,
   onSearch,
   onIncludeWorldMapsToggle,
+  getInteriorsForGrouping // NEW: function to get only interiors for group selection
 }) {
   // Assign DOM elements
   const editInteriorsToggle = document.getElementById('edit-interiors');
@@ -73,7 +267,15 @@ export function setupUI({
     showInteriorsToggle.addEventListener('change', e => onShowInteriorsToggle(e.target.checked));
   }
   if (manageGroupsBtn) {
-    manageGroupsBtn.addEventListener('click', onManageGroups);
+    manageGroupsBtn.addEventListener('click', () => {
+      // When opening group modal, only show interiors for selection
+      if (typeof getInteriorsForGrouping === 'function') {
+        const interiors = getInteriorsForGrouping();
+        // TODO: Render group selection UI with only interiors
+        // (Implementation of modal rendering is in app.js or here as needed)
+      }
+      onManageGroups();
+    });
   }
   if (interiorSearch) {
     interiorSearch.addEventListener('input', e => onSearch(e.target.value));
