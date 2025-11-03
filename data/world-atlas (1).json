@@ -4321,6 +4321,97 @@
       "y": -1156.5491747867384,
       "parent": null,
       "icon": "door"
+    },
+    {
+      "name": "Route 122",
+      "x": 285.31495248026357,
+      "y": 6.265884896878956,
+      "parent": "Mt Pyre 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Mt Pyre 2F",
+      "x": 182.78564485921586,
+      "y": 278.73668884269864,
+      "parent": "Mt Pyre 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Mt Pyre 1F",
+      "x": 39.74976016205781,
+      "y": 182.8512902842193,
+      "parent": "Mt Pyre 2F",
+      "icon": "door"
+    },
+    {
+      "name": "Mt Pyre 3F",
+      "x": 168.7482810021595,
+      "y": 183.10118127403177,
+      "parent": "Mt Pyre 2F",
+      "icon": "door"
+    },
+    {
+      "name": "Mt Pyre 2F",
+      "x": 166.248309668049,
+      "y": 182.3515083045943,
+      "parent": "Mt Pyre 3F",
+      "icon": "door"
+    },
+    {
+      "name": "Mt Pyre 4F",
+      "x": 39.99975729546887,
+      "y": 181.10205335553178,
+      "parent": "Mt Pyre 3F",
+      "icon": "door"
+    },
+    {
+      "name": "Mt Pyre 3F",
+      "x": 39.249765895235726,
+      "y": 119.37897887184366,
+      "parent": "Mt Pyre 4F",
+      "icon": "door"
+    },
+    {
+      "name": "Mt Pyre 5F",
+      "x": 167.99828960192633,
+      "y": 181.85172632496926,
+      "parent": "Mt Pyre 4F",
+      "icon": "door"
+    },
+    {
+      "name": "Mt Pyre 4F",
+      "x": 168.49828386874844,
+      "y": 119.37897887184366,
+      "parent": "Mt Pyre 5F",
+      "icon": "door"
+    },
+    {
+      "name": "Mt Pyre 6F",
+      "x": 38.74977162841361,
+      "y": 181.85172632496926,
+      "parent": "Mt Pyre 5F",
+      "icon": "door"
+    },
+    {
+      "name": "Mt Pyre 5F",
+      "x": 40.49975156229095,
+      "y": 182.8512902842193,
+      "parent": "Mt Pyre 6F",
+      "icon": "door"
+    },
+    {
+      "name": "Mt Pyre Exterior",
+      "x": 62.22532107032872,
+      "y": 198.16166510774804,
+      "parent": "Mt Pyre 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Mt Pyre Summit",
+      "x": 318.6962927529025,
+      "y": 675.5797866661258,
+      "parent": "Mt Pyre Exterior",
+      "icon": "door"
     }
   ],
   "groups": [
