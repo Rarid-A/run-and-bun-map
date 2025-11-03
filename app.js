@@ -49,6 +49,10 @@ async function init() {
   state.setWorldAtlas(worldAtlas, worldAtlasSource);
   state.buildMapClassification(manifest, worldAtlas);
 
+  // --- Expose to window for access in UI components ---
+  window.state = state;
+  window.manifest = manifest;
+
   // --- State for UI and navigation ---
   let currentView = { value: 'world' };
   let currentMapData = { value: null };
@@ -101,7 +105,8 @@ async function init() {
       worldAtlas,
       manifest,
       interiorGroups: state.interiorGroups,
-      showSingleMap
+      showSingleMap,
+      currentGroup: null
     })
   });
 
@@ -110,6 +115,8 @@ async function init() {
     manageGroupsBtn: document.getElementById('manage-groups'),
     groupModal: document.getElementById('group-modal'),
     closeGroupModalBtn: document.getElementById('close-group-modal'),
+    interiorGroups: state.interiorGroups,
+    interiorMaps: interiorMaps,
     onOpen: () => ui.renderGroupList({
       interiorGroups: state.interiorGroups,
       interiorMaps,
@@ -172,14 +179,17 @@ async function init() {
         worldAtlas,
         manifest,
         interiorGroups: state.interiorGroups,
-        showSingleMap
+        showSingleMap,
+        currentGroup: null
       });
     });
   }
   if (toggleLabels) {
     toggleLabels.addEventListener('change', () => {
-      // Re-render world view to update label visibility
-      showWorldView();
+      // Only re-render world view if we're in world view
+      if (currentView.value === 'world') {
+        showWorldView();
+      }
     });
   }
   if (toggleEdit) {
@@ -189,7 +199,10 @@ async function init() {
   }
   if (toggleIncludeInteriors) {
     toggleIncludeInteriors.addEventListener('change', () => {
-      showWorldView();
+      // Only re-render world view if we're in world view
+      if (currentView.value === 'world') {
+        showWorldView();
+      }
     });
   }
 
@@ -221,7 +234,8 @@ async function init() {
       worldAtlas,
       manifest,
       interiorGroups: state.interiorGroups,
-      showSingleMap
+      showSingleMap,
+      currentGroup: null
     });
     ui.renderSearchList({
       query: '',
@@ -241,28 +255,88 @@ async function init() {
   }
 
   function showSingleMap(m) {
-    currentView.value = 'single';
-    currentMapData.value = m;
-    mapmod.showSingleMap({
-      map,
-      mapData: m,
-      overlaysGroup: map._overlaysGroup,
-      markersLayer: map._markersLayer,
-      setBreadcrumb: ui.setBreadcrumb,
-      setMapInfo: ui.setMapInfo,
-      backBtn: ui.backBtn,
-      renderInteriorMarkers: () => mapmod.renderInteriorMarkers({
+    // Check if this map is part of a group
+    const group = state.interiorGroups.find(g => g.members.includes(m.name));
+    
+    if (group) {
+      // Show group view
+      currentView.value = 'group';
+      currentMapData.value = m;
+      mapmod.showGroupView({
         map,
-        interiorPlacements: state.interiorPlacements,
-        showInteriorsToggle: document.getElementById('show-interiors'),
-        currentView: currentView.value,
-        currentMapData: currentMapData.value,
-        worldAtlas,
+        group,
         manifest,
-        interiorGroups: state.interiorGroups,
-        showSingleMap
-      })
-    });
+        overlaysGroup: map._overlaysGroup,
+        markersLayer: map._markersLayer,
+        setBreadcrumb: ui.setBreadcrumb,
+        setMapInfo: ui.setMapInfo,
+        backBtn: ui.backBtn,
+        worldAtlas,
+        showSingleMap: (mapData) => {
+          // Recursion-safe: directly show single map without group check
+          currentView.value = 'single';
+          currentMapData.value = mapData;
+          mapmod.showSingleMap({
+            map,
+            mapData,
+            overlaysGroup: map._overlaysGroup,
+            markersLayer: map._markersLayer,
+            setBreadcrumb: ui.setBreadcrumb,
+            setMapInfo: ui.setMapInfo,
+            backBtn: ui.backBtn,
+            renderInteriorMarkers: () => mapmod.renderInteriorMarkers({
+              map,
+              interiorPlacements: state.interiorPlacements,
+              showInteriorsToggle: document.getElementById('show-interiors'),
+              currentView: 'single',
+              currentMapData: mapData,
+              worldAtlas,
+              manifest,
+              interiorGroups: state.interiorGroups,
+              showSingleMap,
+              currentGroup: null
+            })
+          });
+        },
+        renderInteriorMarkers: () => mapmod.renderInteriorMarkers({
+          map,
+          interiorPlacements: state.interiorPlacements,
+          showInteriorsToggle: document.getElementById('show-interiors'),
+          currentView: 'group',
+          currentMapData: currentMapData.value,
+          worldAtlas,
+          manifest,
+          interiorGroups: state.interiorGroups,
+          showSingleMap,
+          currentGroup: group
+        })
+      });
+    } else {
+      // Show single map view
+      currentView.value = 'single';
+      currentMapData.value = m;
+      mapmod.showSingleMap({
+        map,
+        mapData: m,
+        overlaysGroup: map._overlaysGroup,
+        markersLayer: map._markersLayer,
+        setBreadcrumb: ui.setBreadcrumb,
+        setMapInfo: ui.setMapInfo,
+        backBtn: ui.backBtn,
+        renderInteriorMarkers: () => mapmod.renderInteriorMarkers({
+          map,
+          interiorPlacements: state.interiorPlacements,
+          showInteriorsToggle: document.getElementById('show-interiors'),
+          currentView: currentView.value,
+          currentMapData: currentMapData.value,
+          worldAtlas,
+          manifest,
+          interiorGroups: state.interiorGroups,
+          showSingleMap,
+          currentGroup: null
+        })
+      });
+    }
   }
 
   // --- Wire up navigation buttons ---
@@ -281,7 +355,8 @@ async function init() {
         worldAtlas,
         worldAtlasSource,
         overlayIndex: map._overlayIndex,
-        mapsByName: state.mapsByName
+        mapsByName: state.mapsByName,
+        map
       });
     });
   }

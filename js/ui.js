@@ -109,82 +109,197 @@ export function filterOverlaysBySearch({query, overlayIndex, overlaysGroup, mark
 }
 // --- Group Management UI Logic ---
 // Renders and manages the group modal for interior grouping
-export function renderGroupList({interiorGroups, interiorMaps, groupListDiv}) {
+export function renderGroupList({interiorGroups, interiorMaps, groupListDiv, searchQuery = ''}) {
+  console.log('renderGroupList called:', {
+    groupCount: interiorGroups?.length,
+    searchQuery,
+    hasListDiv: !!groupListDiv
+  });
+  
   groupListDiv.innerHTML = '';
+  
+  // Filter groups by search query
+  const filteredGroups = searchQuery 
+    ? interiorGroups.filter(g => 
+        g.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        g.members.some(m => m.toLowerCase().includes(searchQuery.toLowerCase()))
+      )
+    : interiorGroups;
+  
+  console.log('Filtered groups:', filteredGroups.length);
+  
+  if (filteredGroups.length === 0) {
+    groupListDiv.innerHTML = '<p style="color:#999; text-align:center;">No groups found</p>';
+    return;
+  }
+  
   // List all groups
-  interiorGroups.forEach((group, idx) => {
+  filteredGroups.forEach((group, idx) => {
+    const originalIdx = interiorGroups.indexOf(group);
     const groupDiv = document.createElement('div');
-    groupDiv.style.marginBottom = '0.5em';
-    groupDiv.innerHTML = `<strong>${group.name}</strong> <button data-idx="${idx}" class="remove-group">Remove</button>`;
+    groupDiv.style.cssText = 'margin-bottom:1em; border:1px solid #ddd; border-radius:6px; overflow:hidden; background:#fafafa;';
+    
+    // Group header (collapsible)
+    const header = document.createElement('div');
+    header.style.cssText = 'padding:10px 12px; background:#f5f5f5; cursor:pointer; display:flex; justify-content:space-between; align-items:center; user-select:none;';
+    header.innerHTML = `
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span class="collapse-icon" style="font-size:12px; transition:transform 0.2s;">▼</span>
+        <strong style="font-size:14px;">${group.name}</strong>
+        <span style="color:#666; font-size:12px;">(${group.members.length} maps)</span>
+      </div>
+      <button data-idx="${originalIdx}" class="remove-group" style="background:#e74c3c; color:white; border:none; padding:4px 10px; border-radius:4px; cursor:pointer; font-size:11px;">Delete</button>
+    `;
+    
+    // Content (members + add)
+    const content = document.createElement('div');
+    content.className = 'group-content';
+    content.style.cssText = 'max-height:0; overflow:hidden; transition:max-height 0.3s ease;';
+    
+    const innerContent = document.createElement('div');
+    innerContent.style.padding = '12px';
+    
     // List members
-    const members = document.createElement('ul');
-    group.members.forEach((m, mIdx) => {
-      const li = document.createElement('li');
-      li.textContent = m;
-      const rmBtn = document.createElement('button');
-      rmBtn.textContent = 'Remove';
-      rmBtn.onclick = () => {
-        group.members.splice(mIdx, 1);
-        renderGroupList({interiorGroups, interiorMaps, groupListDiv});
-      };
-      li.appendChild(rmBtn);
-      members.appendChild(li);
-    });
-    groupDiv.appendChild(members);
-    // Add member dropdown
+    if (group.members.length > 0) {
+      const members = document.createElement('ul');
+      members.style.cssText = 'list-style:none; padding:0; margin:0 0 10px 0; max-height:150px; overflow-y:auto;';
+      group.members.forEach((m, mIdx) => {
+        const li = document.createElement('li');
+        li.style.cssText = 'padding:6px 8px; margin-bottom:4px; background:white; border:1px solid #e0e0e0; border-radius:4px; display:flex; justify-content:space-between; align-items:center; font-size:13px;';
+        
+        const nameSpan = document.createElement('span');
+        nameSpan.textContent = m;
+        nameSpan.style.flex = '1';
+        
+        const rmBtn = document.createElement('button');
+        rmBtn.textContent = '✕';
+        rmBtn.style.cssText = 'background:#ff6b6b; color:white; border:none; padding:2px 8px; border-radius:3px; cursor:pointer; font-size:11px;';
+        rmBtn.onclick = (e) => {
+          e.stopPropagation();
+          group.members.splice(mIdx, 1);
+          renderGroupList({interiorGroups, interiorMaps, groupListDiv, searchQuery});
+        };
+        
+        li.appendChild(nameSpan);
+        li.appendChild(rmBtn);
+        members.appendChild(li);
+      });
+      innerContent.appendChild(members);
+    }
+    
+    // Add member section
     const addDiv = document.createElement('div');
+    addDiv.style.cssText = 'display:flex; flex-direction:column; gap:6px;';
     const select = document.createElement('select');
+    select.style.cssText = 'width:100%; padding:6px; border:1px solid #ccc; border-radius:4px; font-size:13px; box-sizing:border-box;';
+    
+    // Get all maps that are already in ANY group
+    const mapsInGroups = new Set();
+    interiorGroups.forEach(g => {
+      g.members.forEach(m => mapsInGroups.add(m));
+    });
+    
+    // Filter out maps that are in the current group OR in any other group
+    const availableMaps = interiorMaps.filter(im => !mapsInGroups.has(im.name));
+    
     select.innerHTML = '<option value="">Add interior...</option>' +
-      interiorMaps.filter(im => !group.members.includes(im.name)).map(im => `<option value="${im.name}">${im.name}</option>`).join('');
+      availableMaps.map(im => `<option value="${im.name}">${im.name}</option>`).join('');
     addDiv.appendChild(select);
     const addBtn = document.createElement('button');
-    addBtn.textContent = 'Add';
+    addBtn.textContent = '+ Add';
+    addBtn.style.cssText = 'width:100%; background:#3498db; color:white; border:none; padding:6px 12px; border-radius:4px; cursor:pointer; font-size:12px; box-sizing:border-box;';
     addBtn.onclick = () => {
       if (select.value) {
         group.members.push(select.value);
-        renderGroupList({interiorGroups, interiorMaps, groupListDiv});
+        renderGroupList({interiorGroups, interiorMaps, groupListDiv, searchQuery});
       }
     };
     addDiv.appendChild(addBtn);
-    groupDiv.appendChild(addDiv);
+    innerContent.appendChild(addDiv);
+    
+    content.appendChild(innerContent);
+    groupDiv.appendChild(header);
+    groupDiv.appendChild(content);
     groupListDiv.appendChild(groupDiv);
+    
+    // Toggle collapse on header click
+    let isExpanded = false;
+    header.onclick = (e) => {
+      if (e.target.classList.contains('remove-group')) return; // Don't toggle if clicking delete
+      isExpanded = !isExpanded;
+      const icon = header.querySelector('.collapse-icon');
+      if (isExpanded) {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        icon.style.transform = 'rotate(-90deg)';
+      } else {
+        content.style.maxHeight = '0';
+        icon.style.transform = 'rotate(0deg)';
+      }
+    };
   });
-  // Add new group
+  
+  // Add new group section
   const newDiv = document.createElement('div');
+  newDiv.style.cssText = 'margin-top:1.5em; margin-bottom:20px; padding:12px; border:2px dashed #ccc; border-radius:6px; background:#f9f9f9;';
   const nameInput = document.createElement('input');
   nameInput.placeholder = 'New group name';
+  nameInput.style.cssText = 'width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; margin-bottom:8px; box-sizing:border-box;';
   newDiv.appendChild(nameInput);
   const createBtn = document.createElement('button');
-  createBtn.textContent = 'Create Group';
+  createBtn.textContent = '+ Create New Group';
+  createBtn.style.cssText = 'width:100%; background:#27ae60; color:white; border:none; padding:8px; border-radius:4px; cursor:pointer; font-weight:bold;';
   createBtn.onclick = () => {
     const name = nameInput.value.trim();
     if (name && !interiorGroups.some(g => g.name === name)) {
       interiorGroups.push({ name, members: [] });
-      renderGroupList({interiorGroups, interiorMaps, groupListDiv});
+      renderGroupList({interiorGroups, interiorMaps, groupListDiv, searchQuery});
+      nameInput.value = '';
     }
   };
   newDiv.appendChild(createBtn);
   groupListDiv.appendChild(newDiv);
+  
   // Remove group buttons
   groupListDiv.querySelectorAll('.remove-group').forEach(btn => {
-    btn.onclick = () => {
+    btn.onclick = (e) => {
+      e.stopPropagation();
       const idx = parseInt(btn.getAttribute('data-idx'), 10);
-      if (!isNaN(idx)) {
+      if (!isNaN(idx) && confirm(`Delete group "${interiorGroups[idx].name}"?`)) {
         interiorGroups.splice(idx, 1);
-        renderGroupList({interiorGroups, interiorMaps, groupListDiv});
+        renderGroupList({interiorGroups, interiorMaps, groupListDiv, searchQuery});
       }
     };
   });
 }
 
 // Wire up group modal open/close
-export function wireGroupModal({manageGroupsBtn, groupModal, closeGroupModalBtn, onOpen}) {
-  if (manageGroupsBtn && groupModal) {
-    manageGroupsBtn.addEventListener('click', () => {
-      groupModal.style.display = 'block';
-      if (typeof onOpen === 'function') onOpen();
+export function wireGroupModal({manageGroupsBtn, groupModal, closeGroupModalBtn, interiorGroups, interiorMaps, onOpen}) {
+  // Set up search handler once, outside of the click handler
+  const groupSearch = document.getElementById('group-search');
+  const groupListDiv = document.getElementById('group-list');
+  
+  if (groupSearch && groupListDiv && interiorGroups && interiorMaps) {
+    // Set up the search handler ONCE
+    groupSearch.addEventListener('input', () => {
+      console.log('Search handler fired:', groupSearch.value);
+      renderGroupList({
+        interiorGroups,
+        interiorMaps,
+        groupListDiv,
+        searchQuery: groupSearch.value
+      });
     });
   }
+  
+  if (manageGroupsBtn && groupModal) {
+    manageGroupsBtn.addEventListener('click', () => {
+      console.log('Opening group modal');
+      groupModal.style.display = 'block';
+      if (groupSearch) groupSearch.value = ''; // Clear search on open
+      if (onOpen) onOpen();
+    });
+  }
+  
   if (closeGroupModalBtn && groupModal) {
     closeGroupModalBtn.addEventListener('click', () => {
       groupModal.style.display = 'none';

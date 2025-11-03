@@ -52,12 +52,88 @@ export function setupOverlayEditHandlers({
 } // close setupOverlayEditHandlers
 
 // End of setupOverlayEditHandlers
+
+// --- Group Layout Drag/Edit Logic ---
+// Sets up drag handlers for editing group layouts
+function setupGroupEditHandlers(map, group) {
+  let dragState = null;
+
+  function onDocumentMouseUp() {
+    if (dragState) {
+      dragState = null;
+      map.dragging.enable();
+    }
+    document.removeEventListener('mouseup', onDocumentMouseUp);
+  }
+
+  // Remove old handlers if they exist
+  if (map._groupEditHandlers) {
+    map.off('mousedown', map._groupEditHandlers.mousedown);
+    map.off('mousemove', map._groupEditHandlers.mousemove);
+  }
+
+  const mousedownHandler = (e) => {
+    if (!map._container.classList.contains('editing') || !e.originalEvent) return;
+    const target = e.originalEvent.target;
+    
+    // Find which overlay was clicked
+    let clickedOverlay = null;
+    map._overlaysGroup.eachLayer((layer) => {
+      if (layer instanceof L.ImageOverlay && layer.getElement() === target) {
+        clickedOverlay = layer;
+      }
+    });
+    
+    if (!clickedOverlay || !clickedOverlay._mapData || !clickedOverlay._groupName) return;
+    
+    map.dragging.disable();
+    dragState = {
+      overlay: clickedOverlay,
+      mapData: clickedOverlay._mapData,
+      groupName: clickedOverlay._groupName,
+      startLatLng: e.latlng,
+      startBounds: clickedOverlay.getBounds(),
+    };
+    document.addEventListener('mouseup', onDocumentMouseUp);
+  };
+
+  const mousemoveHandler = (e) => {
+    if (!dragState) return;
+    const { overlay, mapData, groupName, startLatLng, startBounds } = dragState;
+    const dx = e.latlng.lng - startLatLng.lng;
+    const dy = e.latlng.lat - startLatLng.lat;
+    const newBounds = L.latLngBounds(
+      [startBounds.getSouth() + dy, startBounds.getWest() + dx],
+      [startBounds.getNorth() + dy, startBounds.getEast() + dx]
+    );
+    overlay.setBounds(newBounds);
+    
+    // Update stored layout
+    if (map._groupLayouts && map._groupLayouts[groupName]) {
+      map._groupLayouts[groupName][mapData.name] = {
+        offsetX: newBounds.getWest(),
+        offsetY: newBounds.getSouth()
+      };
+    }
+  };
+
+  map.on('mousedown', mousedownHandler);
+  map.on('mousemove', mousemoveHandler);
+  
+  // Store handlers for cleanup
+  map._groupEditHandlers = {
+    mousedown: mousedownHandler,
+    mousemove: mousemoveHandler
+  };
+}
+
 // Exports a function to save the current atlas layout as JSON and PNG
 export async function saveLayout({
   worldAtlas,
   worldAtlasSource,
   overlayIndex,
-  mapsByName
+  mapsByName,
+  map
 }) {
   if (!worldAtlas) worldAtlas = { unit: 'px', maps: [] };
   worldAtlas.maps = [];
@@ -74,6 +150,12 @@ export async function saveLayout({
       y: Math.round(b.getSouth()),
     });
   }
+  
+  // Save group layouts if they exist
+  if (map && map._groupLayouts) {
+    worldAtlas.groupLayouts = map._groupLayouts;
+  }
+  
   // Download JSON
   const blob = new Blob([JSON.stringify(worldAtlas, null, 2)], { type: 'application/json' });
   const a = document.createElement('a');
@@ -95,7 +177,8 @@ export function renderInteriorMarkers({
   worldAtlas,
   manifest,
   interiorGroups,
-  showSingleMap
+  showSingleMap,
+  currentGroup
 }) {
   // Remove all existing interior markers
   if (!map._interiorMarkersLayer) return;
@@ -133,6 +216,27 @@ export function renderInteriorMarkers({
           }
         }
       }
+    } else if (currentView === 'group' && currentGroup) {
+      // Group view: only show markers that lead to maps OUTSIDE the group
+      // Check if the marker's parent is in the group
+      if (placement.parent && currentGroup.members.includes(placement.parent)) {
+        // Marker's parent map is in the group - check if the target is also in the group
+        const targetMap = manifest.maps.find(m => m.name === placement.name);
+        if (targetMap) {
+          const targetGroup = interiorGroups.find(g => g.members.includes(targetMap.name));
+          // Only show if target is NOT in the same group
+          if (!targetGroup || targetGroup.name !== currentGroup.name) {
+            show = true;
+            // Adjust coordinates to parent map's position in group layout
+            if (map._groupLayouts && map._groupLayouts[currentGroup.name] && map._groupLayouts[currentGroup.name][placement.parent]) {
+              const parentLayout = map._groupLayouts[currentGroup.name][placement.parent];
+              markerX = parentLayout.offsetX + placement.x;
+              markerY = parentLayout.offsetY + placement.y;
+            }
+          }
+        }
+      }
+      // Don't show exterior markers (no parent) in group view
     }
 
     if (!show) continue;
@@ -486,6 +590,117 @@ export function showWorldView({
     }
     map.fitBounds([[0, 0], [finalMaxY, finalMaxX]]);
   }
+}
+
+export function showGroupView({
+  map,
+  group,
+  manifest,
+  overlaysGroup,
+  markersLayer,
+  setBreadcrumb,
+  setMapInfo,
+  backBtn,
+  renderInteriorMarkers,
+  showSingleMap,
+  worldAtlas
+}) {
+  // Use map's attached layer groups if not provided
+  overlaysGroup = overlaysGroup || map._overlaysGroup;
+  markersLayer = markersLayer || map._markersLayer;
+  // Remove any lingering tooltips
+  document.querySelectorAll('.interior-tooltip').forEach(el => el.remove());
+  // Set view state
+  overlaysGroup.clearLayers();
+  markersLayer.clearLayers();
+  if (map._interiorMarkersLayer) map._interiorMarkersLayer.clearLayers();
+  
+  setBreadcrumb(`<strong>Group: ${group.name}</strong>`);
+  setMapInfo(`${group.members.length} maps in group`);
+  if (backBtn) backBtn.style.display = 'none';
+  
+  // Layout maps in a grid
+  const maps = group.members.map(name => manifest.maps.find(m => m.name === name)).filter(Boolean);
+  if (maps.length === 0) return;
+  
+  // Calculate grid layout (try to make it roughly square)
+  const cols = Math.ceil(Math.sqrt(maps.length));
+  const rows = Math.ceil(maps.length / cols);
+  
+  // Find the maximum dimensions for consistent sizing
+  const maxW = Math.max(...maps.map(m => m.width));
+  const maxH = Math.max(...maps.map(m => m.height));
+  const padding = 0; // pixels between maps (0 for border-to-border)
+  
+  // Store group layout metadata on the map for editing
+  if (!map._groupLayouts) map._groupLayouts = {};
+  
+  // Load saved layout from worldAtlas if available
+  if (worldAtlas && worldAtlas.groupLayouts && worldAtlas.groupLayouts[group.name]) {
+    map._groupLayouts[group.name] = JSON.parse(JSON.stringify(worldAtlas.groupLayouts[group.name]));
+  } else if (!map._groupLayouts[group.name]) {
+    // Initialize default layout
+    map._groupLayouts[group.name] = {};
+    maps.forEach((mapData, idx) => {
+      const col = idx % cols;
+      const row = Math.floor(idx / cols);
+      map._groupLayouts[group.name][mapData.name] = {
+        offsetX: col * (maxW + padding),
+        offsetY: row * (maxH + padding)
+      };
+    });
+  }
+  
+  let allBounds = [];
+  maps.forEach((mapData, idx) => {
+    const layout = map._groupLayouts[group.name][mapData.name];
+    
+    // If layout is missing, generate a default grid position
+    let offsetX, offsetY;
+    if (layout) {
+      offsetX = layout.offsetX;
+      offsetY = layout.offsetY;
+    } else {
+      // Fallback: generate grid position
+      const col = idx % cols;
+      const row = Math.floor(idx / cols);
+      offsetX = col * (maxW + padding);
+      offsetY = row * (maxH + padding);
+      
+      // Store the generated layout
+      map._groupLayouts[group.name][mapData.name] = { offsetX, offsetY };
+    }
+    
+    const w = mapData.width;
+    const h = mapData.height;
+    const bounds = [[offsetY, offsetX], [offsetY + h, offsetX + w]];
+    allBounds.push(bounds);
+    
+    const overlay = L.imageOverlay(safeImageUrl(mapData.image), bounds, {
+      interactive: true
+    });
+    
+    // Store reference for drag editing
+    overlay._mapData = mapData;
+    overlay._groupName = group.name;
+    
+    overlaysGroup.addLayer(overlay);
+  });
+  
+  // Fit bounds to show all maps
+  if (allBounds.length > 0) {
+    const minLat = Math.min(...allBounds.map(b => b[0][0]));
+    const minLng = Math.min(...allBounds.map(b => b[0][1]));
+    const maxLat = Math.max(...allBounds.map(b => b[1][0]));
+    const maxLng = Math.max(...allBounds.map(b => b[1][1]));
+    map.fitBounds([[minLat, minLng], [maxLat, maxLng]], { padding: [50, 50] });
+  }
+  
+  // Show interior markers for this group (handled by renderInteriorMarkers)
+  if (typeof renderInteriorMarkers === 'function') renderInteriorMarkers();
+  
+  // Setup drag handlers for group editing
+  setupGroupEditHandlers(map, group);
 }
 
 export function showSingleMap({
