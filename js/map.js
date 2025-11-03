@@ -101,16 +101,45 @@ export function renderInteriorMarkers({
   if (!map._interiorMarkersLayer) return;
   map._interiorMarkersLayer.clearLayers();
   if (!showInteriorsToggle || !showInteriorsToggle.checked) return;
-  // Show markers for current view (world or single map)
-  let parent = null;
-  if (currentView === 'single' && currentMapData) {
-    parent = currentMapData.name;
-  }
+
   for (const placement of interiorPlacements) {
+    let show = false;
+    let markerX = placement.x;
+    let markerY = placement.y;
+
+    if (currentView === 'world') {
+      // World view: show only world-placed markers
+      show = !placement.parent;
+    } else if (currentView === 'single' && currentMapData) {
+      // Single map view: show only markers for this map
+      if (placement.parent === currentMapData.name) {
+        show = true;
+        // Use local coordinates as-is
+        markerX = placement.x;
+        markerY = placement.y;
+      } else if (!placement.parent && worldAtlas && Array.isArray(worldAtlas.maps)) {
+        // World marker: check if it falls within this map's atlas bounds
+        const atlasEntry = worldAtlas.maps.find(e => e.name === currentMapData.name);
+        if (atlasEntry) {
+          // Only show if the marker is within the bounds of this map in the world atlas
+          if (
+            placement.x >= atlasEntry.x && placement.x <= atlasEntry.x + atlasEntry.width &&
+            placement.y >= atlasEntry.y && placement.y <= atlasEntry.y + atlasEntry.height
+          ) {
+            show = true;
+            // Transform world coords to local map coords
+            markerX = placement.x - atlasEntry.x;
+            markerY = placement.y - atlasEntry.y;
+          }
+        }
+      }
+    }
+
+    if (!show) continue;
+    // Only show markers for the current map
     const m = manifest.maps.find(x => x.name === placement.name);
     if (!m) continue;
     const group = interiorGroups.find(g => g.members.includes(placement.name));
-    // Choose icon
     let iconHtml = '';
     switch (placement.icon) {
       case 'cave': iconHtml = '⛰️'; break;
@@ -119,15 +148,17 @@ export function renderInteriorMarkers({
       case 'generic': iconHtml = '⭐'; break;
       default: iconHtml = '🚪';
     }
-    let markerX = placement.x;
-    let markerY = placement.y;
-    if (parent !== null && worldAtlas && Array.isArray(worldAtlas.maps)) {
-      const atlasEntry = worldAtlas.maps.find(e => e.name === parent);
-      if (atlasEntry) {
-        markerX = placement.x - atlasEntry.x;
-        markerY = placement.y - atlasEntry.y;
+    // Defensive: only add marker if coordinates are within the map bounds
+    if (currentView === 'single' && currentMapData) {
+      if (
+        markerX < 0 || markerY < 0 ||
+        markerX > currentMapData.width || markerY > currentMapData.height
+      ) {
+        continue;
+      }
+    }
     const marker = L.marker([markerY, markerX], {
-      icon: L.divIcon({ className: 'interior-marker', html: `<div class="interior-marker-icon">${iconHtml}</div>`, iconSize: [32, 32] })
+      icon: L.divIcon({ className: 'interior-marker', html: `<div class=\"interior-marker-icon\">${iconHtml}</div>`, iconSize: [32, 32] })
     });
     marker.on('click', () => {
       showSingleMap(m);
@@ -149,28 +180,6 @@ export function renderInteriorMarkers({
       });
     });
     map._interiorMarkersLayer.addLayer(marker);
-  }
-      marker.on('click', () => {
-        showSingleMap(m);
-      });
-      marker.on('mouseover', (e) => {
-        const tooltip = document.createElement('div');
-        tooltip.className = 'interior-tooltip';
-        tooltip.textContent = group ? `${placement.name} (Group: ${group.name})` : placement.name;
-        document.body.appendChild(tooltip);
-        function moveTooltip(ev) {
-          tooltip.style.left = (ev.originalEvent.pageX + 12) + 'px';
-          tooltip.style.top = (ev.originalEvent.pageY - 8) + 'px';
-        }
-        moveTooltip(e);
-        marker.on('mousemove', moveTooltip);
-        marker.on('mouseout', () => {
-          tooltip.remove();
-          marker.off('mousemove', moveTooltip);
-        });
-      });
-      map._interiorMarkersLayer.addLayer(marker);
-    }
   }
 }
 
@@ -265,7 +274,8 @@ export function showWorldView({
   markersLayer,
   setBreadcrumb,
   setMapInfo,
-  backBtn
+  backBtn,
+  showSingleMap
 }) {
 
   // Use the map's own overlay groups and indexes
@@ -304,11 +314,12 @@ export function showWorldView({
         const marker = L.marker([entry.y + h/2, entry.x + w/2], {
           icon: L.divIcon({ className: 'map-label', html: `<div class=\"map-label-text\">${entry.name}</div>`, iconSize: [200, 40] })
         });
-        // Try to map atlas entry back to manifest map by name
-        const manifestMatch = mapsByName[entry.name] || (manifest.maps ? manifest.maps.find(m => m.name === entry.name) : null);
+        // Label click navigates to correct map and stashes layout (old logic)
+        const manifestObj = manifest.maps.find(m => m.name === entry.name);
         marker.on('click', () => {
-          // TODO: stashCurrentLayout();
-          // TODO: showSingleMap(manifestMatch);
+          if (manifestObj && typeof showSingleMap === 'function') {
+            showSingleMap(manifestObj);
+          }
         });
         markersLayer.addLayer(marker);
         const idxObj = overlayIndex.get(entry.name);
@@ -340,6 +351,15 @@ export function showWorldView({
       if (!toggleLabels || toggleLabels.checked) {
         const marker = L.marker([mOffY + h/2, mOffX + w/2], {
           icon: L.divIcon({ className: 'map-label', html: `<div class=\"map-label-text\">${m.name}</div>`, iconSize: [200, 40] })
+        });
+        marker.on('click', () => {
+          if (typeof showSingleMap === 'function') {
+            // Update current view and map data before showing the single map
+            currentView.value = 'single';
+            currentMapData.value = m;
+            console.log('Switching to single map view:', currentMapData.value);
+            showSingleMap(m);
+          }
         });
         markersLayer.addLayer(marker);
         const idxObj = overlayIndex.get(m.name);
@@ -375,6 +395,9 @@ export function showWorldView({
         if (!toggleLabels || toggleLabels.checked) {
           const marker = L.marker([offsetY + h/2, offsetX + w/2], {
             icon: L.divIcon({ className: 'map-label', html: `<div class=\"map-label-text\">${m.name}</div>`, iconSize: [200, 40] })
+          });
+          marker.on('click', () => {
+            if (typeof showSingleMap === 'function') showSingleMap(m);
           });
           markersLayer.addLayer(marker);
         }
@@ -414,8 +437,7 @@ export function showWorldView({
           icon: L.divIcon({ className: 'map-label', html: `<div class=\"map-label-text\">${m.name}</div>`, iconSize: [200, 40] })
         });
         marker.on('click', () => {
-          // TODO: stashCurrentLayout();
-          // TODO: showSingleMap(m);
+          if (typeof showSingleMap === 'function') showSingleMap(m);
         });
         markersLayer.addLayer(marker);
         const idxObj = overlayIndex.get(m.name);
@@ -449,6 +471,9 @@ export function showWorldView({
           const marker = L.marker([iOffY + h/2, iOffX + w/2], {
             icon: L.divIcon({ className: 'map-label', html: `<div class=\"map-label-text\">${m.name}</div>`, iconSize: [200, 40] })
           });
+          marker.on('click', () => {
+            if (typeof showSingleMap === 'function') showSingleMap(m);
+          });
           markersLayer.addLayer(marker);
           const idxObj = overlayIndex.get(m.name);
           if (idxObj) idxObj.label = marker;
@@ -473,11 +498,15 @@ export function showSingleMap({
   backBtn,
   renderInteriorMarkers
 }) {
+  // Use map's attached layer groups if not provided
+  overlaysGroup = overlaysGroup || map._overlaysGroup;
+  markersLayer = markersLayer || map._markersLayer;
   // Remove any lingering tooltips
   document.querySelectorAll('.interior-tooltip').forEach(el => el.remove());
   // Set view state
   overlaysGroup.clearLayers();
   markersLayer.clearLayers();
+  if (map._interiorMarkersLayer) map._interiorMarkersLayer.clearLayers();
   setBreadcrumb(`<strong>${mapData.name}</strong>`);
   setMapInfo(`${mapData.width}×${mapData.height}px`);
   if (backBtn) backBtn.style.display = 'none';

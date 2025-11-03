@@ -53,10 +53,17 @@ async function init() {
   let currentView = { value: 'world' };
   let currentMapData = { value: null };
   let selectedInteriorForPlacement = { value: null };
+  // Attach to window for global access (used by map.js label click marker rendering)
+  window.currentView = currentView;
+  window.currentMapData = currentMapData;
+  window.showSingleMap = null;
 
   // --- Map and UI setup ---
   const mapContainer = document.getElementById('map');
   const map = mapmod.createMap(mapContainer);
+  // Attach currentView and currentMapData for use in map.js label click
+  map._currentView = currentView;
+  map._currentMapData = currentMapData;
   const worldMaps = manifest.maps.filter(m => state.currentType(m.name) === 'exterior');
   const interiorMaps = manifest.maps.filter(m => state.currentType(m.name) === 'interior');
 
@@ -202,7 +209,8 @@ async function init() {
       toggleIncludeInteriors: ui.toggleIncludeInteriors,
       setBreadcrumb: ui.setBreadcrumb,
       setMapInfo: ui.setMapInfo,
-      backBtn: ui.backBtn
+      backBtn: ui.backBtn,
+      showSingleMap
     });
     mapmod.renderInteriorMarkers({
       map,
@@ -254,17 +262,6 @@ async function init() {
         interiorGroups: state.interiorGroups,
         showSingleMap
       })
-    });
-    mapmod.renderInteriorMarkers({
-      map,
-      interiorPlacements: state.interiorPlacements,
-      showInteriorsToggle: document.getElementById('show-interiors'),
-      currentView: currentView.value,
-      currentMapData: currentMapData.value,
-      worldAtlas,
-      manifest,
-      interiorGroups: state.interiorGroups,
-      showSingleMap
     });
   }
 
