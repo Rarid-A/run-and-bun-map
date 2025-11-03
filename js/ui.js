@@ -8,33 +8,41 @@ export function renderSearchList({
   // Only show interiors if editing interiors and not including world maps
   const includeWorldMaps = document.getElementById('search-all-images');
   const includeWorldMapsChecked = includeWorldMaps && includeWorldMaps.checked;
-  if (
-    editInteriorsToggle && editInteriorsToggle.checked &&
-    !includeWorldMapsChecked &&
-    !q // only filter if not searching
-  ) {
-    items = items.filter(m => currentType(m.name) === 'interior');
-  }
+  
+  // First, filter by search query if present
   if (q) {
-    const numberMatch = q.match(/^#?(\d{3})$/);
+    // Check if the query is only digits (1-3 digits)
+    const numberMatch = q.match(/^#?(\d{1,3})$/);
     if (numberMatch) {
       const num = numberMatch[1];
-      if (parseInt(num, 10) >= 1 && parseInt(num, 10) <= 519) {
-        items = items.filter(m => m.image && m.image.match(new RegExp(`#${num}(\D|$)`)));
+      // Only show results if exactly 3 digits are entered
+      if (num.length === 3) {
+        const numValue = parseInt(num, 10);
+        if (numValue >= 1 && numValue <= 519) {
+          // Match #NNN followed by a space or non-digit
+          items = items.filter(m => m.image && m.image.includes(`#${num} `));
+        } else {
+          items = [];
+        }
       } else {
+        // If 1 or 2 digits, don't show any results yet
         items = [];
       }
     } else {
       items = items.filter(m => m.name.toLowerCase().includes(q));
     }
   }
+  
+  // Then, filter to interiors only if in Edit Interiors mode (and not including world maps)
+  if (
+    editInteriorsToggle && editInteriorsToggle.checked &&
+    !includeWorldMapsChecked
+  ) {
+    items = items.filter(m => currentType(m.name) === 'interior');
+  }
   searchList.innerHTML = '';
   items.forEach(m => {
     const type = currentType(m.name);
-    // Prevent exteriors from being placed as interiors
-    if (editInteriorsToggle && editInteriorsToggle.checked && type !== 'interior') {
-      return;
-    }
     const li = document.createElement('li');
     li.style.display = 'flex';
     li.style.alignItems = 'center';
@@ -49,8 +57,8 @@ export function renderSearchList({
     link.onclick = (e) => { e.preventDefault(); showSingleMap(m); };
     li.appendChild(link);
     li.appendChild(btn);
-    // Add icon picker and 'Place' button in Edit Interiors mode
-    if (editInteriorsToggle && editInteriorsToggle.checked) {
+    // Add icon picker and 'Place' button in Edit Interiors mode, but ONLY for interior maps
+    if (editInteriorsToggle && editInteriorsToggle.checked && type === 'interior') {
       const iconPicker = document.createElement('select');
       iconPicker.style.marginLeft = '8px';
       const icons = [
@@ -79,7 +87,15 @@ export function renderSearchList({
   });
   if (!items.length) {
     const li = document.createElement('li');
-    li.textContent = 'No maps found.';
+    // Check if user is typing a number search
+    const numberMatch = q.match(/^#?(\d{1,3})$/);
+    if (numberMatch && numberMatch[1].length < 3) {
+      li.textContent = `Keep typing... (${numberMatch[1].length}/3 digits)`;
+      li.style.color = '#888';
+      li.style.fontStyle = 'italic';
+    } else {
+      li.textContent = 'No maps found.';
+    }
     searchList.appendChild(li);
   }
 }

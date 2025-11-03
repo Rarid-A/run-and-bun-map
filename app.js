@@ -96,18 +96,26 @@ async function init() {
     currentMapData,
     worldAtlas,
     interiorPlacements: state.interiorPlacements,
-    renderInteriorMarkers: () => mapmod.renderInteriorMarkers({
-      map,
-      interiorPlacements: state.interiorPlacements,
-      showInteriorsToggle: document.getElementById('show-interiors'),
-      currentView: currentView.value,
-      currentMapData: currentMapData.value,
-      worldAtlas,
-      manifest,
-      interiorGroups: state.interiorGroups,
-      showSingleMap,
-      currentGroup: null
-    })
+    renderInteriorMarkers: () => {
+      // Determine current group if in group view
+      let currentGroup = null;
+      if (currentView.value === 'group' && currentMapData.value) {
+        currentGroup = state.interiorGroups.find(g => g.members.includes(currentMapData.value.name));
+      }
+      
+      mapmod.renderInteriorMarkers({
+        map,
+        interiorPlacements: state.interiorPlacements,
+        showInteriorsToggle: document.getElementById('show-interiors'),
+        currentView: currentView.value,
+        currentMapData: currentMapData.value,
+        worldAtlas,
+        manifest,
+        interiorGroups: state.interiorGroups,
+        showSingleMap,
+        currentGroup: currentGroup
+      });
+    }
   });
 
   // --- Group modal wiring ---
@@ -356,7 +364,9 @@ async function init() {
         worldAtlasSource,
         overlayIndex: map._overlayIndex,
         mapsByName: state.mapsByName,
-        map
+        map,
+        interiorPlacements: state.interiorPlacements,
+        interiorGroups: state.interiorGroups
       });
     });
   }

@@ -133,7 +133,9 @@ export async function saveLayout({
   worldAtlasSource,
   overlayIndex,
   mapsByName,
-  map
+  map,
+  interiorPlacements,
+  interiorGroups
 }) {
   if (!worldAtlas) worldAtlas = { unit: 'px', maps: [] };
   worldAtlas.maps = [];
@@ -154,6 +156,14 @@ export async function saveLayout({
   // Save group layouts if they exist
   if (map && map._groupLayouts) {
     worldAtlas.groupLayouts = map._groupLayouts;
+  }
+  
+  // Save interior placements and groups
+  if (interiorPlacements) {
+    worldAtlas.interiorPlacements = JSON.parse(JSON.stringify(interiorPlacements));
+  }
+  if (interiorGroups) {
+    worldAtlas.groups = JSON.parse(JSON.stringify(interiorGroups));
   }
   
   // Download JSON
@@ -303,17 +313,14 @@ export function setupInteriorPlacement({
       let parent = null;
       let markerX = e.latlng.lng;
       let markerY = e.latlng.lat;
-      if (currentView.value === 'single' && currentMapData.value) {
+      
+      // If viewing a single map or group, place relative to that map
+      if ((currentView.value === 'single' || currentView.value === 'group') && currentMapData.value) {
         parent = currentMapData.value.name;
-        if (worldAtlas && Array.isArray(worldAtlas.maps)) {
-          const atlasEntry = worldAtlas.maps.find(entry => entry.name === currentMapData.value.name);
-          if (atlasEntry) {
-            markerX = e.latlng.lng + atlasEntry.x;
-            markerY = e.latlng.lat + atlasEntry.y;
-            parent = null;
-          }
-        }
+        // Coordinates are relative to the current map view, no conversion needed
       }
+      // If viewing world map, coordinates are already in world space
+      
       const m = selectedInteriorForPlacement.value;
       interiorPlacements.push({
         name: m.name,
