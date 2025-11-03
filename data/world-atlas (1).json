@@ -398,16 +398,16 @@
       "image": "exports/#170 Battle Frontier Outside West.png",
       "width": 896,
       "height": 1152,
-      "x": 0,
-      "y": 4085
+      "x": 18684,
+      "y": -2318
     },
     {
       "name": "Battle Frontier Outside East",
       "image": "exports/#180 Battle Frontier Outside East.png",
       "width": 1152,
       "height": 1152,
-      "x": 946,
-      "y": 4085
+      "x": 19580,
+      "y": -2318
     }
   ],
   "interiorPlacements": [
@@ -4669,191 +4669,156 @@
     },
     {
       "name": "Battle Frontier Lounge 3",
-      "x": 1993.3449523589304,
-      "y": 4735.050368885758,
-      "parent": null,
-      "icon": "door"
-    },
-    {
-      "name": "Battle Frontier Outside East",
-      "x": 73,
-      "y": 8.496161466072323,
-      "parent": "Battle Frontier Lounge 3",
+      "x": 1047.3449523589304,
+      "y": 650.050368885758,
+      "parent": "Battle Frontier Outside East",
       "icon": "door"
     },
     {
       "name": "Battle Frontier Battle Pyramid Lobby",
-      "x": 1882,
-      "y": 5009.4662374112595,
-      "parent": null,
-      "icon": "door"
-    },
-    {
-      "name": "Artisan Cave 1F",
-      "x": 1400.8859814732054,
-      "y": 5120.671648467403,
-      "parent": null,
+      "x": 936,
+      "y": 924.4662374112595,
+      "parent": "Battle Frontier Outside East",
       "icon": "door"
     },
     {
       "name": "Battle Frontier Ranking Hall",
-      "x": 1512.6714502834614,
-      "y": 5038.6299047157945,
-      "parent": null,
+      "x": 566.6714502834614,
+      "y": 953.6299047157945,
+      "parent": "Battle Frontier Outside East",
       "icon": "door"
     },
     {
       "name": "Battle Frontier Battle Arena Lobby",
-      "x": 1577.4832380511095,
-      "y": 4766.032053312553,
-      "parent": null,
+      "x": 631.4832380511095,
+      "y": 681.0320533125532,
+      "parent": "Battle Frontier Outside East",
       "icon": "door"
     },
     {
       "name": "Battle Frontier Battle Palace Lobby",
-      "x": 1674.075304459151,
-      "y": 4334.566203062663,
-      "parent": null,
+      "x": 728.0753044591511,
+      "y": 249.56620306266268,
+      "parent": "Battle Frontier Outside East",
       "icon": "door"
     },
     {
       "name": "Battle Frontier Lounge 5",
-      "x": 1304.5602051579851,
-      "y": 4416.1090377389655,
-      "parent": null,
+      "x": 358.56020515798514,
+      "y": 331.1090377389655,
+      "parent": "Battle Frontier Outside East",
       "icon": "door"
     },
     {
       "name": "Battle Frontier Lounge 8",
-      "x": 1177.9096474101952,
-      "y": 4416.703543128469,
-      "parent": null,
+      "x": 231.90964741019525,
+      "y": 331.7035431284694,
+      "parent": "Battle Frontier Outside East",
       "icon": "door"
     },
     {
       "name": "Battle Frontier Pokemon Center 1F",
-      "x": 1001.3123908322912,
-      "y": 4415.514532349461,
-      "parent": null,
+      "x": 55.31239083229116,
+      "y": 330.51453234946075,
+      "parent": "Battle Frontier Outside East",
       "icon": "door"
     },
     {
       "name": "Battle Frontier Lounge 1",
-      "x": 1019.7451011148333,
-      "y": 4530.848577913317,
-      "parent": null,
+      "x": 73.74510111483335,
+      "y": 445.84857791331706,
+      "parent": "Battle Frontier Outside East",
       "icon": "door"
     },
     {
       "name": "Battle Frontier Lounge 4",
       "x": 855.0399156869565,
-      "y": 4526.092534797282,
-      "parent": null,
+      "y": 441.0925347972816,
+      "parent": "Battle Frontier Outside West",
       "icon": "door"
     },
     {
       "name": "Battle Frontier Lounge 2",
       "x": 726.0109437091612,
-      "y": 4530.254072523813,
-      "parent": null,
+      "y": 445.2540725238132,
+      "parent": "Battle Frontier Outside West",
       "icon": "door"
     },
     {
       "name": "Battle Frontier Mart",
       "x": 821.7421164668802,
-      "y": 4417.892553907478,
-      "parent": null,
-      "icon": "door"
-    },
-    {
-      "name": "Artisan Cave B1F",
-      "x": 631.468978066445,
-      "y": 4350.713444893479,
-      "parent": null,
+      "y": 332.89255390747803,
+      "parent": "Battle Frontier Outside West",
       "icon": "door"
     },
     {
       "name": "Battle Frontier Reception Gate",
       "x": 423,
-      "y": 4192.021545319465,
-      "parent": null,
+      "y": 107.02154531946508,
+      "parent": "Battle Frontier Outside West",
       "icon": "door"
     },
     {
       "name": "Battle Frontier Reception Gate",
       "x": 423,
-      "y": 4257.010813934291,
-      "parent": null,
+      "y": 172.01081393429104,
+      "parent": "Battle Frontier Outside West",
       "icon": "door"
     },
     {
       "name": "Battle Frontier Battle Factory Lobby",
       "x": 183.1406563273158,
-      "y": 4624.447178824545,
-      "parent": null,
+      "y": 539.4471788245446,
+      "parent": "Battle Frontier Outside West",
       "icon": "door"
     },
     {
       "name": "Battle Frontier Lounge 7",
       "x": 86.2670273047588,
-      "y": 4912.936705729739,
-      "parent": null,
+      "y": 827.9367057297386,
+      "parent": "Battle Frontier Outside West",
       "icon": "door"
     },
     {
       "name": "Battle Frontier Battle Dome Lobby",
       "x": 310.41987694089437,
-      "y": 4958.18406823253,
-      "parent": null,
+      "y": 873.1840682325301,
+      "parent": "Battle Frontier Outside West",
       "icon": "door"
     },
     {
       "name": "Battle Frontier Battle Pike Lobby",
       "x": 679.0372626665537,
-      "y": 4799.595740552357,
-      "parent": null,
+      "y": 714.5957405523568,
+      "parent": "Battle Frontier Outside West",
       "icon": "door"
     },
     {
       "name": "Battle Frontier Scotts House",
       "x": 709.9566476566245,
-      "y": 5150.353920359962,
-      "parent": null,
+      "y": 1065.353920359962,
+      "parent": "Battle Frontier Outside West",
       "icon": "door"
     },
     {
       "name": "Battle Frontier Lounge 6",
-      "x": 1033.0830073135457,
-      "y": 5103.137105887118,
-      "parent": null,
+      "x": 87.08300731354575,
+      "y": 1018.1371058871182,
+      "parent": "Battle Frontier Outside East",
       "icon": "door"
     },
     {
       "name": "Battle Frontier Battle Tower Lobby",
-      "x": 1210.5668093913694,
-      "y": 5006.27947052958,
-      "parent": null,
+      "x": 264.56680939136936,
+      "y": 921.2794705295801,
+      "parent": "Battle Frontier Outside East",
       "icon": "door"
     },
     {
       "name": "Battle Frontier Exchange Service Corner",
-      "x": 1112.9860735876257,
-      "y": 4783.577608211154,
-      "parent": null,
-      "icon": "door"
-    },
-    {
-      "name": "Battle Frontier Outside West",
-      "x": 73.73084113016871,
-      "y": 6.539461116551624,
-      "parent": "Battle Frontier Reception Gate",
-      "icon": "door"
-    },
-    {
-      "name": "Battle Frontier Outside West",
-      "x": 72.83893579391668,
-      "y": 196.78118575796432,
-      "parent": "Battle Frontier Reception Gate",
+      "x": 166.9860735876257,
+      "y": 698.5776082111543,
+      "parent": "Battle Frontier Outside East",
       "icon": "door"
     },
     {
@@ -5004,20 +4969,6 @@
       "icon": "door"
     },
     {
-      "name": "Battle Frontier Outside East",
-      "x": 207.51664156797483,
-      "y": 7.428568664890689,
-      "parent": "Battle Frontier Battle Palace Lobby",
-      "icon": "door"
-    },
-    {
-      "name": "Battle Frontier Battle Palace Corridor",
-      "x": 87.10942117394933,
-      "y": 118.60107650221624,
-      "parent": "Battle Frontier Battle Palace Lobby",
-      "icon": "door"
-    },
-    {
       "name": "Battle Frontier Battle Palace Lobby",
       "x": 143.2994573578279,
       "y": 7.728471895560449,
@@ -5046,73 +4997,10 @@
       "icon": "door"
     },
     {
-      "name": "Battle Frontier Outside East",
-      "x": 31.289475067504725,
-      "y": 6.892685912962876,
-      "parent": "Battle Frontier Lounge 5",
-      "icon": "door"
-    },
-    {
-      "name": "Battle Frontier Outside East",
-      "x": 72.5,
-      "y": 7.746285289747391,
-      "parent": "Battle Frontier Lounge 8",
-      "icon": "door"
-    },
-    {
-      "name": "Battle Frontier Outside East",
-      "x": 112.68011964399776,
-      "y": 7.145189995684823,
-      "parent": "Battle Frontier Pokemon Center 1F",
-      "icon": "door"
-    },
-    {
-      "name": "Battle Frontier Pokemon Center 2F",
-      "x": 25.857564769051724,
-      "y": 40.144925196770735,
-      "parent": "Battle Frontier Pokemon Center 1F",
-      "icon": "door"
-    },
-    {
       "name": "Battle Frontier Pokemon Center 1F",
       "x": 22.5,
       "y": 57.48807165263332,
       "parent": "Battle Frontier Pokemon Center 2F",
-      "icon": "door"
-    },
-    {
-      "name": "Battle Frontier Outside East",
-      "x": 71.25,
-      "y": 9.246037642397226,
-      "parent": "Battle Frontier Lounge 1",
-      "icon": "door"
-    },
-    {
-      "name": "Battle Frontier Outside East",
-      "x": 121.00182395152687,
-      "y": 7.13264123809728,
-      "parent": "Battle Frontier Battle Arena Lobby",
-      "icon": "door"
-    },
-    {
-      "name": "Battle Frontier Outside East",
-      "x": 120.75,
-      "y": 8.24752352649827,
-      "parent": "Battle Frontier Exchange Service Corner",
-      "icon": "door"
-    },
-    {
-      "name": "Battle Frontier Outside East",
-      "x": 211.084262912983,
-      "y": 5.6424510444583875,
-      "parent": "Battle Frontier Battle Tower Lobby",
-      "icon": "door"
-    },
-    {
-      "name": "Battle Frontier Battle Tower Battle Room",
-      "x": 103.16371722648606,
-      "y": 130.48858284038545,
-      "parent": "Battle Frontier Battle Tower Lobby",
       "icon": "door"
     },
     {
@@ -5123,80 +5011,185 @@
       "icon": "door"
     },
     {
-      "name": "Battle Frontier Outside East",
-      "x": 71.5,
-      "y": 5.746615486214296,
-      "parent": "Battle Frontier Lounge 6",
-      "icon": "door"
-    },
-    {
-      "name": "Battle Frontier Outside East",
-      "x": 120.66863558890805,
-      "y": 7.143940521070797,
-      "parent": "Battle Frontier Battle Pyramid Lobby",
-      "icon": "door"
-    },
-    {
-      "name": "Battle Frontier Outside East",
-      "x": 431.0875791884864,
-      "y": 5.333172770080285,
-      "parent": "Battle Frontier Ranking Hall",
-      "icon": "door"
-    },
-    {
       "name": "Battle Frontier Outside West",
-      "x": 62.932503525602726,
-      "y": 7.246180932515942,
+      "x": 64.16994039267918,
+      "y": 6.53919089340983,
       "parent": "Battle Frontier Mart",
       "icon": "door"
     },
     {
       "name": "Battle Frontier Outside West",
-      "x": 73.75,
-      "y": 6.746450387980843,
-      "parent": "Battle Frontier Lounge 4",
+      "x": 74.62274646642075,
+      "y": 4.755944948038369,
+      "parent": "Battle Frontier Reception Gate",
       "icon": "door"
     },
     {
       "name": "Battle Frontier Outside West",
-      "x": 30.935921676911452,
-      "y": 6.715938403186343,
-      "parent": "Battle Frontier Lounge 2",
+      "x": 73.73084113016871,
+      "y": 196.1866803684599,
+      "parent": "Battle Frontier Reception Gate",
       "icon": "door"
     },
     {
       "name": "Battle Frontier Outside West",
-      "x": 86.21751583769728,
-      "y": 11.88868435413258,
-      "parent": "Battle Frontier Battle Pike Lobby",
-      "icon": "door"
-    },
-    {
-      "name": "Battle Frontier Outside West",
-      "x": 159.6510551891153,
-      "y": 6.536810580634078,
+      "x": 161.4348658616194,
+      "y": 5.645052496377468,
       "parent": "Battle Frontier Battle Factory Lobby",
       "icon": "door"
     },
     {
       "name": "Battle Frontier Outside West",
-      "x": 71.5,
-      "y": 6.746450387980843,
+      "x": 73,
+      "y": 8.246202740630679,
       "parent": "Battle Frontier Lounge 7",
       "icon": "door"
     },
     {
       "name": "Battle Frontier Outside West",
-      "x": 191.30393447022007,
-      "y": 6.72224283882989,
+      "x": 190.46303805496635,
+      "y": 7.142621631200374,
       "parent": "Battle Frontier Battle Dome Lobby",
       "icon": "door"
     },
     {
       "name": "Battle Frontier Outside West",
-      "x": 47.37615433949868,
-      "y": 4.948463305421055,
+      "x": 31.289475067504725,
+      "y": 6.008948364080232,
+      "parent": "Battle Frontier Lounge 2",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside West",
+      "x": 72.25,
+      "y": 6.996409113422487,
+      "parent": "Battle Frontier Lounge 4",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside West",
+      "x": 85.62291228019592,
+      "y": 10.40242088037154,
+      "parent": "Battle Frontier Battle Pike Lobby",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside West",
+      "x": 46.84582425360877,
+      "y": 6.362443383633297,
       "parent": "Battle Frontier Scotts House",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside East",
+      "x": 209.00315046172824,
+      "y": 5.942305191129648,
+      "parent": "Battle Frontier Battle Palace Lobby",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Battle Palace Corridor",
+      "x": 90.3797407402068,
+      "y": 119.19558189172065,
+      "parent": "Battle Frontier Battle Palace Lobby",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside East",
+      "x": 72.25,
+      "y": 6.996409113422487,
+      "parent": "Battle Frontier Lounge 3",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside East",
+      "x": 120.10991861527484,
+      "y": 7.429844848850996,
+      "parent": "Battle Frontier Battle Arena Lobby",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside East",
+      "x": 119.40729096602747,
+      "y": 7.143871105814472,
+      "parent": "Battle Frontier Battle Pyramid Lobby",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside East",
+      "x": 429.3037685159823,
+      "y": 7.7110961601010715,
+      "parent": "Battle Frontier Ranking Hall",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside East",
+      "x": 206.3274344529721,
+      "y": 7.425918128973176,
+      "parent": "Battle Frontier Battle Tower Lobby",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Battle Tower Battle Room",
+      "x": 102.86641544773538,
+      "y": 134.35281878816568,
+      "parent": "Battle Frontier Battle Tower Lobby",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside East",
+      "x": 71.75,
+      "y": 6.996409113422487,
+      "parent": "Battle Frontier Lounge 6",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside East",
+      "x": 120.25,
+      "y": 9.247358428264818,
+      "parent": "Battle Frontier Exchange Service Corner",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside East",
+      "x": 72.25,
+      "y": 6.996409113422487,
+      "parent": "Battle Frontier Lounge 1",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside East",
+      "x": 110.30865786510141,
+      "y": 10.24242479788551,
+      "parent": "Battle Frontier Pokemon Center 1F",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside East",
+      "x": 72.25,
+      "y": 6.746450387980872,
+      "parent": "Battle Frontier Lounge 8",
+      "icon": "door"
+    },
+    {
+      "name": "Battle Frontier Outside East",
+      "x": 31.996581848691275,
+      "y": 6.008919178560128,
+      "parent": "Battle Frontier Lounge 5",
+      "icon": "door"
+    },
+    {
+      "name": "Artisan Cave B1F",
+      "x": 19314,
+      "y": -2049.0498596665016,
+      "parent": null,
+      "icon": "door"
+    },
+    {
+      "name": "Artisan Cave 1F",
+      "x": 20036.356077123346,
+      "y": -1284.9916911507787,
+      "parent": null,
       "icon": "door"
     }
   ],
@@ -5472,12 +5465,12 @@
     }
   ],
   "groupLayouts": {
-    "Ever Grande City Pokemon Center": {
-      "Ever Grande City Pokemon Center 1F": {
+    "Battle Frontier Pokemon Center": {
+      "Battle Frontier Pokemon Center 1F": {
         "offsetX": 0,
         "offsetY": 0
       },
-      "Ever Grande City Pokemon Center 2F": {
+      "Battle Frontier Pokemon Center 2F": {
         "offsetX": 224,
         "offsetY": 0
       }

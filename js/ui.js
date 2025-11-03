@@ -57,8 +57,9 @@ export function renderSearchList({
     link.onclick = (e) => { e.preventDefault(); showSingleMap(m); };
     li.appendChild(link);
     li.appendChild(btn);
-    // Add icon picker and 'Place' button in Edit Interiors mode, but ONLY for interior maps
-    if (editInteriorsToggle && editInteriorsToggle.checked && type === 'interior') {
+    // Add icon picker and 'Place' button in Edit Interiors mode
+    // Allow placing both interiors AND exteriors when in edit mode
+    if (editInteriorsToggle && editInteriorsToggle.checked) {
       const iconPicker = document.createElement('select');
       iconPicker.style.marginLeft = '8px';
       const icons = [

@@ -48,6 +48,13 @@ async function init() {
   state.setManifest(manifest);
   state.setWorldAtlas(worldAtlas, worldAtlasSource);
   state.buildMapClassification(manifest, worldAtlas);
+  
+  // Initialize mutableAtlas as a deep copy of worldAtlas for tracking position changes
+  if (worldAtlas) {
+    state.setMutableAtlas(JSON.parse(JSON.stringify(worldAtlas)));
+  } else {
+    state.setMutableAtlas({ unit: 'px', maps: [] });
+  }
 
   // --- Expose to window for access in UI components ---
   window.state = state;
@@ -84,7 +91,30 @@ async function init() {
       mutableAtlas: state.mutableAtlas,
       currentType: state.currentType,
       mapsByName: state.mapsByName
-    })
+    }),
+    interiorPlacements: state.interiorPlacements,
+    worldAtlas,
+    renderInteriorMarkers: () => {
+      // Determine current group if in group view
+      let currentGroup = null;
+      if (currentView.value === 'group' && currentMapData.value) {
+        currentGroup = state.interiorGroups.find(g => g.members.includes(currentMapData.value.name));
+      }
+      
+      mapmod.renderInteriorMarkers({
+        map,
+        interiorPlacements: state.interiorPlacements,
+        showInteriorsToggle: document.getElementById('show-interiors'),
+        currentView: currentView.value,
+        currentMapData: currentMapData.value,
+        worldAtlas,
+        manifest,
+        interiorGroups: state.interiorGroups,
+        showSingleMap,
+        currentGroup: currentGroup,
+        overlayIndex: map._overlayIndex
+      });
+    }
   });
 
   // --- Interior placement click handler ---
@@ -113,7 +143,8 @@ async function init() {
         manifest,
         interiorGroups: state.interiorGroups,
         showSingleMap,
-        currentGroup: currentGroup
+        currentGroup: currentGroup,
+        overlayIndex: map._overlayIndex
       });
     }
   });
@@ -243,7 +274,8 @@ async function init() {
       manifest,
       interiorGroups: state.interiorGroups,
       showSingleMap,
-      currentGroup: null
+      currentGroup: null,
+      overlayIndex: map._overlayIndex
     });
     ui.renderSearchList({
       query: '',
@@ -302,7 +334,8 @@ async function init() {
               manifest,
               interiorGroups: state.interiorGroups,
               showSingleMap,
-              currentGroup: null
+              currentGroup: null,
+              overlayIndex: map._overlayIndex
             })
           });
         },
@@ -316,7 +349,8 @@ async function init() {
           manifest,
           interiorGroups: state.interiorGroups,
           showSingleMap,
-          currentGroup: group
+          currentGroup: group,
+          overlayIndex: map._overlayIndex
         })
       });
     } else {
@@ -341,7 +375,8 @@ async function init() {
           manifest,
           interiorGroups: state.interiorGroups,
           showSingleMap,
-          currentGroup: null
+          currentGroup: null,
+          overlayIndex: map._overlayIndex
         })
       });
     }

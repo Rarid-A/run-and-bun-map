@@ -7,12 +7,58 @@ export function setupOverlayEditHandlers({
   setOverlayPxBounds,
   getOverlayPxBounds,
   snapOverlayToNeighbors,
-  stashCurrentLayout
+  stashCurrentLayout,
+  interiorPlacements,
+  worldAtlas,
+  renderInteriorMarkers
 }) {
   let dragState = null;
 
   function onDocumentMouseUp() {
     if (dragState) {
+      const movedMapName = overlayToName.get(dragState.overlay);
+      const startBounds = dragState.startBounds;
+      const endBounds = dragState.overlay.getBounds();
+      
+      // Calculate the displacement
+      const dx = endBounds.getWest() - startBounds.getWest();
+      const dy = endBounds.getSouth() - startBounds.getSouth();
+      
+      // Snap corners on release
+      if (typeof snapOverlayToNeighbors === 'function') {
+        snapOverlayToNeighbors(dragState.overlay, overlayIndex, getOverlayPxBounds, setOverlayPxBounds, 8);
+      }
+      
+      // Update interior markers that are placed on the world map within this exterior's bounds
+      if (movedMapName && interiorPlacements && (dx !== 0 || dy !== 0)) {
+        const oldX = startBounds.getWest();
+        const oldY = startBounds.getSouth();
+        const oldWidth = startBounds.getEast() - startBounds.getWest();
+        const oldHeight = startBounds.getNorth() - startBounds.getSouth();
+        
+        // Update all world-placed markers that fall within this map's old bounds
+        interiorPlacements.forEach(placement => {
+          if (!placement.parent) { // Only update world-placed markers (no parent)
+            // Check if marker is within the old bounds
+            if (
+              placement.x >= oldX &&
+              placement.x <= oldX + oldWidth &&
+              placement.y >= oldY &&
+              placement.y <= oldY + oldHeight
+            ) {
+              // Move the marker with the map
+              placement.x += dx;
+              placement.y += dy;
+            }
+          }
+        });
+      }
+      
+      // Re-render markers to show the updated positions
+      if (typeof renderInteriorMarkers === 'function') {
+        renderInteriorMarkers();
+      }
+      
       dragState = null;
       map.dragging.enable();
       if (typeof stashCurrentLayout === 'function') stashCurrentLayout();
@@ -25,11 +71,12 @@ export function setupOverlayEditHandlers({
     const target = e.originalEvent.target;
     const overlay = findOverlayByTarget(overlayIndex, target);
     if (!overlay) return;
+    
     map.dragging.disable();
     dragState = {
       overlay,
       startLatLng: e.latlng,
-      startBounds: overlay.getBounds(),
+      startBounds: overlay.getBounds()
     };
     // Ensure mouseup even if the pointer leaves the map
     document.addEventListener('mouseup', onDocumentMouseUp);
@@ -40,13 +87,20 @@ export function setupOverlayEditHandlers({
     const { overlay, startLatLng, startBounds } = dragState;
     const dx = e.latlng.lng - startLatLng.lng;
     const dy = e.latlng.lat - startLatLng.lat;
-    const newBounds = L.latLngBounds(
-      [startBounds.getSouth() + dy, startBounds.getWest() + dx],
-      [startBounds.getNorth() + dy, startBounds.getEast() + dx]
-    );
-    overlay.setBounds(newBounds);
-    if (typeof snapOverlayToNeighbors === 'function') {
-      snapOverlayToNeighbors(overlay, overlayIndex, getOverlayPxBounds, setOverlayPxBounds, 8);
+    const x = startBounds.getWest() + dx;
+    const y = startBounds.getSouth() + dy;
+    const w = startBounds.getEast() - startBounds.getWest();
+    const h = startBounds.getNorth() - startBounds.getSouth();
+    
+    setOverlayPxBounds(overlay, x, y, w, h);
+    
+    // Move the label with the overlay in real-time
+    const mapName = overlayToName.get(overlay);
+    if (mapName) {
+      const obj = overlayIndex.get(mapName);
+      if (obj && obj.label) {
+        obj.label.setLatLng([y + h/2, x + w/2]);
+      }
     }
   });
 } // close setupOverlayEditHandlers
@@ -188,7 +242,8 @@ export function renderInteriorMarkers({
   manifest,
   interiorGroups,
   showSingleMap,
-  currentGroup
+  currentGroup,
+  overlayIndex
 }) {
   // Remove all existing interior markers
   if (!map._interiorMarkersLayer) return;
@@ -201,8 +256,23 @@ export function renderInteriorMarkers({
     let markerY = placement.y;
 
     if (currentView === 'world') {
-      // World view: show only world-placed markers
-      show = !placement.parent;
+      // World view: show world-placed markers AND markers with parents
+      if (!placement.parent) {
+        // World-placed marker - use coordinates as-is
+        show = true;
+      } else {
+        // Marker with parent - calculate world position from parent map's overlay position
+        // Use map._overlayIndex if overlayIndex parameter not provided
+        const indexToUse = overlayIndex || map._overlayIndex;
+        const parentOverlay = indexToUse ? indexToUse.get(placement.parent) : null;
+        if (parentOverlay && parentOverlay.overlay) {
+          const parentBounds = parentOverlay.overlay.getBounds();
+          // Convert relative coordinates to world coordinates
+          markerX = parentBounds.getWest() + placement.x;
+          markerY = parentBounds.getSouth() + placement.y;
+          show = true;
+        }
+      }
     } else if (currentView === 'single' && currentMapData) {
       // Single map view: show only markers for this map
       if (placement.parent === currentMapData.name) {
