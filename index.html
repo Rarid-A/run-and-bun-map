@@ -53,6 +53,7 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.25);
             background: #fff2b2;
           }
+          .interior-marker .interior-marker-label {
             background: #fffbe6;
             border: 2px solid #e0b800;
             border-radius: 8px;
@@ -118,6 +119,7 @@
   <script src="data/maps.js"></script>
   <!-- Optional pre-bundled atlas for file:// usage; generated alongside data/world-atlas.json -->
   <script src="data/world-atlas.js"></script>
-  <script src="app.js"></script>
+  <!-- Modular entry point: app.js imports js/state.js, js/map.js, js/ui.js, js/utils.js -->
+  <script type="module" src="app.js"></script>
 </body>
 </html>
