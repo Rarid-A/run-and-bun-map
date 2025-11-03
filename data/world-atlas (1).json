@@ -4416,13 +4416,62 @@
   ],
   "groups": [
     {
-      "name": "Meteor Falls",
+      "name": "Rustboro City Pokemon Center",
       "members": [
-        "Meteor Falls 1F 1R",
-        "Meteor Falls 1F 2R",
-        "Meteor Falls B1F 1R",
-        "Meteor Falls B1F 2R",
-        "Meteor Falls Stevens Cave"
+        "Rustboro City Pokemon Center 1F",
+        "Rustboro City Pokemon Center 2F"
+      ]
+    },
+    {
+      "name": "Littleroot Town Mays House",
+      "members": [
+        "Littleroot Town Mays House 1F",
+        "Littleroot Town Mays House 2F"
+      ]
+    },
+    {
+      "name": "Slateport City Pokemon Center",
+      "members": [
+        "Slateport City Pokemon Center 1F",
+        "Slateport City Pokemon Center 2F"
+      ]
+    },
+    {
+      "name": "Lilycove City Lilycove Museum",
+      "members": [
+        "Lilycove City Lilycove Museum 1F",
+        "Lilycove City Lilycove Museum 2F"
+      ]
+    },
+    {
+      "name": "Littleroot Town Brendans House",
+      "members": [
+        "Littleroot Town Brendans House 1F",
+        "Littleroot Town Brendans House 2F"
+      ]
+    },
+    {
+      "name": "Petalburg City Pokemon Center",
+      "members": [
+        "Petalburg City Pokemon Center 1F",
+        "Petalburg City Pokemon Center 2F"
+      ]
+    },
+    {
+      "name": "Rustboro City Devon Corp",
+      "members": [
+        "Rustboro City Devon Corp 1F",
+        "Rustboro City Devon Corp 2F",
+        "Rustboro City Devon Corp 3F"
+      ]
+    },
+    {
+      "name": "Mirage Tower",
+      "members": [
+        "Mirage Tower 1F",
+        "Mirage Tower 2F",
+        "Mirage Tower 3F",
+        "Mirage Tower 4F"
       ]
     },
     {
@@ -4439,56 +4488,6 @@
       ]
     },
     {
-      "name": "Granite Cave",
-      "members": [
-        "Granite Cave 1F",
-        "Granite Cave B1F",
-        "Granite Cave B2F"
-      ]
-    },
-    {
-      "name": "Abandoned Ship",
-      "members": [
-        "Abandoned Ship Captains Office",
-        "Abandoned Ship Corridors 1F",
-        "Abandoned Ship Corridors B1F",
-        "Abandoned Ship Deck",
-        "Abandoned Ship Room B1F",
-        "Abandoned Ship Rooms 1F",
-        "Abandoned Ship Rooms 2 B1F",
-        "Abandoned Ship Rooms 21 F",
-        "Abandoned Ship Rooms B1F"
-      ]
-    },
-    {
-      "name": "Petalburg City Pokemon Center",
-      "members": [
-        "Petalburg City Pokemon Center 1F",
-        "Petalburg City Pokemon Center 2F"
-      ]
-    },
-    {
-      "name": "Sootopolis City Gym",
-      "members": [
-        "Sootopolis City Gym 1F",
-        "Sootopolis City Gym B1F"
-      ]
-    },
-    {
-      "name": "Verdanturf Town Pokemon Center",
-      "members": [
-        "Verdanturf Town Pokemon Center 1F",
-        "Verdanturf Town Pokemon Center 2F"
-      ]
-    },
-    {
-      "name": "Mossdeep City Game Corner",
-      "members": [
-        "Mossdeep City Game Corner 1F",
-        "Mossdeep City Game Corner B1F"
-      ]
-    },
-    {
       "name": "Trainer Hill",
       "members": [
         "Trainer Hill 1F",
@@ -4499,10 +4498,39 @@
       ]
     },
     {
+      "name": "Slateport City Sterns Shipyard",
+      "members": [
+        "Slateport City Sterns Shipyard 1F",
+        "Slateport City Sterns Shipyard 2F"
+      ]
+    },
+    {
+      "name": "Granite Cave",
+      "members": [
+        "Granite Cave 1F",
+        "Granite Cave B1F",
+        "Granite Cave B2F"
+      ]
+    },
+    {
       "name": "Route 119 Weather Institute",
       "members": [
         "Route 119 Weather Institute 1F",
         "Route 119 Weather Institute 2F"
+      ]
+    },
+    {
+      "name": "Dewford Town Pokemon Center",
+      "members": [
+        "Dewford Town Pokemon Center 1F",
+        "Dewford Town Pokemon Center 2F"
+      ]
+    },
+    {
+      "name": "Lavaridge Town Gym",
+      "members": [
+        "Lavaridge Town Gym 1F",
+        "Lavaridge Town Gym B1F"
       ]
     },
     {
@@ -4514,40 +4542,17 @@
       ]
     },
     {
-      "name": "Fallarbor Town Pokemon Center",
+      "name": "Verdanturf Town Pokemon Center",
       "members": [
-        "Fallarbor Town Pokemon Center 1F",
-        "Fallarbor Town Pokemon Center 2F"
+        "Verdanturf Town Pokemon Center 1F",
+        "Verdanturf Town Pokemon Center 2F"
       ]
     },
     {
-      "name": "Mossdeep City Space Center",
+      "name": "Slateport City Oceanic Museum",
       "members": [
-        "Mossdeep City Space Center 1F",
-        "Mossdeep City Space Center 2F"
-      ]
-    },
-    {
-      "name": "Mauville City Pokemon Center",
-      "members": [
-        "Mauville City Pokemon Center 1F",
-        "Mauville City Pokemon Center 2F"
-      ]
-    },
-    {
-      "name": "Mirage Tower",
-      "members": [
-        "Mirage Tower 1F",
-        "Mirage Tower 2F",
-        "Mirage Tower 3F",
-        "Mirage Tower 4F"
-      ]
-    },
-    {
-      "name": "Lavaridge Town Pokemon Center",
-      "members": [
-        "Lavaridge Town Pokemon Center 1F",
-        "Lavaridge Town Pokemon Center 2F"
+        "Slateport City Oceanic Museum 1F",
+        "Slateport City Oceanic Museum 2F"
       ]
     },
     {
@@ -4555,66 +4560,6 @@
       "members": [
         "Mossdeep City Pokemon Center 1F",
         "Mossdeep City Pokemon Center 2F"
-      ]
-    },
-    {
-      "name": "Rustboro City Pokemon Center",
-      "members": [
-        "Rustboro City Pokemon Center 1F",
-        "Rustboro City Pokemon Center 2F"
-      ]
-    },
-    {
-      "name": "Lilycove City Department Store",
-      "members": [
-        "Lilycove City Department Store 1F",
-        "Lilycove City Department Store 2F",
-        "Lilycove City Department Store 3F",
-        "Lilycove City Department Store 4F",
-        "Lilycove City Department Store 5F"
-      ]
-    },
-    {
-      "name": "Littleroot Town Mays House",
-      "members": [
-        "Littleroot Town Mays House 1F",
-        "Littleroot Town Mays House 2F"
-      ]
-    },
-    {
-      "name": "Ever Grande City Pokemon League",
-      "members": [
-        "Ever Grande City Pokemon League 1F",
-        "Ever Grande City Pokemon League 2F"
-      ]
-    },
-    {
-      "name": "Rustboro City Devon Corp",
-      "members": [
-        "Rustboro City Devon Corp 1F",
-        "Rustboro City Devon Corp 2F",
-        "Rustboro City Devon Corp 3F"
-      ]
-    },
-    {
-      "name": "Littleroot Town Brendans House",
-      "members": [
-        "Littleroot Town Brendans House 1F",
-        "Littleroot Town Brendans House 2F"
-      ]
-    },
-    {
-      "name": "Lavaridge Town Gym",
-      "members": [
-        "Lavaridge Town Gym 1F",
-        "Lavaridge Town Gym B1F"
-      ]
-    },
-    {
-      "name": "Lilycove City Lilycove Museum",
-      "members": [
-        "Lilycove City Lilycove Museum 1F",
-        "Lilycove City Lilycove Museum 2F"
       ]
     },
     {
@@ -4632,31 +4577,10 @@
       ]
     },
     {
-      "name": "Slateport City Pokemon Center",
+      "name": "Mossdeep City Game Corner",
       "members": [
-        "Slateport City Pokemon Center 1F",
-        "Slateport City Pokemon Center 2F"
-      ]
-    },
-    {
-      "name": "Fortree City Pokemon Center",
-      "members": [
-        "Fortree City Pokemon Center 1F",
-        "Fortree City Pokemon Center 2F"
-      ]
-    },
-    {
-      "name": "Slateport City Oceanic Museum",
-      "members": [
-        "Slateport City Oceanic Museum 1F",
-        "Slateport City Oceanic Museum 2F"
-      ]
-    },
-    {
-      "name": "Lilycove City Cove Lily Motel",
-      "members": [
-        "Lilycove City Cove Lily Motel 1F",
-        "Lilycove City Cove Lily Motel 2F"
+        "Mossdeep City Game Corner 1F",
+        "Mossdeep City Game Corner B1F"
       ]
     },
     {
@@ -4667,6 +4591,58 @@
       ]
     },
     {
+      "name": "Ever Grande City Pokemon League",
+      "members": [
+        "Ever Grande City Pokemon League 1F",
+        "Ever Grande City Pokemon League 2F"
+      ]
+    },
+    {
+      "name": "Lilycove City Department Store",
+      "members": [
+        "Lilycove City Department Store 1F",
+        "Lilycove City Department Store 2F",
+        "Lilycove City Department Store 3F",
+        "Lilycove City Department Store 4F",
+        "Lilycove City Department Store 5F"
+      ]
+    },
+    {
+      "name": "Lilycove City Cove Lily Motel",
+      "members": [
+        "Lilycove City Cove Lily Motel 1F",
+        "Lilycove City Cove Lily Motel 2F"
+      ]
+    },
+    {
+      "name": "Lavaridge Town Pokemon Center",
+      "members": [
+        "Lavaridge Town Pokemon Center 1F",
+        "Lavaridge Town Pokemon Center 2F"
+      ]
+    },
+    {
+      "name": "Abandoned Ship Corridors",
+      "members": [
+        "Abandoned Ship Corridors 1F",
+        "Abandoned Ship Corridors B1F"
+      ]
+    },
+    {
+      "name": "Mossdeep City Space Center",
+      "members": [
+        "Mossdeep City Space Center 1F",
+        "Mossdeep City Space Center 2F"
+      ]
+    },
+    {
+      "name": "Fallarbor Town Pokemon Center",
+      "members": [
+        "Fallarbor Town Pokemon Center 1F",
+        "Fallarbor Town Pokemon Center 2F"
+      ]
+    },
+    {
       "name": "Pacifidlog Town Pokemon Center",
       "members": [
         "Pacifidlog Town Pokemon Center 1F",
@@ -4674,313 +4650,36 @@
       ]
     },
     {
-      "name": "Dewford Town Pokemon Center",
+      "name": "Mauville City Pokemon Center",
       "members": [
-        "Dewford Town Pokemon Center 1F",
-        "Dewford Town Pokemon Center 2F"
+        "Mauville City Pokemon Center 1F",
+        "Mauville City Pokemon Center 2F"
       ]
     },
     {
-      "name": "Slateport City Sterns Shipyard",
+      "name": "Fortree City Pokemon Center",
       "members": [
-        "Slateport City Sterns Shipyard 1F",
-        "Slateport City Sterns Shipyard 2F"
+        "Fortree City Pokemon Center 1F",
+        "Fortree City Pokemon Center 2F"
+      ]
+    },
+    {
+      "name": "Sootopolis City Gym",
+      "members": [
+        "Sootopolis City Gym 1F",
+        "Sootopolis City Gym B1F"
       ]
     }
   ],
   "groupLayouts": {
-    "Meteor Falls": {
-      "Meteor Falls 1F 1R": {
-        "offsetX": 0,
-        "offsetY": 0
-      },
-      "Meteor Falls 1F 2R": {
-        "offsetX": 0,
-        "offsetY": 672
-      },
-      "Meteor Falls B1F 1R": {
-        "offsetX": 0,
-        "offsetY": 1344
-      },
-      "Meteor Falls B1F 2R": {
-        "offsetX": 0,
-        "offsetY": 2016
-      },
-      "Meteor Falls Stevens Cave": {
-        "offsetX": 0,
-        "offsetY": 2688
-      }
-    },
-    "Mt Pyre": {
-      "Mt Pyre Summit": {
-        "offsetX": 800,
-        "offsetY": 0
-      },
-      "Mt Pyre 6F": {
-        "offsetX": 800,
-        "offsetY": 816
-      },
-      "Mt Pyre 5F": {
-        "offsetX": 800,
-        "offsetY": 1632
-      },
-      "Mt Pyre 4F": {
-        "offsetX": 800,
-        "offsetY": 2448
-      },
-      "Mt Pyre 3F": {
-        "offsetX": 800,
-        "offsetY": 3264
-      },
-      "Mt Pyre 2F": {
-        "offsetX": 800,
-        "offsetY": 4080
-      },
-      "Mt Pyre 1F": {
-        "offsetX": 800,
-        "offsetY": 4896
-      },
-      "Mt Pyre Exterior": {
-        "offsetX": 0,
-        "offsetY": 0
-      }
-    },
-    "Granite Cave": {
-      "Granite Cave 1F": {
-        "offsetX": 0,
-        "offsetY": 0
-      },
-      "Granite Cave B1F": {
-        "offsetX": 0,
-        "offsetY": 416
-      },
-      "Granite Cave B2F": {
-        "offsetX": 0,
-        "offsetY": 832
-      }
-    },
-    "Abandoned Ship": {
-      "Abandoned Ship Rooms 1F": {
-        "offsetX": 432,
-        "offsetY": 0
-      },
-      "Abandoned Ship Corridors 1F": {
-        "offsetX": 432,
-        "offsetY": 336
-      },
-      "Abandoned Ship Rooms B1F": {
-        "offsetX": 432,
-        "offsetY": 672
-      },
-      "Abandoned Ship Rooms 2 B1F": {
-        "offsetX": 432,
-        "offsetY": 1008
-      },
-      "Abandoned Ship Room B1F": {
-        "offsetX": 432,
-        "offsetY": 1344
-      },
-      "Abandoned Ship Corridors B1F": {
-        "offsetX": 432,
-        "offsetY": 1680
-      },
-      "Abandoned Ship Captains Office": {
-        "offsetX": 0,
-        "offsetY": 0
-      },
-      "Abandoned Ship Deck": {
-        "offsetX": 0,
-        "offsetY": 336
-      },
-      "Abandoned Ship Rooms 21 F": {
-        "offsetX": 0,
-        "offsetY": 672
-      }
-    },
-    "Petalburg City Pokemon Center": {
-      "Petalburg City Pokemon Center 1F": {
-        "offsetX": 224,
-        "offsetY": 0
-      },
-      "Petalburg City Pokemon Center 2F": {
-        "offsetX": 0,
-        "offsetY": 0
-      }
-    },
-    "Sootopolis City Gym": {
-      "Sootopolis City Gym 1F": {
-        "offsetX": 0,
-        "offsetY": 0
-      },
-      "Sootopolis City Gym B1F": {
-        "offsetX": 0,
-        "offsetY": 416
-      }
-    },
-    "Verdanturf Town Pokemon Center": {
-      "Verdanturf Town Pokemon Center 1F": {
-        "offsetX": 224,
-        "offsetY": 0
-      },
-      "Verdanturf Town Pokemon Center 2F": {
-        "offsetX": 0,
-        "offsetY": 0
-      }
-    },
-    "Mossdeep City Game Corner": {
-      "Mossdeep City Game Corner 1F": {
-        "offsetX": 0,
-        "offsetY": 0
-      },
-      "Mossdeep City Game Corner B1F": {
-        "offsetX": 0,
-        "offsetY": 160
-      }
-    },
-    "Trainer Hill": {
-      "Trainer Hill 4F": {
-        "offsetX": 304,
-        "offsetY": 0
-      },
-      "Trainer Hill 3F": {
-        "offsetX": 304,
-        "offsetY": 336
-      },
-      "Trainer Hill 2F": {
-        "offsetX": 304,
-        "offsetY": 672
-      },
-      "Trainer Hill 1F": {
-        "offsetX": 304,
-        "offsetY": 1008
-      },
-      "Trainer Hill Entrance": {
-        "offsetX": 0,
-        "offsetY": 0
-      }
-    },
-    "Route 119 Weather Institute": {
-      "Route 119 Weather Institute 2F": {
-        "offsetX": 0,
-        "offsetY": 0
-      },
-      "Route 119 Weather Institute 1F": {
-        "offsetX": 0,
-        "offsetY": 208
-      }
-    },
-    "Aqua Hideout": {
-      "Aqua Hideout 1F": {
-        "offsetX": 0,
-        "offsetY": 0
-      },
-      "Aqua Hideout B1F": {
-        "offsetX": 0,
-        "offsetY": 480
-      },
-      "Aqua Hideout B2F": {
-        "offsetX": 0,
-        "offsetY": 960
-      }
-    },
-    "Fallarbor Town Pokemon Center": {
-      "Fallarbor Town Pokemon Center 1F": {
-        "offsetX": 224,
-        "offsetY": 0
-      },
-      "Fallarbor Town Pokemon Center 2F": {
-        "offsetX": 0,
-        "offsetY": 0
-      }
-    },
-    "Mossdeep City Space Center": {
-      "Mossdeep City Space Center 2F": {
-        "offsetX": 0,
-        "offsetY": 0
-      },
-      "Mossdeep City Space Center 1F": {
-        "offsetX": 0,
-        "offsetY": 160
-      }
-    },
-    "Mauville City Pokemon Center": {
-      "Mauville City Pokemon Center 1F": {
-        "offsetX": 224,
-        "offsetY": 0
-      },
-      "Mauville City Pokemon Center 2F": {
-        "offsetX": 0,
-        "offsetY": 0
-      }
-    },
-    "Mirage Tower": {
-      "Mirage Tower 4F": {
-        "offsetX": 0,
-        "offsetY": 0
-      },
-      "Mirage Tower 3F": {
-        "offsetX": 0,
-        "offsetY": 272
-      },
-      "Mirage Tower 2F": {
-        "offsetX": 0,
-        "offsetY": 544
-      },
-      "Mirage Tower 1F": {
-        "offsetX": 0,
-        "offsetY": 816
-      }
-    },
-    "Lavaridge Town Pokemon Center": {
-      "Lavaridge Town Pokemon Center 1F": {
-        "offsetX": 224,
-        "offsetY": 0
-      },
-      "Lavaridge Town Pokemon Center 2F": {
-        "offsetX": 0,
-        "offsetY": 0
-      }
-    },
-    "Mossdeep City Pokemon Center": {
-      "Mossdeep City Pokemon Center 1F": {
-        "offsetX": 224,
-        "offsetY": 0
-      },
-      "Mossdeep City Pokemon Center 2F": {
-        "offsetX": 0,
-        "offsetY": 0
-      }
-    },
     "Rustboro City Pokemon Center": {
       "Rustboro City Pokemon Center 1F": {
-        "offsetX": 224,
+        "offsetX": 244,
         "offsetY": 0
       },
       "Rustboro City Pokemon Center 2F": {
         "offsetX": 0,
         "offsetY": 0
-      }
-    },
-    "Lilycove City Department Store": {
-      "Lilycove City Department Store 5F": {
-        "offsetX": 0,
-        "offsetY": 0
-      },
-      "Lilycove City Department Store 4F": {
-        "offsetX": 0,
-        "offsetY": 128
-      },
-      "Lilycove City Department Store 3F": {
-        "offsetX": 0,
-        "offsetY": 256
-      },
-      "Lilycove City Department Store 2F": {
-        "offsetX": 0,
-        "offsetY": 384
-      },
-      "Lilycove City Department Store 1F": {
-        "offsetX": 0,
-        "offsetY": 512
       }
     },
     "Littleroot Town Mays House": {
@@ -4990,51 +4689,17 @@
       },
       "Littleroot Town Mays House 1F": {
         "offsetX": 0,
-        "offsetY": 144
+        "offsetY": 164
       }
     },
-    "Ever Grande City Pokemon League": {
-      "Ever Grande City Pokemon League 2F": {
-        "offsetX": 0,
+    "Slateport City Pokemon Center": {
+      "Slateport City Pokemon Center 1F": {
+        "offsetX": 244,
         "offsetY": 0
       },
-      "Ever Grande City Pokemon League 1F": {
-        "offsetX": 0,
-        "offsetY": 192
-      }
-    },
-    "Rustboro City Devon Corp": {
-      "Rustboro City Devon Corp 3F": {
+      "Slateport City Pokemon Center 2F": {
         "offsetX": 0,
         "offsetY": 0
-      },
-      "Rustboro City Devon Corp 2F": {
-        "offsetX": 0,
-        "offsetY": 144
-      },
-      "Rustboro City Devon Corp 1F": {
-        "offsetX": 0,
-        "offsetY": 288
-      }
-    },
-    "Littleroot Town Brendans House": {
-      "Littleroot Town Brendans House 2F": {
-        "offsetX": 0,
-        "offsetY": 0
-      },
-      "Littleroot Town Brendans House 1F": {
-        "offsetX": 0,
-        "offsetY": 144
-      }
-    },
-    "Lavaridge Town Gym": {
-      "Lavaridge Town Gym 1F": {
-        "offsetX": 0,
-        "offsetY": 0
-      },
-      "Lavaridge Town Gym B1F": {
-        "offsetX": 0,
-        "offsetY": 304
       }
     },
     "Lilycove City Lilycove Museum": {
@@ -5044,95 +4709,113 @@
       },
       "Lilycove City Lilycove Museum 1F": {
         "offsetX": 0,
-        "offsetY": 224
+        "offsetY": 244
       }
     },
-    "Oldale Town Pokemon Center": {
-      "Oldale Town Pokemon Center 1F": {
-        "offsetX": 224,
-        "offsetY": 0
-      },
-      "Oldale Town Pokemon Center 2F": {
+    "Littleroot Town Brendans House": {
+      "Littleroot Town Brendans House 2F": {
         "offsetX": 0,
         "offsetY": 0
-      }
-    },
-    "Ever Grande City Pokemon Center": {
-      "Ever Grande City Pokemon Center 1F": {
-        "offsetX": 224,
-        "offsetY": 0
       },
-      "Ever Grande City Pokemon Center 2F": {
+      "Littleroot Town Brendans House 1F": {
         "offsetX": 0,
-        "offsetY": 0
+        "offsetY": 164
       }
     },
-    "Slateport City Pokemon Center": {
-      "Slateport City Pokemon Center 1F": {
-        "offsetX": 224,
+    "Petalburg City Pokemon Center": {
+      "Petalburg City Pokemon Center 1F": {
+        "offsetX": 244,
         "offsetY": 0
       },
-      "Slateport City Pokemon Center 2F": {
+      "Petalburg City Pokemon Center 2F": {
         "offsetX": 0,
         "offsetY": 0
       }
     },
-    "Fortree City Pokemon Center": {
-      "Fortree City Pokemon Center 1F": {
-        "offsetX": 224,
+    "Rustboro City Devon Corp": {
+      "Rustboro City Devon Corp 3F": {
+        "offsetX": 0,
         "offsetY": 0
       },
-      "Fortree City Pokemon Center 2F": {
+      "Rustboro City Devon Corp 2F": {
+        "offsetX": 0,
+        "offsetY": 164
+      },
+      "Rustboro City Devon Corp 1F": {
+        "offsetX": 0,
+        "offsetY": 328
+      }
+    },
+    "Mirage Tower": {
+      "Mirage Tower 4F": {
+        "offsetX": 0,
+        "offsetY": 0
+      },
+      "Mirage Tower 3F": {
+        "offsetX": 0,
+        "offsetY": 292
+      },
+      "Mirage Tower 2F": {
+        "offsetX": 0,
+        "offsetY": 584
+      },
+      "Mirage Tower 1F": {
+        "offsetX": 0,
+        "offsetY": 876
+      }
+    },
+    "Mt Pyre": {
+      "Mt Pyre Summit": {
+        "offsetX": 820,
+        "offsetY": 0
+      },
+      "Mt Pyre 6F": {
+        "offsetX": 820,
+        "offsetY": 836
+      },
+      "Mt Pyre 5F": {
+        "offsetX": 820,
+        "offsetY": 1672
+      },
+      "Mt Pyre 4F": {
+        "offsetX": 820,
+        "offsetY": 2508
+      },
+      "Mt Pyre 3F": {
+        "offsetX": 820,
+        "offsetY": 3344
+      },
+      "Mt Pyre 2F": {
+        "offsetX": 820,
+        "offsetY": 4180
+      },
+      "Mt Pyre 1F": {
+        "offsetX": 820,
+        "offsetY": 5016
+      },
+      "Mt Pyre Exterior": {
         "offsetX": 0,
         "offsetY": 0
       }
     },
-    "Slateport City Oceanic Museum": {
-      "Slateport City Oceanic Museum 2F": {
-        "offsetX": 0,
+    "Trainer Hill": {
+      "Trainer Hill 4F": {
+        "offsetX": 324,
         "offsetY": 0
       },
-      "Slateport City Oceanic Museum 1F": {
-        "offsetX": 0,
-        "offsetY": 144
-      }
-    },
-    "Lilycove City Cove Lily Motel": {
-      "Lilycove City Cove Lily Motel 2F": {
-        "offsetX": 0,
-        "offsetY": 0
+      "Trainer Hill 3F": {
+        "offsetX": 324,
+        "offsetY": 356
       },
-      "Lilycove City Cove Lily Motel 1F": {
-        "offsetX": 0,
-        "offsetY": 144
-      }
-    },
-    "Lilycove City Pokemon Center": {
-      "Lilycove City Pokemon Center 1F": {
-        "offsetX": 224,
-        "offsetY": 0
+      "Trainer Hill 2F": {
+        "offsetX": 324,
+        "offsetY": 712
       },
-      "Lilycove City Pokemon Center 2F": {
-        "offsetX": 0,
-        "offsetY": 0
-      }
-    },
-    "Pacifidlog Town Pokemon Center": {
-      "Pacifidlog Town Pokemon Center 1F": {
-        "offsetX": 224,
-        "offsetY": 0
+      "Trainer Hill 1F": {
+        "offsetX": 324,
+        "offsetY": 1068
       },
-      "Pacifidlog Town Pokemon Center 2F": {
-        "offsetX": 0,
-        "offsetY": 0
-      }
-    },
-    "Dewford Town Pokemon Center": {
-      "Dewford Town Pokemon Center 1F": {
-        "offsetX": 224,
-        "offsetY": 0
-      },
-      "Dewford Town Pokemon Center 2F": {
+      "Trainer Hill Entrance": {
         "offsetX": 0,
         "offsetY": 0
       }
@@ -5144,7 +4827,257 @@
       },
       "Slateport City Sterns Shipyard 1F": {
         "offsetX": 0,
-        "offsetY": 240
+        "offsetY": 260
+      }
+    },
+    "Granite Cave": {
+      "Granite Cave 1F": {
+        "offsetX": 0,
+        "offsetY": 0
+      },
+      "Granite Cave B1F": {
+        "offsetX": 0,
+        "offsetY": 436
+      },
+      "Granite Cave B2F": {
+        "offsetX": 0,
+        "offsetY": 872
+      }
+    },
+    "Route 119 Weather Institute": {
+      "Route 119 Weather Institute 2F": {
+        "offsetX": 0,
+        "offsetY": 0
+      },
+      "Route 119 Weather Institute 1F": {
+        "offsetX": 0,
+        "offsetY": 228
+      }
+    },
+    "Dewford Town Pokemon Center": {
+      "Dewford Town Pokemon Center 1F": {
+        "offsetX": 244,
+        "offsetY": 0
+      },
+      "Dewford Town Pokemon Center 2F": {
+        "offsetX": 0,
+        "offsetY": 0
+      }
+    },
+    "Lavaridge Town Gym": {
+      "Lavaridge Town Gym 1F": {
+        "offsetX": 0,
+        "offsetY": 0
+      },
+      "Lavaridge Town Gym B1F": {
+        "offsetX": 0,
+        "offsetY": 324
+      }
+    },
+    "Aqua Hideout": {
+      "Aqua Hideout 1F": {
+        "offsetX": 0,
+        "offsetY": 0
+      },
+      "Aqua Hideout B1F": {
+        "offsetX": 0,
+        "offsetY": 500
+      },
+      "Aqua Hideout B2F": {
+        "offsetX": 0,
+        "offsetY": 1000
+      }
+    },
+    "Verdanturf Town Pokemon Center": {
+      "Verdanturf Town Pokemon Center 1F": {
+        "offsetX": 244,
+        "offsetY": 0
+      },
+      "Verdanturf Town Pokemon Center 2F": {
+        "offsetX": 0,
+        "offsetY": 0
+      }
+    },
+    "Slateport City Oceanic Museum": {
+      "Slateport City Oceanic Museum 2F": {
+        "offsetX": 0,
+        "offsetY": 0
+      },
+      "Slateport City Oceanic Museum 1F": {
+        "offsetX": 0,
+        "offsetY": 164
+      }
+    },
+    "Mossdeep City Pokemon Center": {
+      "Mossdeep City Pokemon Center 1F": {
+        "offsetX": 244,
+        "offsetY": 0
+      },
+      "Mossdeep City Pokemon Center 2F": {
+        "offsetX": 0,
+        "offsetY": 0
+      }
+    },
+    "Oldale Town Pokemon Center": {
+      "Oldale Town Pokemon Center 1F": {
+        "offsetX": 244,
+        "offsetY": 0
+      },
+      "Oldale Town Pokemon Center 2F": {
+        "offsetX": 0,
+        "offsetY": 0
+      }
+    },
+    "Ever Grande City Pokemon Center": {
+      "Ever Grande City Pokemon Center 1F": {
+        "offsetX": 244,
+        "offsetY": 0
+      },
+      "Ever Grande City Pokemon Center 2F": {
+        "offsetX": 0,
+        "offsetY": 0
+      }
+    },
+    "Mossdeep City Game Corner": {
+      "Mossdeep City Game Corner 1F": {
+        "offsetX": 0,
+        "offsetY": 0
+      },
+      "Mossdeep City Game Corner B1F": {
+        "offsetX": 0,
+        "offsetY": 180
+      }
+    },
+    "Lilycove City Pokemon Center": {
+      "Lilycove City Pokemon Center 1F": {
+        "offsetX": 244,
+        "offsetY": 0
+      },
+      "Lilycove City Pokemon Center 2F": {
+        "offsetX": 0,
+        "offsetY": 0
+      }
+    },
+    "Ever Grande City Pokemon League": {
+      "Ever Grande City Pokemon League 2F": {
+        "offsetX": 0,
+        "offsetY": 0
+      },
+      "Ever Grande City Pokemon League 1F": {
+        "offsetX": 0,
+        "offsetY": 212
+      }
+    },
+    "Lilycove City Department Store": {
+      "Lilycove City Department Store 5F": {
+        "offsetX": 0,
+        "offsetY": 0
+      },
+      "Lilycove City Department Store 4F": {
+        "offsetX": 0,
+        "offsetY": 148
+      },
+      "Lilycove City Department Store 3F": {
+        "offsetX": 0,
+        "offsetY": 296
+      },
+      "Lilycove City Department Store 2F": {
+        "offsetX": 0,
+        "offsetY": 444
+      },
+      "Lilycove City Department Store 1F": {
+        "offsetX": 0,
+        "offsetY": 592
+      }
+    },
+    "Lilycove City Cove Lily Motel": {
+      "Lilycove City Cove Lily Motel 2F": {
+        "offsetX": 0,
+        "offsetY": 0
+      },
+      "Lilycove City Cove Lily Motel 1F": {
+        "offsetX": 0,
+        "offsetY": 164
+      }
+    },
+    "Lavaridge Town Pokemon Center": {
+      "Lavaridge Town Pokemon Center 1F": {
+        "offsetX": 244,
+        "offsetY": 0
+      },
+      "Lavaridge Town Pokemon Center 2F": {
+        "offsetX": 0,
+        "offsetY": 0
+      }
+    },
+    "Abandoned Ship Corridors": {
+      "Abandoned Ship Corridors 1F": {
+        "offsetX": 0,
+        "offsetY": 0
+      },
+      "Abandoned Ship Corridors B1F": {
+        "offsetX": 0,
+        "offsetY": 212
+      }
+    },
+    "Mossdeep City Space Center": {
+      "Mossdeep City Space Center 2F": {
+        "offsetX": 0,
+        "offsetY": 0
+      },
+      "Mossdeep City Space Center 1F": {
+        "offsetX": 0,
+        "offsetY": 180
+      }
+    },
+    "Fallarbor Town Pokemon Center": {
+      "Fallarbor Town Pokemon Center 1F": {
+        "offsetX": 244,
+        "offsetY": 0
+      },
+      "Fallarbor Town Pokemon Center 2F": {
+        "offsetX": 0,
+        "offsetY": 0
+      }
+    },
+    "Pacifidlog Town Pokemon Center": {
+      "Pacifidlog Town Pokemon Center 1F": {
+        "offsetX": 244,
+        "offsetY": 0
+      },
+      "Pacifidlog Town Pokemon Center 2F": {
+        "offsetX": 0,
+        "offsetY": 0
+      }
+    },
+    "Mauville City Pokemon Center": {
+      "Mauville City Pokemon Center 1F": {
+        "offsetX": 244,
+        "offsetY": 0
+      },
+      "Mauville City Pokemon Center 2F": {
+        "offsetX": 0,
+        "offsetY": 0
+      }
+    },
+    "Fortree City Pokemon Center": {
+      "Fortree City Pokemon Center 1F": {
+        "offsetX": 244,
+        "offsetY": 0
+      },
+      "Fortree City Pokemon Center 2F": {
+        "offsetX": 0,
+        "offsetY": 0
+      }
+    },
+    "Sootopolis City Gym": {
+      "Sootopolis City Gym 1F": {
+        "offsetX": 0,
+        "offsetY": 0
+      },
+      "Sootopolis City Gym B1F": {
+        "offsetX": 0,
+        "offsetY": 436
       }
     }
   }
